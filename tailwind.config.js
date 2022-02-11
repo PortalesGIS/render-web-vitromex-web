@@ -2,9 +2,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      movil: "375px",
-      tablet: "600px",
-      desktop: "1240px",
+      xsmall: "375px",
+      small: "600px",
+      medium: "1240px",
     },
     fontSize: {
       'title_movil': '2.5rem',
@@ -20,9 +20,12 @@ module.exports = {
     extend: {
       colors: { "neutral": "#686868" },
       gridTemplateColumns: {
-        'movil': 'repeat(4, 25%)',
-        'tableta': 'repeat(8, 12.5%)',
-        'desktop': 'repeat(12, 8.33%)',
+        'xsmall': 'repeat(4, 25%)',
+        'small': 'repeat(8, 12.5%)',
+        'medium': 'repeat(12, 8.33%)',
+      },
+      margin: {
+        '90px': '5.688rem',
       }
     },
   },

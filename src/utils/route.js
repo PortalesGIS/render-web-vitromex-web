@@ -1,6 +1,6 @@
 export const Path = {
   LANDING: "/",
-  FORM: "form",
+  FORM: "/form",
   LOGIN: "login",
   REGISTER: "register",
   RESTORE: "restore",
