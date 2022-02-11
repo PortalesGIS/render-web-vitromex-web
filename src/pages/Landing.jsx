@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import logovitromex from "../assets/logovitromex.svg";
+import { ButtonRedirect } from "../components/Buttons/ButtonRedirect";
 import { Path } from "../utils/route";
 
 export const Landing = () => {
@@ -28,8 +28,11 @@ export const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 flex h-12 w-56 items-center justify-center bg-white text-black">
-          <Link to={Path.LOGIN}>Iniciar sesión</Link>
+        <div className="mt-12">
+          <ButtonRedirect
+            text={"Iniciar seción"}
+            direction={`${Path.FORM}/${Path.LOGIN}`}
+          />
         </div>
       </div>
     </div>
