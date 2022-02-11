@@ -1,26 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import logovitromex from "../assets/logovitromex.svg";
+import { ButtonRedirect } from "../components/Buttons/ButtonRedirect";
 import { Path } from "../utils/route";
 
 export const Landing = () => {
   return (
-    <div className="bg-neutral grid-cols-movil tablet:grid-cols-tableta desktop:grid-cols-desktop relative grid h-screen w-screen grid-rows-2 px-4">
-      <div className="tablet:col-span-8 desktop:col-span-12 col-span-4">
+    <div className="bg-neutral grid-cols-xsmall small:grid-cols-small  medium:grid-cols-medium relative grid h-screen w-screen grid-rows-2 px-4">
+      <div className="small:col-span-8 medium:col-span-12 col-span-4">
         <div className="flex items-center justify-center pt-14">
           <img src={logovitromex} alt="logo" />
         </div>
       </div>
-      <div className="tablet:col-span-6 desktop:col-span-7 col-span-4 row-start-2 text-white">
+      <div className="small:col-span-6 medium:col-span-7 col-span-4 row-start-2 text-white">
         <div>
-          <h1 className="text-title_movil tablet:text-title_table desktop:text-title_desktop">
+          <h1 className="text-title_movil small:text-title_table medium:text-title_desktop">
             Título
           </h1>
-          <h2 className="text-subtitle_movil tablet:text-subtitle_table desktop:text-subtitle_desktop">
+          <h2 className="text-subtitle_movil small:text-subtitle_table medium:text-subtitle_desktop">
             subtitulo
           </h2>
           <div className="mt-4">
-            <p className="text-paragraph_movil tablet:text-paragraph_table desktop:text-paragraph_desktop">
+            <p className="text-paragraph_movil small:text-paragraph_table medium:text-paragraph_desktop">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Explicabo, veritatis. Impedit cum natus pariatur mollitia
               praesentium, inventore tenetur qui maxime. Commodi nostrum iste
@@ -28,8 +28,11 @@ export const Landing = () => {
             </p>
           </div>
         </div>
-        <div className="mt-12 flex h-12 w-56 items-center justify-center bg-white text-black">
-          <Link to={Path.LOGIN}>Iniciar sesión</Link>
+        <div className="mt-12">
+          <ButtonRedirect
+            text={"Iniciar seción"}
+            direction={`${Path.FORM}/${Path.LOGIN}`}
+          />
         </div>
       </div>
     </div>

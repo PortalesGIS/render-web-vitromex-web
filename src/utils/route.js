@@ -1,6 +1,7 @@
 export const Path = {
   LANDING: "/",
-  LOGIN: "/login",
-  REGISTER: "/register",
-  RESTORE: "/restore",
+  FORM: "/form",
+  LOGIN: "login",
+  REGISTER: "register",
+  RESTORE: "restore",
 };
