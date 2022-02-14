@@ -5,8 +5,8 @@ import logovitromex from "../assets/logovitromex.svg";
 export const LoginLayout = () => {
   return (
     <div>
-      <div className="bg-neutral grid-cols-xsmall small:grid-cols-small  medium:grid-cols-medium relative grid h-screen w-screen">
-        <div className="medium:flex medium:col-span-5 hidden items-center justify-center bg-slate-100">
+      <div className=" grid-cols-xsmall small:grid-cols-small  medium:grid-cols-medium relative grid min-h-screen w-full bg-neutral">
+        <div className="medium:flex medium:col-span-5 hidden h-full items-center justify-center bg-slate-50">
           <div className="h-20 w-20 rounded-full bg-red-100"></div>
         </div>
         <div className="small:col-span-8 medium:col-span-7 col-span-4 ">
@@ -17,7 +17,7 @@ export const LoginLayout = () => {
             </div>
             {/* router */}
             <div className="mt-90px">
-            <Outlet />
+              <Outlet />
             </div>
           </div>
         </div>
