@@ -1,41 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import { Path } from "../../utils/route";
 import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
 import advertencia from "../../assets/advertencia.svg";
 import selectactive from "../../assets/select_flecha_active.svg";
 import { TitleForm } from "./TextForm/TitleForm";
+import { ButtonRedirect } from "../Buttons/ButtonRedirect";
+import { useShowPassword } from "../../hooks/useShowPassword";
+import { useForm } from "../../hooks/useForm";
+import { typesAuhtButton } from "../../modules/types/typesAuthButton";
+import { InputError } from "./Errors/InputError";
 
 export const FormRegister = () => {
-  const [hasVisibilityPassword, sethasVisibilityPassword] = useState(true);
-  const [hasVisibilityConfirmPassword, sethasVisibilityConfirmPassword] =
-    useState(true);
-  const [valueSelect, setvalueSelect] = useState("null");
-  const [checked, setChecked] = useState(false);
-
-  const showPassword = () => {
-    if (hasVisibilityPassword) {
-      sethasVisibilityPassword(false);
-    } else {
-      sethasVisibilityPassword(true);
-    }
-  };
-
-  const showConfirmPassword = () => {
-    if (hasVisibilityConfirmPassword) {
-      sethasVisibilityConfirmPassword(false);
-    } else {
-      sethasVisibilityConfirmPassword(true);
-    }
-  };
-
-  const onChagueSelectContract = (event) => {
-    setChecked(!checked);
-  };
-
-  const onChagueSelect = (event) => {
-    setvalueSelect(event.target.value);
-  };
+  const [hasVisibilityPassword, showPassword] =
+    useShowPassword(true);
+  const [hasVisibilityConfirmPassword, showConfirmPassword] =
+    useShowPassword(true);
+  const [formValues, handleInputChange, validationInput] = useForm({
+    name: "",
+    lastname: "",
+    email: "luis@inmersys.com",
+    profesion: "",
+    country: "",
+    city: "",
+    password: "1234",
+    secondPassword: "1234",
+    check: false
+  });
+  const {
+    name,
+    lastname,
+    email,
+    profesion,
+    country,
+    city,
+    password,
+    secondPassword,
+    check
+  } = formValues;
+  const { equalPassword } = validationInput;
+  
   return (
     <>
       <TitleForm
@@ -49,26 +53,36 @@ export const FormRegister = () => {
         <input
           type="text"
           placeholder="Nombre"
+          name="name"
+          value={name}
+          onChange={handleInputChange}
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* lastname */}
         <input
           type="text"
           placeholder="Apellido"
+          name="lastname"
+          value={lastname}
+          onChange={handleInputChange}
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* email */}
         <input
           type="text"
           placeholder="Correo electronico"
+          name="email"
+          value={email}
+          onChange={handleInputChange}
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* profesion */}
         <div className="relative">
           <select
             className="w-full appearance-none border-b-2 bg-transparent focus:outline-none"
-            onChange={onChagueSelect}
-            value={valueSelect}
+            name="profesion"
+            value={profesion}
+            onChange={handleInputChange}
           >
             <option className="text-white" hidden value="null">
               Profesión
@@ -91,12 +105,18 @@ export const FormRegister = () => {
         <input
           type="text"
           placeholder="Estado de la república"
+          name="country"
+          value={country}
+          onChange={handleInputChange}
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* city */}
         <input
           type="text"
           placeholder="Ciudad"
+          name="city"
+          value={city}
+          onChange={handleInputChange}
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* password */}
@@ -104,6 +124,9 @@ export const FormRegister = () => {
           <input
             type={hasVisibilityPassword ? "password" : "text"}
             placeholder="Contraseña"
+            name="password"
+            value={password}
+            onChange={handleInputChange}
             className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
           />
           <span
@@ -118,10 +141,13 @@ export const FormRegister = () => {
           </span>
         </div>
         {/* password confirm*/}
-        <div className="relative flex items-center">
+        <div className="relative flex flex-col">
           <input
             type={hasVisibilityConfirmPassword ? "password" : "text"}
             placeholder="Confirmar contraseña"
+            name="secondPassword"
+            value={secondPassword}
+            onChange={handleInputChange}
             className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
           />
           <span
@@ -134,6 +160,7 @@ export const FormRegister = () => {
               alt="ojoabierto"
             />
           </span>
+          {!equalPassword && <InputError text={"No es igual la contraseña"} />}
         </div>
         {/* check */}
         <div className="my-0 mx-auto">
@@ -141,7 +168,9 @@ export const FormRegister = () => {
             <input
               type="checkbox"
               className="accent-neutral80 h-6 w-6"
-              onChange={onChagueSelectContract}
+              name="check"
+              value={check}
+              onChange={handleInputChange}
             />
             <p className="text-12px">
               Acepto los{" "}
@@ -154,7 +183,7 @@ export const FormRegister = () => {
         </div>
         {/* advertencia check */}
         <div className="my-0 mx-auto h-10">
-          {!checked && (
+          {!check && (
             <div className="bg-neutral20 flex h-10 w-72 items-center justify-center gap-3">
               <img src={advertencia} alt="advertancia" />
               <span className="text-10px text-black">
@@ -162,6 +191,15 @@ export const FormRegister = () => {
               </span>
             </div>
           )}
+        </div>
+        <div className="my-12 flex justify-center items-center">
+          <ButtonRedirect
+            text={"Crear Usuario"}
+            direction={`${Path.LANDING}`}
+            action={typesAuhtButton.register}
+            data={formValues}
+            validations={[equalPassword, check]}
+          />
         </div>
       </div>
     </>

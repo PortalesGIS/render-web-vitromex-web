@@ -2,33 +2,38 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { authAxios } from "../../modules/actions/auth";
 import { useNavigate } from "react-router-dom";
+import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 
 export const ButtonRedirect = ({
   text,
   direction,
-  action = "landing",
+  action = typesAuhtButton.landing,
   data = {},
+  validations = [true]
 }) => {
   // const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const actionForm = () => {
-    switch (action) {
-      case "landing":
-        navigate(direction);
-        break;
-      case "login":
-        dispatch(authAxios(action, data));
-        break;
-      case "register":
-        dispatch(authAxios(action, data));
-        break;
-      case "restore":
-        dispatch(authAxios(action, data));
-        break;
-      default:
-        break;
+    const passAction = validations.every(validation => validation)
+    if(passAction){
+      switch (action) {
+        case typesAuhtButton.landing:
+          navigate(direction);
+          break;
+        case typesAuhtButton.login:
+          dispatch(authAxios(action, data));
+          break;
+        case typesAuhtButton.restore:
+          dispatch(authAxios(action, data));
+          break;
+        case typesAuhtButton.register:
+          dispatch(authAxios(action, data));
+          break;
+        default:
+          break;
+      }
     }
   };
 

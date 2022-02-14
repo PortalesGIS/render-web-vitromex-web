@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { InputError } from "./Errors/InputError";
 import { useForm } from "../../hooks/useForm";
 import { useShowPassword } from "../../hooks/useShowPassword";
+import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 
 export const FormLogin = () => {
   const state = useSelector((state) => state.ui.errorInput);
@@ -64,7 +65,7 @@ export const FormLogin = () => {
         <ButtonRedirect
           text={"Iniciar sesión"}
           direction={`${Path.LANDING}`}
-          action={"login"}
+          action={typesAuhtButton.login}
           data={formValues}
         />
       </div>
