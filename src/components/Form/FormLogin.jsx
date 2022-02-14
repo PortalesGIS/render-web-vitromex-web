@@ -4,6 +4,7 @@ import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
 import { TitleForm } from "./TextForm/TitleForm";
 import { FooterForm } from "./TextForm/FooterForm";
+import { ButtonRedirect } from "../Buttons/ButtonRedirect";
 
 export const FormLogin = () => {
   const [hasVisibilityPassword, sethasVisibilityPassword] = useState(true);
@@ -47,6 +48,9 @@ export const FormLogin = () => {
             />
           </span>
         </div>
+      </div>
+      <div className="mt-12 flex justify-center items-center">
+        <ButtonRedirect text={"Iniciar sesión"} direction={`${Path.LANDING}`} />
       </div>
       <FooterForm
         direction={`${Path.FORM}/${Path.RESTORE}`}
