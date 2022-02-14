@@ -20,7 +20,11 @@ module.exports = {
       "12px": "0.75rem"
     },
     extend: {
-      colors: { neutral: "#686868", neutral20: "#CDCDCD" },
+      colors: { 
+        neutral: "#686868", 
+        neutral20: "#CDCDCD",
+        neutral80: "#282828",
+      },
       gridTemplateColumns: {
         xsmall: "repeat(4, 25%)",
         small: "repeat(8, 12.5%)",

@@ -3,6 +3,7 @@ import { Path } from "../../utils/route";
 import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
 import advertencia from "../../assets/advertencia.svg";
+import selectactive from "../../assets/select_flecha_active.svg";
 import { TitleForm } from "./TextForm/TitleForm";
 
 export const FormRegister = () => {
@@ -63,7 +64,7 @@ export const FormRegister = () => {
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* profesion */}
-        <div className="">
+        <div className="relative">
           <select
             className="w-full appearance-none border-b-2 bg-transparent focus:outline-none"
             onChange={onChagueSelect}
@@ -82,16 +83,14 @@ export const FormRegister = () => {
               Otro
             </option>
           </select>
+          <div className="absolute h-5 w-5 top-1 right-0">
+            <img src={selectactive} alt="" className="w-full h-auto" />
+          </div>
         </div>
-        <input
-          type="text"
-          placeholder="Profesión"
-          className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
-        />
         {/* country */}
         <input
           type="text"
-          placeholder="Estado de la republica"
+          placeholder="Estado de la república"
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* city */}
@@ -141,7 +140,7 @@ export const FormRegister = () => {
           <div className="flex h-10 w-72 items-center justify-center gap-4">
             <input
               type="checkbox"
-              className="accent-neutral20 h-6 w-6"
+              className="accent-neutral80 h-6 w-6"
               onChange={onChagueSelectContract}
             />
             <p className="text-12px">

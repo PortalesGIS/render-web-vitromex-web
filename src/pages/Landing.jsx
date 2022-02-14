@@ -30,7 +30,7 @@ export const Landing = () => {
         </div>
         <div className="mt-12">
           <ButtonRedirect
-            text={"Iniciar seción"}
+            text={"Iniciar sección"}
             direction={`${Path.FORM}/${Path.LOGIN}`}
           />
         </div>
