@@ -4,7 +4,7 @@ import { types } from "../types/types";
 
 const initialState = {
     authentication: false,
-    name: ''
+    email: ''
 }
 
 
@@ -14,7 +14,7 @@ export const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 authentication: true,
-                name: action.payload.name
+                email: action.payload.email
             }
     
         case types.logout:

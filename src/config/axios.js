@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const clientAxios = axios.create({
-  baseURL: "https://reqres.in/api/",
+  baseURL: "http://localstore:8080/api/",
 });
 
 export default clientAxios;
