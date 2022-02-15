@@ -12,14 +12,25 @@ export const authAxios = (type, dataform) => {
             if(response === undefined){
                 dispatch(errorLogin())
             }else{
-                dispatch(login(email))
+                dispatch(login(response.name))
             }
         }else if (type === typesAuhtButton.restore){
-            console.log(dataform);
-            dispatch(restore())
+            const {email} = dataform
+            const response =  fakeData.users.find(user => (user.email === email))
+            if(response === undefined){
+                dispatch(errorLogin())
+            }else{
+                dispatch(restore())
+            }
         }else if (type === typesAuhtButton.register){
-            console.log(dataform);
-            dispatch(resgiter())
+            const {email, name} = dataform
+            const response =  fakeData.users.find(user => (user.email === email))
+            if(response === undefined){
+                fakeData.users.push(dataform)
+                dispatch(resgiter(name))
+            }else{
+                dispatch(errorLogin())
+            }
         }
         // const response = await clientAxios.get('users')
         // console.log(response);
@@ -46,11 +57,11 @@ export const errorLoginClean = () => {
     }
 }
 
-export const login = (email) => {
+export const login = (user) => {
     return {
         type: types.login,
         payload: {
-            email: email
+            user: user
         }
     }
 }
@@ -66,11 +77,11 @@ export const logout = () => {
         type: types.logout
     }
 }
-export const resgiter = (email) => {
+export const resgiter = (user) => {
     return {
         type: types.login,
         payload: {
-            email: email
+            user: user
         }
     }
 }

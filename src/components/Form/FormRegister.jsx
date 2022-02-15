@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Path } from "../../utils/route";
 import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
@@ -10,8 +10,13 @@ import { useShowPassword } from "../../hooks/useShowPassword";
 import { useForm } from "../../hooks/useForm";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 import { InputError } from "./Errors/InputError";
+import { useCompleteInput } from "../../hooks/useCompleteInput";
+import { useSelector, useDispatch } from "react-redux";
+import { errorLoginClean } from "../../modules/actions/auth";
 
 export const FormRegister = () => {
+  const state = useSelector((state) => state.ui.errorInput);
+  const dispatch = useDispatch();
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
     useShowPassword(true);
@@ -38,6 +43,13 @@ export const FormRegister = () => {
     check,
   } = formValues;
   const { equalPassword, isEmail } = validationInput;
+  const [validationsCompleteInput] = useCompleteInput(formValues);
+
+  useEffect(() => {
+    return () => {
+      dispatch(errorLoginClean());
+    };
+  }, []);
 
   return (
     <>
@@ -49,23 +61,29 @@ export const FormRegister = () => {
       />
       <div className="flex flex-col gap-11 text-white">
         {/* name */}
-        <input
-          type="text"
-          placeholder="Nombre"
-          name="name"
-          value={name}
-          onChange={handleInputChange}
-          className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
-        />
+        <div>
+          <input
+            type="text"
+            placeholder="Nombre"
+            name="name"
+            value={name}
+            onChange={handleInputChange}
+            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+          />
+          {!name && state && <InputError text={"Completa este campo"} />}
+        </div>
         {/* lastname */}
-        <input
-          type="text"
-          placeholder="Apellido"
-          name="lastname"
-          value={lastname}
-          onChange={handleInputChange}
-          className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
-        />
+        <div>
+          <input
+            type="text"
+            placeholder="Apellido"
+            name="lastname"
+            value={lastname}
+            onChange={handleInputChange}
+            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+          />
+          {!lastname && state && <InputError text={"Completa este campo"} />}
+        </div>
         {/* email */}
         <div>
           <input
@@ -76,7 +94,9 @@ export const FormRegister = () => {
             onChange={handleInputChange}
             className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
           />
-          {!isEmail && <InputError text={"Completa este campo"} />}
+          {!isEmail && <InputError text={"No es un correo valido"} />}
+          {state && <InputError text={"Este correo existe"} />}
+          {!email && state && <InputError text={"Completa este campo"} />}
         </div>
 
         {/* profesion */}
@@ -103,25 +123,32 @@ export const FormRegister = () => {
           <div className="absolute h-5 w-5 top-1 right-0">
             <img src={selectactive} alt="" className="w-full h-auto" />
           </div>
+          {!profesion && state && <InputError text={"Completa este campo"} />}
         </div>
         {/* country */}
-        <input
-          type="text"
-          placeholder="Estado de la república"
-          name="country"
-          value={country}
-          onChange={handleInputChange}
-          className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
-        />
+        <div>
+          <input
+            type="text"
+            placeholder="Estado de la república"
+            name="country"
+            value={country}
+            onChange={handleInputChange}
+            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+          />
+          {!country && state && <InputError text={"Completa este campo"} />}
+        </div>
         {/* city */}
-        <input
-          type="text"
-          placeholder="Ciudad"
-          name="city"
-          value={city}
-          onChange={handleInputChange}
-          className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
-        />
+        <div>
+          <input
+            type="text"
+            placeholder="Ciudad"
+            name="city"
+            value={city}
+            onChange={handleInputChange}
+            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+          />
+          {!city && state && <InputError text={"Completa este campo"} />}
+        </div>
         {/* password */}
         <div className="relative flex items-center">
           <input
@@ -142,6 +169,7 @@ export const FormRegister = () => {
               alt="ojoabierto"
             />
           </span>
+          {!password && state && <InputError text={"Completa este campo"} />}
         </div>
         {/* password confirm*/}
         <div className="relative flex flex-col">
@@ -163,6 +191,7 @@ export const FormRegister = () => {
               alt="ojoabierto"
             />
           </span>
+          {!secondPassword && state && <InputError text={"Completa este campo"} />}
           {!equalPassword && <InputError text={"No es igual la contraseña"} />}
         </div>
         {/* check */}
@@ -201,7 +230,7 @@ export const FormRegister = () => {
             direction={`${Path.PRODUCT}`}
             action={typesAuhtButton.register}
             data={formValues}
-            validations={[equalPassword, check]}
+            validations={[equalPassword, check, validationsCompleteInput]}
           />
         </div>
       </div>

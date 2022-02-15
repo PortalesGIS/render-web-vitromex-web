@@ -14,9 +14,9 @@ export const ButtonRedirect = ({
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const passAction = validations.every(validation => validation)
 
   const actionForm = () => {
-    const passAction = validations.every(validation => validation)
     if(passAction){
       if(action === typesAuhtButton.landing){
         navigate(direction);
@@ -34,8 +34,9 @@ export const ButtonRedirect = ({
   
   return (
     <button
-      className="flex h-10 w-52 items-center justify-center bg-white text-black"
+      className={`flex h-10 w-52 items-center justify-center bg-white text-black ${!passAction && 'opacity-50'}`}
       onClick={actionForm}
+      disabled={!passAction}
     >
       {text}
     </button>

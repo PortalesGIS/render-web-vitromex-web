@@ -11,6 +11,7 @@ import { useForm } from "../../hooks/useForm";
 import { useShowPassword } from "../../hooks/useShowPassword";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 import { errorLoginClean } from "../../modules/actions/auth";
+import { useCompleteInput } from "../../hooks/useCompleteInput";
 
 export const FormLogin = () => {
   const state = useSelector((state) => state.ui.errorInput);
@@ -20,9 +21,10 @@ export const FormLogin = () => {
     email: "",
     password: "",
   });
+  const [validationsCompleteInput] = useCompleteInput(formValues)
   const { email, password } = formValues;
   const { isEmail } = validationInput;
-  
+
   useEffect(() => {
     return () => {
       dispatch(errorLoginClean())
@@ -47,8 +49,11 @@ export const FormLogin = () => {
             value={email}
             onChange={handleInputChange}
           />
+          {!isEmail && (
+            <InputError text={"No es un correo electronico valido"} />
+          )}
           {state && <InputError text={"No existe correo"} />}
-          {!isEmail && <InputError text={"Completa este campo"} />}
+          {!email && state && <InputError text={"Completa este campo"} />}
         </div>
         <div className="relative flex items-center">
           <input
@@ -69,6 +74,7 @@ export const FormLogin = () => {
               alt="ojoabierto"
             />
           </span>
+          {!password && state && <InputError text={"Completa este campo"} />}
         </div>
       </div>
       <div className="mt-12 flex justify-center items-center">
@@ -77,6 +83,7 @@ export const FormLogin = () => {
           direction={`${Path.PRODUCT}`}
           action={typesAuhtButton.login}
           data={formValues}
+          validations={[validationsCompleteInput, isEmail]}
         />
       </div>
       <FooterForm

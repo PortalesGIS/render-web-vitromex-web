@@ -4,7 +4,8 @@ import { types } from "../types/types";
 
 const initialState = {
     authentication: false,
-    email: ''
+    email: '',
+    user: ''
 }
 
 
@@ -14,13 +15,25 @@ export const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 authentication: true,
-                email: action.payload.email
+                user: action.payload.user
             }
     
         case types.logout:
             return {
                 ...state,
                 authentication: false
+            }
+
+        case types.restore:
+            return {
+                ...state,
+                authentication: true
+            }
+        case types.register:
+            return {
+                ...state,
+                authentication: true,
+                user: action.payload.user
             }
     
         default:

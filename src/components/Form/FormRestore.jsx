@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Path } from "../../utils/route";
 import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
@@ -8,8 +8,13 @@ import { useShowPassword } from "../../hooks/useShowPassword";
 import { useForm } from "../../hooks/useForm";
 import { InputError } from "./Errors/InputError";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
+import { useCompleteInput } from "../../hooks/useCompleteInput";
+import { useSelector, useDispatch } from "react-redux";
+import { errorLoginClean } from "../../modules/actions/auth";
 
 export const FormRestore = () => {
+  const state = useSelector((state) => state.ui.errorInput);
+  const dispatch = useDispatch();
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
     useShowPassword(true);
@@ -18,8 +23,16 @@ export const FormRestore = () => {
     password: "",
     secondPassword: "",
   });
+  const [validationsCompleteInput] = useCompleteInput(formValues);
   const { email, password, secondPassword } = formValues;
   const { equalPassword, isEmail } = validationInput;
+
+  useEffect(() => {
+    return () => {
+      dispatch(errorLoginClean())
+    }
+  }, [])
+
   return (
     <>
       <TitleForm
@@ -31,15 +44,19 @@ export const FormRestore = () => {
       <div className="flex flex-col gap-11 text-white">
         {/* email */}
         <div>
-        <input
-          type="text"
-          placeholder="Correo electronico"
-          name="email"
-          value={email}
-          onChange={handleInputChange}
-          className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
-        />
-        {!isEmail && <InputError text={"Completa este campo"} />}
+          <input
+            type="text"
+            placeholder="Correo electronico"
+            name="email"
+            value={email}
+            onChange={handleInputChange}
+            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+          />
+          {!isEmail && (
+            <InputError text={"No es un correo electronico valido"} />
+          )}
+          {state && <InputError text={"Este correo existe"} />}
+          {!email && state && <InputError text={"Completa este campo"} />}
         </div>
         {/* password */}
         <div className="relative flex items-center">
@@ -61,6 +78,7 @@ export const FormRestore = () => {
               alt="ojoabierto"
             />
           </span>
+          {!password && state && <InputError text={"Completa este campo"} />}
         </div>
         {/* password confirm*/}
         <div className="relative flex flex-col">
@@ -83,6 +101,7 @@ export const FormRestore = () => {
             />
           </span>
           {!equalPassword && <InputError text={"No es igual la contraseña"} />}
+          {!secondPassword && state && <InputError text={"Completa este campo"} />}
         </div>
         <div className="mt-12 flex justify-center items-center">
           <ButtonRedirect
@@ -90,7 +109,7 @@ export const FormRestore = () => {
             direction={`${Path.PRODUCT}`}
             action={typesAuhtButton.restore}
             data={formValues}
-            validations={[equalPassword]}
+            validations={[equalPassword, validationsCompleteInput]}
           />
         </div>
       </div>
