@@ -1,11 +1,12 @@
 // import clientAxios from "../../config/axios"
 import fakeData from "../../config/fakeDatabase"
 import { types } from "../types/types"
+import { typesAuhtButton } from "../types/typesAuthButton"
 
 
 export const authAxios = (type, dataform) => {
     return async (dispatch) => {
-        if (type === 'login'){
+        if (type === typesAuhtButton.login){
             const {email, password} = dataform
             const response =  fakeData.users.find(user => (user.email === email && user.password === password))
             if(response === undefined){
@@ -13,6 +14,12 @@ export const authAxios = (type, dataform) => {
             }else{
                 dispatch(login(email))
             }
+        }else if (type === typesAuhtButton.restore){
+            console.log(dataform);
+            dispatch(restore())
+        }else if (type === typesAuhtButton.register){
+            console.log(dataform);
+            dispatch(resgiter())
         }
         // const response = await clientAxios.get('users')
         // console.log(response);
@@ -33,6 +40,11 @@ export const login = (email) => {
         payload: {
             email: email
         }
+    }
+}
+export const restore = () => {
+    return {
+        type: types.restore
     }
 }
 
