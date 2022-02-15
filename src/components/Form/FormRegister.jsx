@@ -12,20 +12,19 @@ import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 import { InputError } from "./Errors/InputError";
 
 export const FormRegister = () => {
-  const [hasVisibilityPassword, showPassword] =
-    useShowPassword(true);
+  const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
     useShowPassword(true);
   const [formValues, handleInputChange, validationInput] = useForm({
     name: "",
     lastname: "",
-    email: "luis@inmersys.com",
+    email: "",
     profesion: "",
     country: "",
     city: "",
-    password: "1234",
-    secondPassword: "1234",
-    check: false
+    password: "",
+    secondPassword: "",
+    check: false,
   });
   const {
     name,
@@ -36,10 +35,10 @@ export const FormRegister = () => {
     city,
     password,
     secondPassword,
-    check
+    check,
   } = formValues;
-  const { equalPassword } = validationInput;
-  
+  const { equalPassword, isEmail } = validationInput;
+
   return (
     <>
       <TitleForm
@@ -68,14 +67,18 @@ export const FormRegister = () => {
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
         {/* email */}
-        <input
-          type="text"
-          placeholder="Correo electronico"
-          name="email"
-          value={email}
-          onChange={handleInputChange}
-          className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
-        />
+        <div>
+          <input
+            type="text"
+            placeholder="Correo electronico"
+            name="email"
+            value={email}
+            onChange={handleInputChange}
+            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+          />
+          {!isEmail && <InputError text={"No es un correo"} />}
+        </div>
+
         {/* profesion */}
         <div className="relative">
           <select

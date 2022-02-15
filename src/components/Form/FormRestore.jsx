@@ -14,12 +14,12 @@ export const FormRestore = () => {
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
     useShowPassword(true);
   const [formValues, handleInputChange, validationInput] = useForm({
-    email: "luis@inmersys.com",
-    password: "1234",
-    secondPassword: "1234",
+    email: "",
+    password: "",
+    secondPassword: "",
   });
   const { email, password, secondPassword } = formValues;
-  const { equalPassword } = validationInput;
+  const { equalPassword, isEmail } = validationInput;
   return (
     <>
       <TitleForm
@@ -30,6 +30,7 @@ export const FormRestore = () => {
       />
       <div className="flex flex-col gap-11 text-white">
         {/* email */}
+        <div>
         <input
           type="text"
           placeholder="Correo electronico"
@@ -38,6 +39,8 @@ export const FormRestore = () => {
           onChange={handleInputChange}
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
+        {!isEmail && <InputError text={"No es un correo"} />}
+        </div>
         {/* password */}
         <div className="relative flex items-center">
           <input

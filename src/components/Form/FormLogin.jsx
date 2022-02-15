@@ -14,12 +14,12 @@ import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 export const FormLogin = () => {
   const state = useSelector((state) => state.ui.errorInput);
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
-  const [formValues, handleInputChange] = useForm({
-    email: "luis@inmersys.com",
-    password: "1234",
+  const [formValues, handleInputChange, validationInput] = useForm({
+    email: "",
+    password: "",
   });
   const { email, password } = formValues;
-
+  const { isEmail } = validationInput;
   return (
     <>
       <TitleForm
@@ -39,6 +39,7 @@ export const FormLogin = () => {
             onChange={handleInputChange}
           />
           {state && <InputError text={"No existe correo"} />}
+          {!isEmail && <InputError text={"No es un correo"} />}
         </div>
         <div className="relative flex items-center">
           <input
