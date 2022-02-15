@@ -9,7 +9,7 @@ export const uiReducer = (state = initialState, action) => {
     case types.uiErrorInput:
       return {
         ...state,
-        errorInput: true,
+        errorInput: action.payload.state,
       };
 
     default:
