@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import logovitromex from "../assets/logovitromex.svg";
 import { ButtonRedirect } from "../components/Buttons/ButtonRedirect";
 import { Path } from "../utils/route";
 import menu from "../assets/Menú.svg";
+import { useShowMenu } from "../hooks/useShowMenu";
 
 export const Landing = () => {
-  const [visibilityMenu, setVisibilityMenu] = useState(false);
+  const [visibilityMenu, showMenu] = useShowMenu()
 
-  const showMenu = () => {
-    setVisibilityMenu(!visibilityMenu)
-  }
   return (
     <div className="bg-neutral gridLayout h-screen w-screen grid-rows-2 px-4">
       <div className="small:col-span-8 medium:col-span-12 col-span-4">

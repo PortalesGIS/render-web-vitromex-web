@@ -25,6 +25,7 @@ module.exports = {
       colors: { 
         neutral: "#686868", 
         neutral20: "#CDCDCD",
+        neutral10: "#E6E6E6",
         neutral80: "#282828",
       },
       gridTemplateColumns: {
@@ -32,6 +33,9 @@ module.exports = {
         small: "repeat(8, 12.5%)",
         medium: "repeat(12, 8.33%)",
         header_product: "20% 80%"
+      },
+      width: {
+        'menuResponsive': '16rem',
       },
       gridTemplateRows: {
         layout_product: '56px 1fr'
