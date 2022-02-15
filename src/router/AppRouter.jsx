@@ -6,6 +6,7 @@ import { Landing } from "../pages/Landing";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Restore } from "../pages/Restore";
+import { Series } from "../pages/Series";
 import { Path } from "../utils/route";
 
 export const AppRouter = () => {
@@ -19,6 +20,7 @@ export const AppRouter = () => {
           <Route path={Path.RESTORE} element={<Restore />} />
         </Route>
         <Route path={Path.PRODUCT} element={<ProductLayout />}>
+          <Route path={Path.SERIES} element={<Series />} />
         </Route>
       </Routes>
     </BrowserRouter>

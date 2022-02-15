@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { HeaderProduct } from "../components/Headers/HeaderProduct";
 import { Menu } from "../components/Menus/Menu";
 import { useShowMenu } from "../hooks/useShowMenu";
@@ -11,7 +12,11 @@ export const ProductLayout = () => {
       {/* menu */}
       <Menu menuResponsive={menuNavbar} actionmenu={showMenu}/>
       {/* cuerpo */}
-      <div className="bg-red-300 medium:col-span-10 col-span-full">Body</div>
+      <div className="medium:col-span-10 col-span-full">
+        <div>
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };
