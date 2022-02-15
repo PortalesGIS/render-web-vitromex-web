@@ -4,4 +4,5 @@ export const Path = {
   LOGIN: "login",
   REGISTER: "register",
   RESTORE: "restore",
+  PRODUCT: "/products",
 };

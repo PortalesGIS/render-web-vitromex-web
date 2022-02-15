@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Path } from "../../utils/route";
 import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
 import { TitleForm } from "./TextForm/TitleForm";
 import { FooterForm } from "./TextForm/FooterForm";
 import { ButtonRedirect } from "../Buttons/ButtonRedirect";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { InputError } from "./Errors/InputError";
 import { useForm } from "../../hooks/useForm";
 import { useShowPassword } from "../../hooks/useShowPassword";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
+import { errorLoginClean } from "../../modules/actions/auth";
 
 export const FormLogin = () => {
   const state = useSelector((state) => state.ui.errorInput);
+  const dispatch = useDispatch();
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [formValues, handleInputChange, validationInput] = useForm({
     email: "",
@@ -20,6 +22,13 @@ export const FormLogin = () => {
   });
   const { email, password } = formValues;
   const { isEmail } = validationInput;
+  
+  useEffect(() => {
+    return () => {
+      dispatch(errorLoginClean())
+    }
+  }, [])
+  
   return (
     <>
       <TitleForm
@@ -39,7 +48,7 @@ export const FormLogin = () => {
             onChange={handleInputChange}
           />
           {state && <InputError text={"No existe correo"} />}
-          {!isEmail && <InputError text={"No es un correo"} />}
+          {!isEmail && <InputError text={"Completa este campo"} />}
         </div>
         <div className="relative flex items-center">
           <input
@@ -65,7 +74,7 @@ export const FormLogin = () => {
       <div className="mt-12 flex justify-center items-center">
         <ButtonRedirect
           text={"Iniciar sesión"}
-          direction={`${Path.LANDING}`}
+          direction={`${Path.PRODUCT}`}
           action={typesAuhtButton.login}
           data={formValues}
         />

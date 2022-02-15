@@ -39,7 +39,7 @@ export const FormRestore = () => {
           onChange={handleInputChange}
           className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
         />
-        {!isEmail && <InputError text={"No es un correo"} />}
+        {!isEmail && <InputError text={"Completa este campo"} />}
         </div>
         {/* password */}
         <div className="relative flex items-center">
@@ -87,7 +87,7 @@ export const FormRestore = () => {
         <div className="mt-12 flex justify-center items-center">
           <ButtonRedirect
             text={"Iniciar sesión"}
-            direction={`${Path.LANDING}`}
+            direction={`${Path.PRODUCT}`}
             action={typesAuhtButton.restore}
             data={formValues}
             validations={[equalPassword]}

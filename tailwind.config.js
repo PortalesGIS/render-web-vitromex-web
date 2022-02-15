@@ -17,7 +17,9 @@ module.exports = {
       paragraph_table: "1rem",
       paragraph_desktop: "1.25rem",
       "10px": "0.625rem",
-      "12px": "0.75rem"
+      "12px": "0.75rem",
+      "14px": "0.875rem",
+      "15px": "0.938rem",
     },
     extend: {
       colors: { 
@@ -29,6 +31,10 @@ module.exports = {
         xsmall: "repeat(4, 25%)",
         small: "repeat(8, 12.5%)",
         medium: "repeat(12, 8.33%)",
+        header_product: "20% 80%"
+      },
+      gridTemplateRows: {
+        layout_product: '56px 1fr'
       },
       margin: {
         "90px": "5.688rem",

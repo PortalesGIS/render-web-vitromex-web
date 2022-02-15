@@ -30,7 +30,19 @@ export const authAxios = (type, dataform) => {
 
 export const errorLogin = () => {
     return {
-        type: types.uiErrorInput
+        type: types.uiErrorInput,
+        payload: {
+            state: true
+        }
+    }
+}
+
+export const errorLoginClean = () => {
+    return {
+        type: types.uiErrorInput,
+        payload: {
+            state: false
+        }
     }
 }
 
@@ -48,9 +60,10 @@ export const restore = () => {
     }
 }
 
-export const logout = (email) => {
+export const logout = () => {
+    // localStorage
     return {
-        type: types.login
+        type: types.logout
     }
 }
 export const resgiter = (email) => {

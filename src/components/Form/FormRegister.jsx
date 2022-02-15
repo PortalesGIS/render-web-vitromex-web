@@ -76,7 +76,7 @@ export const FormRegister = () => {
             onChange={handleInputChange}
             className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
           />
-          {!isEmail && <InputError text={"No es un correo"} />}
+          {!isEmail && <InputError text={"Completa este campo"} />}
         </div>
 
         {/* profesion */}
@@ -198,7 +198,7 @@ export const FormRegister = () => {
         <div className="my-12 flex justify-center items-center">
           <ButtonRedirect
             text={"Crear Usuario"}
-            direction={`${Path.LANDING}`}
+            direction={`${Path.PRODUCT}`}
             action={typesAuhtButton.register}
             data={formValues}
             validations={[equalPassword, check]}
