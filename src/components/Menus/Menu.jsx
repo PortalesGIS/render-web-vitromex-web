@@ -5,16 +5,15 @@ import { Tipology } from "./Tipology";
 import usuario from "../../assets/Usuario.svg";
 import exit from "../../assets/Exit.svg";
 import { ButtonMenu } from "../Buttons/ButtonMenu";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logout } from "../../modules/actions/auth";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../utils/route";
 
 export const Menu = ({ menuResponsive, actionmenu }) => {
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log(state);
+  console.log();
   const logoutButton = () => {
     dispatch(logout());
     navigate(Path.LANDING);
@@ -38,7 +37,7 @@ const MediumMenu = ({ logoutButton }) => {
         </div>
         <div className="flex flex-col gap-4">
           <div className="bg-white h-px w-full" />
-          <ButtonMenu img={usuario} text={"Nombre de usuario"} action={null} />
+          <ButtonMenu img={usuario} text={`${localStorage.getItem('name')}`} action={null} />
           <ButtonMenu img={exit} text={"Salir"} action={logoutButton} />
         </div>
       </div>

@@ -1,87 +1,99 @@
-// import clientAxios from "../../config/axios"
-import fakeData from "../../config/fakeDatabase"
-import { types } from "../types/types"
-import { typesAuhtButton } from "../types/typesAuthButton"
-
+import clientAxios from "../../config/axios";
+import { types } from "../types/types";
+import { typesAuhtButton } from "../types/typesAuthButton";
 
 export const authAxios = (type, dataform) => {
-    return async (dispatch) => {
-        if (type === typesAuhtButton.login){
-            const {email, password} = dataform
-            const response =  fakeData.users.find(user => (user.email === email && user.password === password))
-            if(response === undefined){
-                dispatch(errorLogin())
-            }else{
-                dispatch(login(response.name))
-            }
-        }else if (type === typesAuhtButton.restore){
-            const {email} = dataform
-            const response =  fakeData.users.find(user => (user.email === email))
-            if(response === undefined){
-                dispatch(errorLogin())
-            }else{
-                dispatch(restore())
-            }
-        }else if (type === typesAuhtButton.register){
-            const {email, name} = dataform
-            const response =  fakeData.users.find(user => (user.email === email))
-            if(response === undefined){
-                fakeData.users.push(dataform)
-                dispatch(resgiter(name))
-            }else{
-                dispatch(errorLogin())
-            }
-        }
-        // const response = await clientAxios.get('users')
-        // console.log(response);
-        // guardar login local store
+  return async (dispatch) => {
+    if (type === typesAuhtButton.login) {
+      const { email, password } = dataform;
+      try {
+        const response = await clientAxios.post("auth/login", {
+          email,
+          password,
+        });
+        localStorage.setItem('name', response.data.name)
+        localStorage.setItem('email', email)
+        // localStorage.setItem('password', password)
+        dispatch(login(response.data.name));
+      } catch (error) {
+        console.log(error);
+        dispatch(errorLogin());
+      }
+    } else if (type === typesAuhtButton.restore) {
+      const { secondPassword, ...res } = dataform;
+      console.log(res);
+      try {
+        const response = await clientAxios.post("auth/restorePassword", res);
+        localStorage.setItem('name', response.data.name)
+        localStorage.setItem('email', res.email)
+        // localStorage.setItem('password', res.password)
+        dispatch(restore(response.data.name));
+      } catch (error) {
+        console.log(error);
+        dispatch(errorLogin());
+      }
+    } else if (type === typesAuhtButton.register) {
+      const { check, secondPassword, ...res } = dataform;
+      try {
+        const response = await clientAxios.post("user", res);
+        localStorage.setItem('name', response.data.name)
+        localStorage.setItem('email', res.email)
+        // localStorage.setItem('password', res.password)
+        dispatch(resgiter(response.data.name));
+      } catch (error) {
+        console.log(error);
+        dispatch(errorLogin());
+      }
     }
-}
-
+  };
+};
 
 export const errorLogin = () => {
-    return {
-        type: types.uiErrorInput,
-        payload: {
-            state: true
-        }
-    }
-}
+  return {
+    type: types.uiErrorInput,
+    payload: {
+      state: true,
+    },
+  };
+};
 
 export const errorLoginClean = () => {
-    return {
-        type: types.uiErrorInput,
-        payload: {
-            state: false
-        }
-    }
-}
+  return {
+    type: types.uiErrorInput,
+    payload: {
+      state: false,
+    },
+  };
+};
 
 export const login = (user) => {
-    return {
-        type: types.login,
-        payload: {
-            user: user
-        }
-    }
-}
-export const restore = () => {
-    return {
-        type: types.restore
-    }
-}
+  return {
+    type: types.login,
+    payload: {
+      user: user,
+    },
+  };
+};
+export const restore = (user) => {
+  return {
+    type: types.restore,
+    payload: {
+      user: user,
+    },
+  };
+};
 
 export const logout = () => {
-    // localStorage
-    return {
-        type: types.logout
-    }
-}
+  localStorage.clear()
+  return {
+    type: types.logout,
+  };
+};
 export const resgiter = (user) => {
-    return {
-        type: types.login,
-        payload: {
-            user: user
-        }
-    }
-}
+  return {
+    type: types.login,
+    payload: {
+      user: user,
+    },
+  };
+};
