@@ -17,20 +17,20 @@ export const ProductLayout = () => {
   }, []);
 
   return (
-    <div className="gridLayout h-screen grid-rows-layout_product">
+    <div className="gridLayout grid-rows-layout_product fixed inset-0 h-full">
       <HeaderProduct menuValue={menuNavbar} actionmenu={showMenu} />
       {/* menu */}
       <Menu menuResponsive={menuNavbar} actionmenu={showMenu} />
       {/* cuerpo */}
       <div className="medium:col-span-10 col-span-full">
-        <div className="gridLayout h-full grid-rows-layout_header px-4 pt-4 gap-y-12 small:gap-y-4">
+        <div className="gridLayout h-full grid-rows-layout_header px-4 pt-4 gap-y-12 medium:gap-y-4">
           <div className="col-span-full h-full">
             <div className="flex justify-between flex-col h-full gap-4">
               <HeaderSeries />
               <HeaderTitlePage />
             </div>
           </div>
-          <div className="col-span-full h-full">
+          <div className="col-span-full h-full w-full">
             <Outlet />
           </div>
         </div>

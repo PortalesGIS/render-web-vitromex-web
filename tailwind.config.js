@@ -37,10 +37,24 @@ module.exports = {
       },
       width: {
         'menuResponsive': '16rem',
+        card_medium_series : '12.75rem',
+        card_small_series : '8.125rem',
+        card_xsmall_series : '10.25rem',
+        img_serie_medium: '12.75rem',
+        img_serie_small: '8.125rem',
+        img_serie_xsmal: '10.25rem',
+      },
+      height: {
+        card_medium_series : '17rem',
+        card_small_series : '13rem',
+        card_xsmall_series : '15rem',
+        img_serie_medium: '12.5rem',
+        img_serie_small: '8rem',
+        img_serie_xsmall: '10rem',
       },
       gridTemplateRows: {
-        layout_product: '56px 1fr',
-        layout_header: '64px 1fr'
+        layout_product: '8% 92%',
+        layout_header: '10% 87%'
       },
       margin: {
         "90px": "5.688rem",
