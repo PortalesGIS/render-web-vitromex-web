@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 .gridLayout{
-  @apply grid-cols-xsmall small:grid-cols-small medium:grid-cols-medium relative grid
+  @apply grid-cols-xsmall small:grid-cols-small medium:grid-cols-medium grid
+}
+
+.imgCardSeries{
+  @apply xsmall:w-card_xsmall_series xsmall:h-img_serie_xsmall small:w-img_serie_small small:h-card_small_series medium:w-img_serie_medium medium:h-img_serie_medium rounded-xl 
+}
+
+.cardSeries{
+  @apply medium:h-card_medium_series medium:w-card_medium_series small:w-card_small_series small:h-card_small_series xsmall:w-card_xsmall_series xsmall:h-card_xsmall_series
 }

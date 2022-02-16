@@ -11,6 +11,7 @@ export const Migajas = () => {
   useEffect(() => {
     if (state.length === 0) {
       let separatePath = location.pathname.split("/");
+      let nametitle = ''
       let namePath = separatePath[separatePath.length - 1];
       let dataMigajas = [
         {
@@ -18,10 +19,15 @@ export const Migajas = () => {
           name: namePath,
         },
       ];
-      dispatch(migajasUpdate(dataMigajas));
+      if(namePath !== 'series'){
+        nametitle = 'Nose'
+      }else{
+        nametitle = 'Series disponibles'
+      }
+      dispatch(migajasUpdate(dataMigajas, nametitle));
     }
   }, []);
-
+  
   return (
     <div>
       {state.length > 0 &&

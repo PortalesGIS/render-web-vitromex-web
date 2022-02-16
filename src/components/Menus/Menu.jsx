@@ -13,7 +13,6 @@ import { Path } from "../../utils/route";
 export const Menu = ({ menuResponsive, actionmenu }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log();
   const logoutButton = () => {
     dispatch(logout());
     navigate(Path.LANDING);
@@ -21,7 +20,9 @@ export const Menu = ({ menuResponsive, actionmenu }) => {
   return (
     <>
       <MediumMenu logoutButton={logoutButton} />
-      {menuResponsive && <ResponsiveMenu logoutButton={logoutButton} actionmenu={actionmenu}/>}
+      {menuResponsive && (
+        <ResponsiveMenu logoutButton={logoutButton} actionmenu={actionmenu} />
+      )}
     </>
   );
 };
@@ -37,7 +38,11 @@ const MediumMenu = ({ logoutButton }) => {
         </div>
         <div className="flex flex-col gap-4">
           <div className="bg-white h-px w-full" />
-          <ButtonMenu img={usuario} text={`${localStorage.getItem('name')}`} action={null} />
+          <ButtonMenu
+            img={usuario}
+            text={`${localStorage.getItem("name")}`}
+            action={null}
+          />
           <ButtonMenu img={exit} text={"Salir"} action={logoutButton} />
         </div>
       </div>
@@ -45,20 +50,29 @@ const MediumMenu = ({ logoutButton }) => {
   );
 };
 
-const ResponsiveMenu = ({logoutButton, actionmenu}) => {
+const ResponsiveMenu = ({ logoutButton, actionmenu }) => {
   return (
-    <div className="absolute z-10 bg-neutral w-menuResponsive medium:hidden h-full">
-      <div className="py-5 pl-4 pr-8 flex justify-between flex-col h-full" onClick={actionmenu}>
-        <div className="flex justify-center gap-4 flex-col">
-          <FindProduct />
-          <Format />
-          <Tipology />
+    <div className="absolute z-10 h-full w-full medium:hidden">
+      <div className="gridLayout h-full">
+        <div className="bg-neutral col-span-3 small:col-span-5">
+          <div className="py-5 pl-4 pr-8 flex justify-between flex-col h-full">
+            <div className="flex justify-center gap-4 flex-col">
+              <FindProduct />
+              <Format />
+              <Tipology />
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="bg-white h-px w-full" />
+              <ButtonMenu
+                img={usuario}
+                text={"Nombre de usuario"}
+                action={null}
+              />
+              <ButtonMenu img={exit} text={"Salir"} action={logoutButton} />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="bg-white h-px w-full" />
-          <ButtonMenu img={usuario} text={"Nombre de usuario"} action={null} />
-          <ButtonMenu img={exit} text={"Salir"} action={logoutButton} />
-        </div>
+        <div className="small:col-span-3" onClick={actionmenu}></div>
       </div>
     </div>
   );

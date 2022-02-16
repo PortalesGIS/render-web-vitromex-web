@@ -10,4 +10,7 @@ export const types = {
     productsError: '[product] errorproducts',
     loading: '[product] loading',
     migajas: '[product] migajas',
+    series: '[product] series',
+    titlepages: '[product] titlepages',
+    product: '[product] product',
 }
