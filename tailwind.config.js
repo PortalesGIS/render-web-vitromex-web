@@ -38,7 +38,8 @@ module.exports = {
         'menuResponsive': '16rem',
       },
       gridTemplateRows: {
-        layout_product: '56px 1fr'
+        layout_product: '56px 1fr',
+        layout_header: '64px 1fr'
       },
       margin: {
         "90px": "5.688rem",

@@ -14,7 +14,7 @@ export const Menu = ({ menuResponsive, actionmenu }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(state);
+  // console.log(state);
   const logoutButton = () => {
     dispatch(logout());
     navigate(Path.LANDING);
@@ -48,7 +48,7 @@ const MediumMenu = ({ logoutButton }) => {
 
 const ResponsiveMenu = ({logoutButton, actionmenu}) => {
   return (
-    <div className="absolute bg-neutral w-menuResponsive medium:hidden h-full">
+    <div className="absolute z-10 bg-neutral w-menuResponsive medium:hidden h-full">
       <div className="py-5 pl-4 pr-8 flex justify-between flex-col h-full" onClick={actionmenu}>
         <div className="flex justify-center gap-4 flex-col">
           <FindProduct />
