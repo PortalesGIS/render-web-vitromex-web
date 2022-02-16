@@ -70,7 +70,7 @@ const ResponsiveHeader = ({ menuValue, actionmenu }) => {
         </div>
       </div>
       {menuNavbar && (
-        <div className="absolute w-full bg-white">
+        <div className="absolute z-10 w-full bg-white">
           <div className="flex justify-center items-end flex-col bg-neutral10">
             <div className="h-12 text-14px">
               <div className="hover:bg-white rounded-l-2xl w-56 h-full flex justify-end items-center pr-3 hover:font-bold">

@@ -22,9 +22,9 @@ export const FormRegister = () => {
     useShowPassword(true);
   const [formValues, handleInputChange, validationInput] = useForm({
     name: "",
-    lastname: "",
+    lastName: "",
     email: "",
-    profesion: "",
+    profession: "",
     country: "",
     city: "",
     password: "",
@@ -33,9 +33,9 @@ export const FormRegister = () => {
   });
   const {
     name,
-    lastname,
+    lastName,
     email,
-    profesion,
+    profession,
     country,
     city,
     password,
@@ -72,17 +72,17 @@ export const FormRegister = () => {
           />
           {!name && state && <InputError text={"Completa este campo"} />}
         </div>
-        {/* lastname */}
+        {/* lastName */}
         <div>
           <input
             type="text"
             placeholder="Apellido"
-            name="lastname"
-            value={lastname}
+            name="lastName"
+            value={lastName}
             onChange={handleInputChange}
             className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
           />
-          {!lastname && state && <InputError text={"Completa este campo"} />}
+          {!lastName && state && <InputError text={"Completa este campo"} />}
         </div>
         {/* email */}
         <div>
@@ -99,12 +99,12 @@ export const FormRegister = () => {
           {!email && state && <InputError text={"Completa este campo"} />}
         </div>
 
-        {/* profesion */}
+        {/* profession */}
         <div className="relative">
           <select
             className="w-full appearance-none border-b-2 bg-transparent focus:outline-none"
-            name="profesion"
-            value={profesion}
+            name="profession"
+            value={profession}
             onChange={handleInputChange}
           >
             <option className="text-white" hidden value="null">
@@ -123,7 +123,7 @@ export const FormRegister = () => {
           <div className="absolute h-5 w-5 top-1 right-0">
             <img src={selectactive} alt="" className="w-full h-auto" />
           </div>
-          {!profesion && state && <InputError text={"Completa este campo"} />}
+          {!profession && state && <InputError text={"Completa este campo"} />}
         </div>
         {/* country */}
         <div>
@@ -227,7 +227,7 @@ export const FormRegister = () => {
         <div className="my-12 flex justify-center items-center">
           <ButtonRedirect
             text={"Crear Usuario"}
-            direction={`${Path.PRODUCT}`}
+            direction={`${Path.PRODUCT}/${Path.SERIES}`}
             action={typesAuhtButton.register}
             data={formValues}
             validations={[equalPassword, check, validationsCompleteInput]}

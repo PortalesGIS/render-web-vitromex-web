@@ -80,7 +80,7 @@ export const FormLogin = () => {
       <div className="mt-12 flex justify-center items-center">
         <ButtonRedirect
           text={"Iniciar sesión"}
-          direction={`${Path.PRODUCT}`}
+          direction={`${Path.PRODUCT}/${Path.SERIES}`}
           action={typesAuhtButton.login}
           data={formValues}
           validations={[validationsCompleteInput, isEmail]}

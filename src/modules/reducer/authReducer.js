@@ -27,7 +27,8 @@ export const authReducer = (state = initialState, action) => {
         case types.restore:
             return {
                 ...state,
-                authentication: true
+                authentication: true,
+                user: action.payload.user
             }
         case types.register:
             return {

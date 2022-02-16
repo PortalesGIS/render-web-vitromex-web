@@ -5,5 +5,9 @@ export const types = {
     logout: '[auth] logout',
     restore: '[auth] restore',
     register: '[auth] register',
-    uiErrorInput: '[ui] errorinput'
+    uiErrorInput: '[ui] errorinput',
+    products: '[product] getproducts',
+    productsError: '[product] errorproducts',
+    loading: '[product] loading',
+    migajas: '[product] migajas',
 }

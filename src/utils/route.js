@@ -5,4 +5,6 @@ export const Path = {
   REGISTER: "register",
   RESTORE: "restore",
   PRODUCT: "/products",
+  SERIES: "series",
+  COLOR: ":color",
 };

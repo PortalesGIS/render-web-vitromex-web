@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .gridLayout{
-  @apply grid-cols-xsmall small:grid-cols-small  medium:grid-cols-medium relative grid
+  @apply grid-cols-xsmall small:grid-cols-small medium:grid-cols-medium relative grid
 }
