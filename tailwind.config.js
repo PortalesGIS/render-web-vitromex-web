@@ -20,6 +20,7 @@ module.exports = {
       "12px": "0.75rem",
       "14px": "0.875rem",
       "15px": "0.938rem",
+      "20px": "1.25rem",
     },
     extend: {
       colors: { 

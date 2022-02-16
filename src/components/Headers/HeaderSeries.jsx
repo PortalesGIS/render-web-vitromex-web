@@ -1,11 +1,11 @@
 import React from "react";
 import { Migajas } from "../shared/Migajas";
 import { Pagination } from "../shared/Pagination";
-import { ButtonDownload } from "../Buttons/ButtonDownload";
+// import { ButtonDownload } from "../Buttons/ButtonDownload";
 
 export const HeaderSeries = () => {
   return (
-    <div className="flex justify-between small:items-center h-full xsmall:flex-col small:flex-row">
+    <div className="flex justify-between small:items-center xsmall:flex-col small:flex-row">
       <div>
         <Migajas />
       </div>

@@ -21,16 +21,16 @@ export const FormLogin = () => {
     email: "",
     password: "",
   });
-  const [validationsCompleteInput] = useCompleteInput(formValues)
+  const [validationsCompleteInput] = useCompleteInput(formValues);
   const { email, password } = formValues;
   const { isEmail } = validationInput;
 
   useEffect(() => {
     return () => {
-      dispatch(errorLoginClean())
-    }
-  }, [])
-  
+      dispatch(errorLoginClean());
+    };
+  }, []);
+
   return (
     <>
       <TitleForm
@@ -77,6 +77,11 @@ export const FormLogin = () => {
           {!password && state && <InputError text={"Completa este campo"} />}
         </div>
       </div>
+      <FooterForm
+        direction={`${Path.FORM}/${Path.RESTORE}`}
+        text={"¿No pudes acceder?"}
+        textdirection={"Recupera tu contraseña"}
+      />
       <div className="mt-12 flex justify-center items-center">
         <ButtonRedirect
           text={"Iniciar sesión"}
@@ -86,11 +91,6 @@ export const FormLogin = () => {
           validations={[validationsCompleteInput, isEmail]}
         />
       </div>
-      <FooterForm
-        direction={`${Path.FORM}/${Path.RESTORE}`}
-        text={"¿No pudes acceder?"}
-        textdirection={"Recupera tu contraseña"}
-      />
     </>
   );
 };
