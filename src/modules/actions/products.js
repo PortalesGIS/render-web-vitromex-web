@@ -42,10 +42,12 @@ export const productAxios = () => {
       let inicial = 0
       let final = 24
       for (let i = 0; i < numberPage; i++) {
-        let separate = seriesAll.slice(inicial,final)
+        separatePage.push({
+          numberpage: i,
+          range: [inicial, final]
+        })
         inicial = inicial + 24
         final = final + 24
-        separatePage.push(separate)
       }
       
       dispatch(numberPagination(0))
@@ -67,6 +69,16 @@ export const productAxios = () => {
     }
   };
 };
+
+export const updatePagination = (numPagination, separateData, seriesAll) => {
+  return async (dispatch) => {
+    let separate = separateData[numPagination]
+    // console.log(seriesAll);
+    let productsView = seriesAll.slice(separate.range[0], separate.range[1]); 
+    dispatch(numberPagination(numPagination))
+    dispatch(productsViewCards(productsView));
+  };
+}
 
 export const startMigajas = (value, title) => {
   return async (dispatch) => {

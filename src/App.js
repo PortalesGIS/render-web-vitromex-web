@@ -4,10 +4,10 @@ import { AppRouter } from "./router/AppRouter";
 import "./App.css";
 
 function App() {
-  console.log("v0.11.0");
+  console.log("v0.13.0");
   return (
     <>
-      <div className="fixed z-50 bg-blue-100 bottom-0 right-0">v0.11.0</div>
+      <div className="fixed z-50 bg-blue-100 bottom-0 right-0">v0.13.0</div>
       <Provider store={store}>
         <AppRouter />
       </Provider>
