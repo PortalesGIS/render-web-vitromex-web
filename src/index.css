@@ -7,7 +7,7 @@
 }
 
 .imgCardSeries{
-  @apply  medium:w-img_serie_medium medium:h-img_serie_medium small:h-img_serie_small small:w-img_serie_small xsmall:w-img_serie_xsmal xsmall:h-img_serie_xsmall
+  @apply  medium:h-img_serie_medium small:h-img_serie_small xsmall:h-img_serie_xsmall
 }
 
 .cardSeries{

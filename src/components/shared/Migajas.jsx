@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { migajasUpdate } from "../../modules/actions/products";
+import { startMigajas } from "../../modules/actions/products";
 
 export const Migajas = () => {
   const state = useSelector((state) => state.product.migajas);
@@ -24,7 +24,7 @@ export const Migajas = () => {
       }else{
         nametitle = 'Series disponibles'
       }
-      dispatch(migajasUpdate(dataMigajas, nametitle));
+      dispatch(startMigajas(dataMigajas, nametitle));
     }
   }, []);
   

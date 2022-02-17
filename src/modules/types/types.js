@@ -12,5 +12,7 @@ export const types = {
     migajas: '[product] migajas',
     series: '[product] series',
     titlepages: '[product] titlepages',
-    product: '[product] product',
+    productview: '[product] productview',
+    paginationpage: '[product] paginationpage',
+    numberpagination: '[product] numberpagination',
 }
