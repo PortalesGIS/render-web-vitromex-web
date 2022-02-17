@@ -1,6 +1,7 @@
 // import clientAxios from "../../config/axios"
 import { types } from "../types/types";
 import fakeDatabase from "../../config/fakeDatabase";
+import { separatePageHelper } from "../../helpers/separetePage";
 
 export const productAxios = () => {
   return async (dispatch) => {
@@ -14,9 +15,6 @@ export const productAxios = () => {
       let typologie = [];
       let formats = [];
       let productsView = [];
-      let separetePage =0;
-      let residuos = 0;
-      let numberPage = 0;
       let separatePage = []
 
       //* tipologias
@@ -33,23 +31,9 @@ export const productAxios = () => {
       //* Los podructos que se ven
       productsView = seriesAll.slice(0, 24);
       //* en cuantos dividir la pagina
-      separetePage = (totalProducts/24).toFixed(2)
-      residuos = totalProducts % 24
-      separetePage = parseInt(separetePage.split('.')[0])
-      if(residuos > 0){
-        numberPage = separetePage + 1
-      }
-      let inicial = 0
-      let final = 24
-      for (let i = 0; i < numberPage; i++) {
-        separatePage.push({
-          numberpage: i,
-          range: [inicial, final]
-        })
-        inicial = inicial + 24
-        final = final + 24
-      }
-      
+      separatePage = separatePageHelper(totalProducts)
+
+      dispatch(productsGeneralAll(seriesAll))
       dispatch(numberPagination(0))
       dispatch(numberPagePagination(separatePage))
       dispatch(
@@ -73,7 +57,6 @@ export const productAxios = () => {
 export const updatePagination = (numPagination, separateData, seriesAll) => {
   return async (dispatch) => {
     let separate = separateData[numPagination]
-    // console.log(seriesAll);
     let productsView = seriesAll.slice(separate.range[0], separate.range[1]); 
     dispatch(numberPagination(numPagination))
     dispatch(productsViewCards(productsView));
@@ -90,6 +73,49 @@ export const startMigajas = (value, title) => {
 export const startPaginationView = (num=1) => {
   return async (dispatch) => {
     dispatch(numberPagination(num))
+  };
+}
+
+export const filterTypology = (type, seriesAll) => {
+  return async (dispatch) => {
+    const productsView = seriesAll.filter(serie => { return serie.typologie === type})
+    let separatePage = []
+    dispatch(selectTypology(type))
+    dispatch(productsViewCards(productsView))
+    dispatch(seriesUpdate(productsView))
+    dispatch(numberPagination(0))
+    separatePage = separatePageHelper(productsView.length)
+    dispatch(numberPagePagination(separatePage))
+    
+  };
+}
+
+//* ---- types reducer
+export const selectTypology = (selecttypology) => {
+  return {
+    type: types.selecttypology,
+    payload: {
+      selecttypology: selecttypology,
+    },
+  }
+}
+
+export const seriesUpdate = (series) => {
+  return {
+    type: types.seriesupdate,
+    payload: {
+      series: series
+    }
+  }
+}
+
+
+export const productsGeneralAll = (productsAll) => {
+  return {
+    type: types.productsGeneral,
+    payload: {
+      productsGeneral: productsAll,
+    },
   };
 }
 

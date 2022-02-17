@@ -1,6 +1,7 @@
 import { types } from "../types/types";
 
 const initialState = {
+  productsGeneral: [], //! Son los productos geneales
   series: [], //* Las series totales de response
   productsView: [], //* Productos que se veran
   numberPagination: 0, //* Numero actual paginacion
@@ -9,6 +10,7 @@ const initialState = {
   products: [], //* Productos individuales
   typologie: [], //* Tipologias del menu
   formats: [], //* Formatos del menu
+  selecttypology: '', //* tipologia escogida
   loading: true,
   errorproducts: false,
   migajas: [],
@@ -17,6 +19,16 @@ const initialState = {
 
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.productsGeneral:
+      return {
+        ...state,
+        productsGeneral: action.payload.productsGeneral,
+      }
+    case types.seriesupdate:
+      return {
+        ...state,
+        series: action.payload.series,
+      }
     case types.series:
       return {
         ...state,
@@ -67,6 +79,12 @@ export const productReducer = (state = initialState, action) => {
       return {
         ...state,
         numberPagination: action.payload.numberPagination,
+      };
+
+    case types.selecttypology:
+      return {
+        ...state,
+        selecttypology: action.payload.selecttypology,
       };
 
     default:

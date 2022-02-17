@@ -8,22 +8,21 @@ export const Pagination = () => {
   const state = useSelector((state) => state.product);
   const dispatch = useDispatch();
   let allDataSeries = state.series;
-  let separateData = state.numberPage;
   let numbersPages = state.numberPage;
   let numberPage = state.numberPagination;
   const backPage = () => {
     if (numberPage !== 0) {
       let num = numberPage - 1;
-      dispatch(updatePagination(num, separateData, allDataSeries));
+      dispatch(updatePagination(num, numbersPages, allDataSeries));
     }
   };
   const selectPage = (number) => {
-    dispatch(updatePagination(number, separateData, allDataSeries));
+    dispatch(updatePagination(number, numbersPages, allDataSeries));
   };
   const nextPage = () => {
     if (numberPage !== numbersPages.length - 1) {
       let num = numberPage + 1;
-      dispatch(updatePagination(num, separateData, allDataSeries));
+      dispatch(updatePagination(num, numbersPages, allDataSeries));
     }
   };
   return (
@@ -67,7 +66,7 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
               key={i}
             >
               {page.numberpage < 3 ? (
-                <span>{page.numberpage}</span>
+                <span>{page.numberpage + 1}</span>
               ) : (
                 <span>...</span>
               )}
@@ -94,7 +93,7 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
               key={i}
             >
               {i < 3 ? (
-                <span>{page.numberpage}</span>
+                <span>{page.numberpage + 1}</span>
               ) : (
                 <span>...</span>
               )}
@@ -116,7 +115,7 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
               }}
               key={i}
             >
-              <span>{page.numberpage}</span>
+              <span>{page.numberpage + 1}</span>
             </div>
           ))}
         </>

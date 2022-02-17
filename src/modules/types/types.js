@@ -16,4 +16,7 @@ export const types = {
     productview: '[product] productview',
     paginationpage: '[product] paginationpage',
     numberpagination: '[product] numberpagination',
+    selecttypology: '[product] selecttypology',
+    productsGeneral: '[product] productsGeneral',
+    seriesupdate: '[product] seriesupdate',
 }
