@@ -21,12 +21,34 @@ module.exports = {
       "14px": "0.875rem",
       "15px": "0.938rem",
       "20px": "1.25rem",
+      "xxxx-large": "48px", 
+      "xxx-large": "40px", 
+      "Text-4xl": "36px", 
+      "Text-2xl": "24px", 
+      "Text-xl": "20px", 
+      "Text-base": "16px", 
+      "Text-sm": "14px", 
     },
     extend: {
+      opacity: {
+        opacity00: '.05',
+        opacity10: '.10',
+        opacity20: '.20',
+        opacity40: '.40',
+        opacity80: '.80',
+      },
       colors: { 
+        primario00: "#1990FF", 
+        primario10: "#1CA0D1", 
+        primario20: "#516987", 
+        primario40: "#FFFFFF", 
+        primario60: "#333333", 
         neutral: "#686868", 
-        neutral20: "#CDCDCD",
+        neutral00: "#FFF", 
+        neutral05: "#F2F2F2", 
         neutral10: "#E6E6E6",
+        neutral20: "#CDCDCD",
+        neutral40: "#686868",
         neutral80: "#282828",
       },
       gridTemplateColumns: {
@@ -54,7 +76,9 @@ module.exports = {
       },
       gridTemplateRows: {
         layout_product: '8% 92%',
-        layout_header: '10% 87%'
+        layout_header: '10% 87%',
+        lading_header: '8% 42% 50%',
+        layout_login: '56px 1fr'
       },
       margin: {
         "90px": "5.688rem",
