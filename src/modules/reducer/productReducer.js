@@ -12,7 +12,7 @@ const initialState = {
   loading: true,
   errorproducts: false,
   migajas: [],
-  titlePage: '',
+  titlePage: "",
 };
 
 export const productReducer = (state = initialState, action) => {
@@ -22,9 +22,8 @@ export const productReducer = (state = initialState, action) => {
         ...state,
         series: action.payload.series,
         totalProducts: action.payload.totalProducts,
-        typologie:  action.payload.typologie,
-        formats:  action.payload.formats,
-        productsView:  action.payload.productsView
+        typologie: action.payload.typologie,
+        formats: action.payload.formats,
       };
 
     case types.productsError:
@@ -44,6 +43,30 @@ export const productReducer = (state = initialState, action) => {
         ...state,
         migajas: action.payload.migajas,
         titlePage: action.payload.titlePage,
+      };
+
+    case types.titlepages:
+      return {
+        ...state,
+        titlePage: action.payload.titlePage,
+      };
+
+    case types.productview:
+      return {
+        ...state,
+        productsView: action.payload.productsView,
+      };
+
+    case types.paginationpage:
+      return {
+        ...state,
+        numberPage: action.payload.numberPage,
+      };
+
+    case types.numberpagination:
+      return {
+        ...state,
+        numberPagination: action.payload.numberPagination,
       };
 
     default:
