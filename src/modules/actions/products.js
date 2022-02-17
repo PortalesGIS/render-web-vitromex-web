@@ -24,7 +24,6 @@ export const productAxios = () => {
         acc[data.typologie] = ++acc[data.typologie] || 0;
         return acc;
       }, {});
-
       for (const type in separateTypologie) {
         if (Object.hasOwnProperty.call(separateTypologie, type)) {
           typologie.push(type);
@@ -46,10 +45,11 @@ export const productAxios = () => {
         let separate = seriesAll.slice(inicial,final)
         inicial = inicial + 24
         final = final + 24
+        separatePage.push(separate)
       }
-
+      
       dispatch(numberPagination(0))
-      dispatch(numberPagePagination(numberPage))
+      dispatch(numberPagePagination(separatePage))
       dispatch(
         productsGeneral(
           seriesAll,

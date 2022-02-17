@@ -27,10 +27,38 @@ const fakeData = {
     },
   ],
   products: {
-    total: 63,
+    total: 73,
     serie: [
       {
-        id: "614e24e32f0742baec0b65a2",
+        id: "614e24e32f0742baec0b65a7",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a8",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a9",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a10",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a11",
         name: "LUMINARE",
         typologie: "MONOCOLOR",
         img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
@@ -86,6 +114,13 @@ const fakeData = {
         render: "",
       },
       {
+        id: "614e24e32f0742baec0b65a2",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
+        render: "",
+      },
+      {
         id: "614e24e32f0742baec0b65c1",
         name: "HELSINKI",
         typologie: "MONOCOLOR",
@@ -128,6 +163,13 @@ const fakeData = {
         render: "",
       },
       {
+        id: "614e24e32f0742baec0b65a3",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
+        render: "",
+      },
+      {
         id: "614e24e32f0742baec0b65d7",
         name: "NOVELDA",
         typologie: "MARMOLEADO",
@@ -139,6 +181,13 @@ const fakeData = {
         name: "OREGON",
         typologie: "MADERAS",
         img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/ddeabcab-0ba6-4b00-b2b3-cf78b95c7b25Oregon.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a5",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
         render: "",
       },
       {
@@ -160,6 +209,20 @@ const fakeData = {
         name: "ALAMEDA",
         typologie: "RUSTICO",
         img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/92d6dc39-3dcd-45f4-a98d-29a3f9c2315eAlameda.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a6",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a4",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
         render: "",
       },
       {
@@ -188,6 +251,13 @@ const fakeData = {
         name: "PERLAGE",
         typologie: "MARMOLEADO",
         img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/b32c5ee3-528a-4ac9-8fb0-876fba3434d8Perlage.png",
+        render: "",
+      },
+      {
+        id: "614e24e32f0742baec0b65a1",
+        name: "LUMINARE",
+        typologie: "MONOCOLOR",
+        img: "https://gisdecoradorvirtualstg.blob.core.windows.net:443/series/e9007972-95d9-41b1-a16b-7702f4bac88f3b209807-4fbd-4487-aba1-820b1c2d2639marmol.png",
         render: "",
       },
       {
