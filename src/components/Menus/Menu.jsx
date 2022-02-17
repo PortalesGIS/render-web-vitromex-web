@@ -6,16 +6,12 @@ import usuario from "../../assets/Usuario.svg";
 import exit from "../../assets/Exit.svg";
 import { ButtonMenu } from "../Buttons/ButtonMenu";
 import { useDispatch } from "react-redux";
-import { logout } from "../../modules/actions/auth";
-import { useNavigate } from "react-router-dom";
-import { Path } from "../../utils/route";
+import { modalActive } from "../../modules/actions/ui";
 
 export const Menu = ({ menuResponsive, actionmenu }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const logoutButton = () => {
-    dispatch(logout());
-    navigate(Path.LANDING);
+    dispatch(modalActive(true));
   };
   return (
     <>

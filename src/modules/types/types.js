@@ -6,6 +6,7 @@ export const types = {
     restore: '[auth] restore',
     register: '[auth] register',
     uiErrorInput: '[ui] errorinput',
+    modalStatus: '[ui] modalStatus',
     products: '[product] getproducts',
     productsError: '[product] errorproducts',
     loading: '[product] loading',
