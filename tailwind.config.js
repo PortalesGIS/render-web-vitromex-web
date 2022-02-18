@@ -2,7 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      xsmall: "375px",
+      xsmall: "355px",
       small: "600px",
       medium: "1240px",
     },
@@ -28,6 +28,7 @@ module.exports = {
       "Text-xl": "20px", 
       "Text-base": "16px", 
       "Text-sm": "14px", 
+      "9px": "0.6rem", 
     },
     extend: {
       opacity: {
@@ -43,6 +44,7 @@ module.exports = {
         primario20: "#516987", 
         primario40: "#FFFFFF", 
         primario60: "#333333", 
+        'primario/gris': "#454545", 
         neutral: "#686868", 
         neutral00: "#FFF", 
         neutral05: "#F2F2F2", 
@@ -50,12 +52,6 @@ module.exports = {
         neutral20: "#CDCDCD",
         neutral40: "#686868",
         neutral80: "#282828",
-      },
-      gridTemplateColumns: {
-        xsmall: "repeat(4, 25%)",
-        small: "repeat(8, 12.5%)",
-        medium: "repeat(12, 8.33%)",
-        header_product: "20% 80%"
       },
       width: {
         'menuResponsive': '16rem',
@@ -65,6 +61,7 @@ module.exports = {
         img_serie_medium: '12.75rem',
         img_serie_small: '8.125rem',
         img_serie_xsmal: '10.25rem',
+        img_series: '90%',
       },
       height: {
         card_medium_series : '17rem',
@@ -73,6 +70,15 @@ module.exports = {
         img_serie_medium: '12.5rem',
         img_serie_small: '8rem',
         img_serie_xsmall: '10rem',
+      },
+      gridTemplateColumns: {
+        xsmall: "repeat(4, 25%)",
+        small: "repeat(8, 12.5%)",
+        medium: "repeat(12, 8.33%)",
+        header_product: "20% 80%",
+        card_grid_medium: "repeat(3, 1fr)",
+        card_grid_small: "repeat(4, 1fr)",
+        card_grid_xsmall: "repeat(2, 1fr)",
       },
       gridTemplateRows: {
         layout_product: '8% 92%',

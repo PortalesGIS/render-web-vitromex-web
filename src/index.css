@@ -6,10 +6,6 @@
   @apply grid-cols-xsmall small:grid-cols-small medium:grid-cols-medium grid
 }
 
-.imgCardSeries{
-  @apply  medium:h-img_serie_medium small:h-img_serie_small xsmall:h-img_serie_xsmall
-}
-
-.cardSeries{
-  @apply medium:h-card_medium_series small:h-card_small_series xsmall:h-card_xsmall_series
+.prueba{
+  grid-template-columns: repeat(3, 1fr);
 }
