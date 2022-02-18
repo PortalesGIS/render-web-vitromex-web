@@ -11,5 +11,5 @@
 }
 
 .cardSeries{
-  @apply medium:h-card_medium_series medium:w-card_medium_series small:w-card_small_series small:h-card_small_series xsmall:w-card_xsmall_series xsmall:h-card_xsmall_series
+  @apply medium:h-card_medium_series small:h-card_small_series xsmall:h-card_xsmall_series
 }
