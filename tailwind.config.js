@@ -84,7 +84,9 @@ module.exports = {
         layout_product: '8% 92%',
         layout_header: '10% 87%',
         lading_header: '8% 42% 50%',
-        layout_login: '56px 1fr'
+        layout_login: '56px 1fr',
+        layout_menu_slide: '80% 20%',
+        menu_slide: '90% 10%'
       },
       margin: {
         "90px": "5.688rem",

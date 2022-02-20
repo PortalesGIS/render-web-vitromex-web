@@ -10,7 +10,8 @@ const initialState = {
   products: [], //* Productos individuales
   typologie: [], //* Tipologias del menu
   formats: [], //* Formatos del menu
-  selecttypology: '', //* tipologia escogida
+  selecttypology: '', //* formator escogida
+  selectformat: '', //* tipologia escogida
   loading: true,
   errorproducts: false,
   migajas: [],

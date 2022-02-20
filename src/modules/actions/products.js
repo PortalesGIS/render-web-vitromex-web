@@ -54,8 +54,10 @@ export const productAxios = () => {
   };
 };
 
-export const updatePagination = (numPagination, separateData, seriesAll) => {
-  return async (dispatch) => {
+export const updatePagination = (numPagination, separateData) => {
+  return async (dispatch, getState) => {
+    const state = getState()
+    let seriesAll = state.product.series
     let separate = separateData[numPagination]
     let productsView = seriesAll.slice(separate.range[0], separate.range[1]); 
     dispatch(numberPagination(numPagination))
@@ -78,19 +80,44 @@ export const startPaginationView = (num=1) => {
 
 export const filterTypology = (type, seriesAll) => {
   return async (dispatch) => {
-    const productsView = seriesAll.filter(serie => { return serie.typologie === type})
+    let productViewRange = []
+    let productsView = []
+    productsView = seriesAll.filter(serie => { return serie.typologie === type})
     let separatePage = []
-    dispatch(selectTypology(type))
-    dispatch(productsViewCards(productsView))
-    dispatch(seriesUpdate(productsView))
-    dispatch(numberPagination(0))
     separatePage = separatePageHelper(productsView.length)
+    productViewRange = productsView.slice(0, 24)
+    dispatch(selectTypology(type))
+    dispatch(seriesUpdate(productsView))
+    dispatch(productsViewCards(productViewRange))
+    dispatch(numberPagination(0))
     dispatch(numberPagePagination(separatePage))
-    
+    dispatch(filterActiveUi(true))
+  };
+}
+
+export const clearFilter = () => {
+  return async (dispatch, getState) => {
+    const state = getState()
+    let seriesAll = state.product.productsGeneral
+    let productViewRange = seriesAll.slice(0, 24)
+    let separatePage = separatePageHelper(seriesAll.length)
+    dispatch(seriesUpdate(seriesAll))
+    dispatch(productsViewCards(productViewRange))
+    dispatch(numberPagination(0))
+    dispatch(numberPagePagination(separatePage))
+    dispatch(filterActiveUi(false))
   };
 }
 
 //* ---- types reducer
+export const filterActiveUi = (filterActive) => {
+  return {
+    type: types.filterActive,
+    payload: {
+      filterActive: filterActive,
+    },
+  }
+}
 export const selectTypology = (selecttypology) => {
   return {
     type: types.selecttypology,

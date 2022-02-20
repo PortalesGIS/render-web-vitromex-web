@@ -16,7 +16,7 @@ export const Tipology = () => {
     <div className="text-white">
       <div className="flex items-center gap-4 cursor-pointer" onClick={showMenu}>
         <div>
-          <img src={Tipología} alt="" />
+          <img src={Tipología} alt="tipologia" />
         </div>
         <div>
           <span>Por tipología</span>

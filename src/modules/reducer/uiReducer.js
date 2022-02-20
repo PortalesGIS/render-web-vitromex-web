@@ -2,7 +2,8 @@ import { types } from "../types/types";
 
 const initialState = {
   errorInput: false,
-  modalStatus: false
+  modalStatus: false,
+  filterActive: false,
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -12,11 +13,16 @@ export const uiReducer = (state = initialState, action) => {
         ...state,
         errorInput: action.payload.state,
       };
-      
+
     case types.modalStatus:
       return {
         ...state,
         modalStatus: action.payload.modalStatus,
+      };
+    case types.filterActive:
+      return {
+        ...state,
+        filterActive: action.payload.filterActive,
       };
 
     default:

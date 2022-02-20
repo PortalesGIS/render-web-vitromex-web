@@ -13,6 +13,7 @@ export const ExitModal = () => {
   };
   const Exit = () => {
     dispatch(logout())
+    dispatch(modalActive(false));
     navigate(Path.LANDING);
   };
   return (

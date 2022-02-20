@@ -7,22 +7,21 @@ import { updatePagination } from "../../modules/actions/products";
 export const Pagination = () => {
   const state = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  let allDataSeries = state.series;
   let numbersPages = state.numberPage;
   let numberPage = state.numberPagination;
   const backPage = () => {
     if (numberPage !== 0) {
       let num = numberPage - 1;
-      dispatch(updatePagination(num, numbersPages, allDataSeries));
+      dispatch(updatePagination(num, numbersPages));
     }
   };
   const selectPage = (number) => {
-    dispatch(updatePagination(number, numbersPages, allDataSeries));
+    dispatch(updatePagination(number, numbersPages));
   };
   const nextPage = () => {
     if (numberPage !== numbersPages.length - 1) {
       let num = numberPage + 1;
-      dispatch(updatePagination(num, numbersPages, allDataSeries));
+      dispatch(updatePagination(num, numbersPages));
     }
   };
   return (
