@@ -65,13 +65,6 @@ export const updatePagination = (numPagination, separateData) => {
   };
 }
 
-export const startMigajas = (value, title) => {
-  return async (dispatch) => {
-    dispatch(migajasUpdate(value));
-    dispatch(titlePages(title));
-  };
-};
-
 export const startPaginationView = (num=1) => {
   return async (dispatch) => {
     dispatch(numberPagination(num))

@@ -6,5 +6,7 @@ export const Path = {
   RESTORE: "restore",
   PRODUCT: "/products",
   SERIES: "series",
+  SERIES_NAME: "series/:name",
+  SERIES_COLOR: "series/:name/:color",
   COLOR: ":color",
 };

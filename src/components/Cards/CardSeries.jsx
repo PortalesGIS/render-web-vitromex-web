@@ -1,8 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import {Path} from '../../utils/route'
 
 export const CardSeries = ({ data }) => {
+  const navigate =  useNavigate()
+  const navigateParams = () => {
+    navigate(`${Path.PRODUCT}/${Path.SERIES}/${data.name}`)
+  }
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col justify-between cursor-pointer" onClick={navigateParams}>
       <div className="rounded-3xl overflow-hidden h-full">
         <img
           src={data.img}
