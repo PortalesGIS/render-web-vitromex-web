@@ -1,22 +1,20 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Path } from "../../utils/route";
 import { ButtonDownloadZip } from "../Buttons/ButtonDownloadZip";
 import { ButtonViewFronts } from "../Buttons/ButtonViewFronts";
 
-export const CardProduct = ({product}) => {
-  const navigate = useNavigate()
-  const viewColors = () => {
-    navigate(`${Path.PRODUCT}/${Path.SERIES}/${product.name}/1`)
-  }
+export const CardProduct = ({ product }) => {
   return (
-    <div className="flex flex-col justify-between cursor-pointer" >
-      <div onClick={viewColors}>
-        <img src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png" alt="imagen" />
+    <div className="flex gap-6">
+      <div className="basis-1/2 overflow-hidden rounded-2xl">
+        <img
+          src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
+          alt="imagen"
+          className="w-full object-cover"
+        />
       </div>
-      <div>
+      <div className="basis-1/2 flex flex-col justify-between">
         <div>
-          <h1>Nombre de la serie</h1>
+          <h1 className="font-semibold text-15px">Nombre de la serie</h1>
         </div>
         <div className="medium:text-12px small:text-10px text-primario/gris">
           <span className="">
@@ -24,8 +22,8 @@ export const CardProduct = ({product}) => {
             variaciones
           </span>
         </div>
-        <div>
-          <ButtonViewFronts />
+        <div className="flex flex-col gap-2">
+          <ButtonViewFronts product={product}/>
           <ButtonDownloadZip />
         </div>
       </div>

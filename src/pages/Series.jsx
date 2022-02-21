@@ -13,7 +13,7 @@ export const Series = () => {
   
   return (
     <div className="h-full overflow-auto">
-      <div className="min-h-full gap-8 grid medium:grid-cols-card_grid_medium small:grid-cols-card_grid_small xsmall:grid-cols-card_grid_xsmall">
+      <div className="gridCards24 mb-4">
         {state.map((data, i) => (
           <CardSeries data={data} key={i} />
         ))}

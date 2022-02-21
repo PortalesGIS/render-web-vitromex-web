@@ -67,9 +67,9 @@ module.exports = {
         img_series: '90%',
       },
       height: {
-        card_medium_series : '17rem',
-        card_small_series : '13rem',
-        card_xsmall_series : '15rem',
+        card_medium_series : '28rem',
+        card_small_series : '11rem',
+        card_xsmall_series : '13rem',
         img_serie_medium: '12.5rem',
         img_serie_small: '8rem',
         img_serie_xsmall: '10rem',

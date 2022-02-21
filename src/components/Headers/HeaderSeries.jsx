@@ -1,7 +1,7 @@
 import React from "react";
 import { Migajas } from "../shared/Migajas";
 import { Pagination } from "../shared/Pagination";
-// import { ButtonDownload } from "../Buttons/ButtonDownload";
+// import { ButtonDownloadZip } from "../Buttons/ButtonDownloadZip";
 
 export const HeaderSeries = () => {
   return (
@@ -11,7 +11,7 @@ export const HeaderSeries = () => {
       </div>
       <div className="xsmall:flex xsmall:justify-between">
         <div className="small:hidden">
-          {/* <ButtonDownload /> */}
+          {/* <ButtonDownloadZip /> */}
         </div>
         <Pagination />
       </div>
