@@ -82,11 +82,12 @@ module.exports = {
         header_product: "20% 80%",
         card_grid_medium: "repeat(3, 1fr)",
         card_grid_small: "repeat(4, 1fr)",
+        card_grid_small_name: "repeat(2, 1fr)",
         card_grid_xsmall: "repeat(2, 1fr)",
       },
       gridTemplateRows: {
         layout_product: '8% 92%',
-        layout_header: '10% 87%',
+        layout_header: '10% 90%',
         lading_header: '8% 42% 50%',
         layout_login: '56px 1fr',
         layout_menu_slide: '80% 20%',

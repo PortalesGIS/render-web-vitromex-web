@@ -28,14 +28,14 @@ export const ProductLayout = () => {
         <Menu menuResponsive={menuNavbar} actionmenu={showMenu} />
         {/* cuerpo */}
         <div className="medium:col-span-10 col-span-full">
-          <div className="gridLayout h-full grid-rows-layout_header px-4 pt-4 gap-y-12 medium:gap-y-4">
-            <div className="col-span-full h-full">
+          <div className="gridLayout h-full grid-rows-layout_header">
+            <div className="col-span-full h-full px-4 py-4">
               <div className="flex justify-between flex-col h-full gap-4">
                 <HeaderSeries />
                 <HeaderTitlePage />
               </div>
             </div>
-            <div className="col-span-full h-full w-full">
+            <div className="col-span-full h-full w-full pt-6">
               <Outlet />
             </div>
           </div>

@@ -5,20 +5,20 @@ import { ButtonViewFronts } from "../Buttons/ButtonViewFronts";
 export const CardProduct = ({ product }) => {
   return (
     <div className="flex gap-6">
-      <div className="basis-1/2 overflow-hidden rounded-2xl">
+      <div className="w-1/2 overflow-hidden rounded-2xl">
         <img
           src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
           alt="imagen"
-          className="w-full object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
-      <div className="basis-1/2 flex flex-col justify-between">
+      <div className="w-1/2 flex flex-col justify-between">
         <div>
           <h1 className="font-semibold text-15px">Nombre de la serie</h1>
         </div>
-        <div className="medium:text-12px small:text-10px text-primario/gris">
+        <div className="xsmall:text-12px medium:text-12px small:text-10px text-primario/gris">
           <span className="">
-            35x35,40x40 / Rectificado / Antiderrapante brillante / Hasta 16
+            Color / Rectificado / Hasta 16
             variaciones
           </span>
         </div>
