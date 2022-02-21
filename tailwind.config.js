@@ -5,6 +5,7 @@ module.exports = {
       xsmall: "355px",
       small: "600px",
       medium: "1240px",
+      large: "1448px",
     },
     fontSize: {
       title_movil: "2.5rem",

@@ -1,10 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { redirectCard } from "../../modules/actions/products";
 import {Path} from '../../utils/route'
 
 export const CardSeries = ({ data }) => {
+  const dispatch =  useDispatch()
   const navigate =  useNavigate()
   const navigateParams = () => {
+    dispatch(redirectCard(data.name,`${Path.PRODUCT}/${Path.SERIES}/${data.name}`))
     navigate(`${Path.PRODUCT}/${Path.SERIES}/${data.name}`)
   }
   return (

@@ -20,4 +20,5 @@ export const types = {
     selecttypology: '[product] selecttypology',
     productsGeneral: '[product] productsGeneral',
     seriesupdate: '[product] seriesupdate',
+    productactive: '[product] productactive',
 }

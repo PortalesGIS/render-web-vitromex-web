@@ -12,6 +12,7 @@ const initialState = {
   formats: [], //* Formatos del menu
   selecttypology: '', //* formator escogida
   selectformat: '', //* tipologia escogida
+  productActive: false, //* tipologia escogida
   loading: true,
   errorproducts: false,
   migajas: [],
@@ -20,6 +21,12 @@ const initialState = {
 
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.productactive:
+      return {
+        ...state,
+        productActive: action.payload.productActive,
+      }
+      
     case types.productsGeneral:
       return {
         ...state,
