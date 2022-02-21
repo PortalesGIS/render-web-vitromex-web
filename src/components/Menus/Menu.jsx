@@ -2,18 +2,15 @@ import React from "react";
 import { MenuProduct } from "./MenuProduct/MenuProduct";
 
 export const Menu = ({ menuResponsive, actionmenu }) => {
-  
   return (
     <>
       <MediumMenu />
-      {menuResponsive && (
-        <ResponsiveMenu  actionmenu={actionmenu} />
-      )}
+      <ResponsiveMenu menuResponsive={menuResponsive} actionmenu={actionmenu} />
     </>
   );
 };
 
-const MediumMenu = ({ logoutButton }) => {
+const MediumMenu = () => {
   return (
     <div className={`bg-neutral hidden medium:block medium:col-span-2`}>
       <MenuProduct />
@@ -21,10 +18,14 @@ const MediumMenu = ({ logoutButton }) => {
   );
 };
 
-const ResponsiveMenu = ({ actionmenu }) => {
+const ResponsiveMenu = ({ menuResponsive, actionmenu }) => {
   return (
-    <div className="absolute z-10 h-full w-full medium:hidden">
-      <div className="gridLayout h-full">
+    <div
+      className={`absolute z-10 h-full w-full medium:hidden animate__animated ${
+        menuResponsive ? "animate__slideInLeft"  : "animate__slideOutLeft"
+      }`}
+    >
+      <div className={`gridLayout h-full`}>
         <div className="bg-neutral col-span-3 small:col-span-5 overflow-hidden">
           <MenuProduct />
         </div>

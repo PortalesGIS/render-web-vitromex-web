@@ -38,6 +38,9 @@ module.exports = {
         opacity40: '.40',
         opacity80: '.80',
       },
+      zIndex: {
+        '1': '1',
+      },
       colors: { 
         primario00: "#1990FF", 
         primario10: "#1CA0D1", 
