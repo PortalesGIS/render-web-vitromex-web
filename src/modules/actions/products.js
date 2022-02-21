@@ -36,7 +36,7 @@ export const productAxios = () => {
       dispatch(productsGeneralAll(seriesAll));
       dispatch(numberPagination(0));
       dispatch(numberPagePagination(separatePage));
-      dispatch(productsGeneral(seriesAll, totalProducts, typologie, formats));
+      dispatch(productsGeneral(seriesAll, totalProducts, typologie.sort(), formats));
       dispatch(productsViewCards(productsView));
       dispatch(loadingProduct(false));
     } catch (error) {

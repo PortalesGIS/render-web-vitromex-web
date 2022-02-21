@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { CardProduct } from "../components/Cards/CardProduct";
+import { Footers } from "../components/Footers/Footers";
 import { migajasUpdate, productRoute, titlePages } from "../modules/actions/products";
 
 export const NameSerie = () => {
@@ -31,12 +32,13 @@ export const NameSerie = () => {
     { name },
   ];
   return (
-    <div className="h-full overflow-auto">
-      <div className="gridCardsNameSerie mb-4 gap-8">
+    <div className="h-full overflow-auto flex justify-between flex-col">
+      <div className="gridCardsNameSerie mb-4 gap-8 px-4">
         {numViesta.map((product, i) => (
           <CardProduct product={product} key={i} />
         ))}
       </div>
+      <Footers />
     </div>
   );
 };

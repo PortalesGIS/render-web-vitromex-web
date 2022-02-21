@@ -4,7 +4,7 @@ import { ButtonViewFronts } from "../Buttons/ButtonViewFronts";
 
 export const CardProduct = ({ product }) => {
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 small:h-32 small:w-72 medium:h-32 medium:w-72">
       <div className="w-1/2 overflow-hidden rounded-2xl">
         <img
           src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"

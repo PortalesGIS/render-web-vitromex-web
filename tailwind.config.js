@@ -80,6 +80,7 @@ module.exports = {
         small: "repeat(8, 12.5%)",
         medium: "repeat(12, 8.33%)",
         header_product: "20% 80%",
+        card_grid_medium_color_name: "repeat(4, 1fr)",
         card_grid_medium: "repeat(3, 1fr)",
         card_grid_small: "repeat(4, 1fr)",
         card_grid_small_name: "repeat(2, 1fr)",

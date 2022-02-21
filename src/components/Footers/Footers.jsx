@@ -10,7 +10,7 @@ import whats from '../../assets/redes/whats.svg'
 
 export const Footers = () => {
   return (
-    <div className="bg-black h-full text-white px-4 py-2">
+    <div className="bg-black text-white px-4 py-2 text-10px text-neutral00">
       <div className="flex justify-between flex-col medium:flex-row gap-y-4">
         <div className="small:basis-1/2">
           <div>
@@ -43,8 +43,17 @@ export const Footers = () => {
       </div>
       <div className="mt-4 flex justify-center items-center flex-col gap-y-2">
         <div className="flex gap-2">
+        <div className="h-5 w-5 flex justify-center items-center">
+            <img src={whats} alt="whats" />
+          </div>
           <div className="h-5 w-5 flex justify-center items-center">
             <img src={face} alt="face" />
+          </div>
+          <div className="h-5 w-5 flex justify-center items-center">
+            <img src={twitter} alt="twitter" />
+          </div>
+          <div className="h-5 w-5 flex justify-center items-center">
+            <img src={pinteres} alt="pinteres" />
           </div>
           <div className="h-5 w-5 flex justify-center items-center">
             <img src={insta} alt="insta" />
@@ -53,17 +62,9 @@ export const Footers = () => {
             <img src={linkedin} alt="linkedin" />
           </div>
           <div className="h-5 w-5 flex justify-center items-center">
-            <img src={pinteres} alt="pinteres" />
-          </div>
-          <div className="h-5 w-5 flex justify-center items-center">
             <img src={telefono} alt="telefono" />
           </div>
-          <div className="h-5 w-5 flex justify-center items-center">
-            <img src={twitter} alt="twitter" />
-          </div>
-          <div className="h-5 w-5 flex justify-center items-center">
-            <img src={whats} alt="whats" />
-          </div>
+          
         </div>
         <div>
           Eje 140 Número 420 Esquina Morelos CP. 78422 La Pila, San Luis Potosí

@@ -5,8 +5,13 @@
 .gridLayout{
   @apply grid-cols-xsmall small:grid-cols-small medium:grid-cols-medium grid;
 }
+
 .gridCards24{
   @apply grid medium:grid-cols-card_grid_medium small:grid-cols-card_grid_small xsmall:grid-cols-card_grid_xsmall;
+}
+
+.gridCardsColorName{
+  @apply grid medium:grid-cols-card_grid_medium_color_name small:grid-cols-card_grid_small xsmall:grid-cols-card_grid_xsmall;
 }
 
 .gridCardsNameSerie{

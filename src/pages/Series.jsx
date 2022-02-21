@@ -15,7 +15,7 @@ export const Series = () => {
       dispatch(productRoute(false));
       dispatch(migajasUpdate(initial));
     }
-    dispatch(titlePages('series'));
+    dispatch(titlePages('Series disponibles'));
   }, [])
   
   return (
