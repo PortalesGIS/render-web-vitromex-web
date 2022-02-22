@@ -1,14 +1,50 @@
-import React from "react";
-import { useForm } from "../../hooks/useForm";
+import React, { useState } from "react";
 import zoom from "../../assets/zoom.svg";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Path } from "../../utils/route";
+import { useDispatch } from "react-redux";
+import { findProductGeneral } from "../../modules/actions/products";
 
 export const FindProduct = () => {
-  const [formValues, handleInputChange] = useForm({
+  const state = useSelector((state) => state.product.productsGeneral);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [formValues, setFormValues] = useState({
     product: "",
   });
+  const [productsFilter, setproductsFilter] = useState([]);
   const { product } = formValues;
+
+  const handleInputChange = ({ target }) => {
+    let find = [];
+    find = state.filter(
+      (serie) =>
+        serie.name.toLowerCase().indexOf(target.value.toLowerCase()) > -1
+    );
+    if(target.value === ''){
+      setproductsFilter([])
+    }else{
+      let viewFind = find.slice(0, 10);
+      setproductsFilter(viewFind);
+    }
+    setFormValues({
+      product: target.value,
+    });
+  };
+
+  const findObject = (e) => {
+    e.preventDefault();
+    if (product !== "") {
+      dispatch(findProductGeneral(product))
+      navigate(`${Path.PRODUCT}/${Path.SERIES}`)
+    }
+  };
   return (
-    <div className="relative flex items-center text-white">
+    <form
+      className="flex items-center text-white"
+      onSubmit={findObject}
+    >
       <input
         type="text"
         placeholder="Buscar producto"
@@ -23,9 +59,13 @@ export const FindProduct = () => {
       >
         <img src={zoom} alt="ojoabierto" />
       </span>
-      {/* <div className="absolute w-full h-20 bg-white top-7 text-black">
-        <p className="text-14px">Busqueda de productos</p>
-      </div> */}
-    </div>
+      {productsFilter.length > 0 && (
+        <div className="absolute z-20 w-full bg-white top-7 text-black">
+          {productsFilter.map((serie, i) => (
+            <p className="text-14px" key={i}>{serie.name}</p>
+          ))}
+        </div>
+      )}
+    </form>
   );
 };

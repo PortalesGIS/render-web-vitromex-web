@@ -36,7 +36,9 @@ export const productAxios = () => {
       dispatch(productsGeneralAll(seriesAll));
       dispatch(numberPagination(0));
       dispatch(numberPagePagination(separatePage));
-      dispatch(productsGeneral(seriesAll, totalProducts, typologie.sort(), formats));
+      dispatch(
+        productsGeneral(seriesAll, totalProducts, typologie.sort(), formats)
+      );
       dispatch(productsViewCards(productsView));
       dispatch(loadingProduct(false));
     } catch (error) {
@@ -65,7 +67,8 @@ export const startPaginationView = (num = 1) => {
 };
 
 export const filterTypology = (type, seriesAll) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const state = getState();
     let productViewRange = [];
     let productsView = [];
     productsView = seriesAll.filter((serie) => {
@@ -80,6 +83,8 @@ export const filterTypology = (type, seriesAll) => {
     dispatch(numberPagination(0));
     dispatch(numberPagePagination(separatePage));
     dispatch(filterActiveUi(true));
+    let initial = state.product.migajas.slice(0, 1);
+    dispatch(migajasUpdate(initial));
   };
 };
 
@@ -94,17 +99,18 @@ export const clearFilter = () => {
     dispatch(numberPagination(0));
     dispatch(numberPagePagination(separatePage));
     dispatch(filterActiveUi(false));
+    dispatch(titlePages("Series disponibles"));
   };
 };
 
 export const eliminatePagination = (migajas) => {
   return async (dispatch, getState) => {
     dispatch(migajasUpdate(migajas));
-    if(migajas.length > 1){
+    if (migajas.length > 1) {
       dispatch(productRoute(true));
     }
-  }
-}
+  };
+};
 
 export const redirectCard = (name, path) => {
   return async (dispatch, getState) => {
@@ -127,7 +133,34 @@ export const redirectCard = (name, path) => {
   };
 };
 
+export const findProductGeneral = (textFind) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    let seriesAll = state.product.productsGeneral.filter(
+      (serie) => serie.name.toLowerCase().indexOf(textFind.toLowerCase()) > -1
+    );
+    let productViewRange = seriesAll.slice(0, 24);
+    let separatePage = separatePageHelper(seriesAll.length);
+    dispatch(seriesUpdate(seriesAll));
+    dispatch(productsViewCards(productViewRange));
+    dispatch(numberPagination(0));
+    dispatch(numberPagePagination(separatePage));
+    dispatch(productRoute(false));
+    dispatch(filterActiveUi(true));
+    dispatch(findActiveProduct(true));
+    dispatch(titlePages("Resultados de la búsqueda"));
+  };
+};
+
 //* ---- types reducer
+export const findActiveProduct = (value) => {
+  return {
+    type: types.findActive,
+    payload: {
+      findActive: value,
+    },
+  };
+};
 export const productRoute = (value) => {
   return {
     type: types.productactive,

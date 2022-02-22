@@ -15,7 +15,11 @@ export const Series = () => {
       dispatch(productRoute(false));
       dispatch(migajasUpdate(initial));
     }
-    dispatch(titlePages('Series disponibles'));
+    if(state.findActive){
+      dispatch(titlePages('Resultados de la búsqueda'));
+    }else{
+      dispatch(titlePages('Series disponibles'));
+    }
   }, [])
   
   return (

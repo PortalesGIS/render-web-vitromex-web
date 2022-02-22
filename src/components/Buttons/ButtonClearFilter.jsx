@@ -1,10 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { clearFilter } from "../../modules/actions/products";
 
 export const ButtonClearFilter = () => {
-  const state = useSelector((state) => state)
   const dispatch = useDispatch()
   const clearFilterAll = () => {
     dispatch(clearFilter())

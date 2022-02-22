@@ -12,7 +12,8 @@ const initialState = {
   formats: [], //* Formatos del menu
   selecttypology: '', //* formator escogida
   selectformat: '', //* tipologia escogida
-  productActive: false, //* tipologia escogida
+  productActive: false, //* producto activo
+  findActive: false, //* busqueda activada
   loading: true,
   errorproducts: false,
   migajas: [],
@@ -25,6 +26,11 @@ export const productReducer = (state = initialState, action) => {
       return {
         ...state,
         productActive: action.payload.productActive,
+      }
+    case types.findActive:
+      return {
+        ...state,
+        findActive: action.payload.findActive,
       }
       
     case types.productsGeneral:

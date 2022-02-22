@@ -21,4 +21,5 @@ export const types = {
     productsGeneral: '[product] productsGeneral',
     seriesupdate: '[product] seriesupdate',
     productactive: '[product] productactive',
+    findActive: '[product] findActive',
 }

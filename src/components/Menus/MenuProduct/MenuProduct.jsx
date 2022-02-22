@@ -20,8 +20,8 @@ export const MenuProduct = () => {
   return (
     <div className="h-full grid grid-rows-layout_menu_slide ">
       <div className="px-4 pt-5">
-        <div className="h-full flex flex-col justify-between">
-          <div className="overflow-auto">
+        <div className="h-full flex flex-col justify-between relative">
+          <div className="overflow-auto ">
             <div className="flex gap-4 flex-col">
               <FindProduct />
               <Filtertype typeFilter={"Por formato"} img={formato} />
