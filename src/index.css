@@ -15,7 +15,7 @@
 }
 
 .gridCardsNameSerie{
-  @apply grid medium:grid-cols-card_grid_medium small:grid-cols-card_grid_small_name;
+  @apply grid medium:grid-cols-card_grid_medium_name small:grid-cols-card_grid_small_name;
 }
 
 
@@ -23,6 +23,15 @@
   @apply medium:w-card_medium_series medium:h-card_medium_series small:w-card_small_series small:h-card_small_series xsmall:w-card_xsmall_series xsmall:h-card_xsmall_series;
 }
 
+
+.cardNameSerie{
+  @apply medium:w-card_medium_series_name medium:h-card_medium_series_name small:w-card_small_series_name small:h-card_small_series_name xsmall:h-card_xsmall_series_name xsmall:w-card_xsmall_series_name;
+}
+
+
+.buttonNameSerie{
+  @apply border-2 border-black xsmall:h-8 small:h-full flex gap-2 justify-start items-center px-2 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
+}
 
 /* scroll */
 ::-webkit-scrollbar {

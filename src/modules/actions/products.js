@@ -95,6 +95,7 @@ export const clearFilter = () => {
     let seriesAll = state.product.productsGeneral;
     let productViewRange = seriesAll.slice(0, 24);
     let separatePage = separatePageHelper(seriesAll.length);
+    dispatch(selectTypology(''));
     dispatch(seriesUpdate(seriesAll));
     dispatch(productsViewCards(productViewRange));
     dispatch(numberPagination(0));
@@ -154,6 +155,7 @@ export const findProductGeneral = (textFind) => {
 };
 
 //* ---- types reducer
+
 export const findActiveProduct = (value) => {
   return {
     type: types.findActive,
