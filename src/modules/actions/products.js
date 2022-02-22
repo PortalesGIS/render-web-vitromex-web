@@ -7,7 +7,8 @@ export const productAxios = () => {
   return async (dispatch) => {
     dispatch(loadingProduct(true));
     try {
-      // const response = await clientAxios.get('product')
+      // const responseDatabase = await clientAxios.get('series')
+      // console.log(responseDatabase);
       // const {AlltotalProducts, products} = response.data
       const response = fakeDatabase.products;
       let seriesAll = response.serie;

@@ -19,6 +19,10 @@
 }
 
 
+.cardSerie{
+  @apply medium:w-card_medium_series medium:h-card_medium_series small:w-card_small_series small:h-card_small_series xsmall:w-card_xsmall_series xsmall:h-card_xsmall_series;
+}
+
 
 /* scroll */
 ::-webkit-scrollbar {
@@ -33,13 +37,13 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey; 
+  background: #C4C4C4; 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: grey; 
+  /* background: red;  */
 }
 
 .prueba{

@@ -8,7 +8,6 @@ export const Landing = () => {
   return (
     <div className="bg-neutral gridLayout fixed inset-0 h-full grid-rows-lading_header">
       <HeadersLading />
-      <ImagesVitromex />
       <TextInformation />
     </div>
   );
@@ -16,7 +15,7 @@ export const Landing = () => {
 
 const TextInformation = () => {
   return (
-    <div className="small:col-span-6 medium:col-span-7 col-span-4 text-white px-4">
+    <div className="row-start-3 small:col-span-6 medium:col-span-7 col-span-4 text-white px-4 flex flex-col gap-y-8">
       <div>
         <h1 className="text-title_movil small:text-title_table medium:text-title_desktop">
           Título
@@ -33,21 +32,11 @@ const TextInformation = () => {
           </p>
         </div>
       </div>
-      <div className="mt-10">
+      <div>
         <ButtonRedirect
           text={"Iniciar sección"}
           direction={`${Path.FORM}/${Path.LOGIN}`}
         />
-      </div>
-    </div>
-  );
-};
-
-const ImagesVitromex = () => {
-  return (
-    <div className="small:col-span-8 medium:col-span-12 col-span-4">
-      <div className="flex items-center justify-center pt-14">
-        <img src={logovitromex} alt="logo" />
       </div>
     </div>
   );
