@@ -8,6 +8,7 @@ const initialState = {
   numberPage: [], //* En cuanto se divide el array de la paginación
   totalProducts: 0, //* Para hacer la comprobacion a la paginación
   products: [], //* Productos individuales
+  color: [], //* Productos individuales
   typologie: [], //* Tipologias del menu
   formats: [], //* Formatos del menu
   selecttypology: '', //* formator escogida
@@ -22,6 +23,16 @@ const initialState = {
 
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.colorSelect:
+      return {
+        ...state,
+        color: action.payload.color,
+      }
+    case types.productSerie:
+      return {
+        ...state,
+        products: action.payload.products,
+      }
     case types.productactive:
       return {
         ...state,
@@ -68,7 +79,6 @@ export const productReducer = (state = initialState, action) => {
       return {
         ...state,
         migajas: action.payload.migajas,
-        titlePage: action.payload.titlePage,
       };
 
     case types.titlepages:

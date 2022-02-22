@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import zoom from "../../assets/zoom.svg";
+import tache from "../../assets/tache.svg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../utils/route";
@@ -7,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { findProductGeneral } from "../../modules/actions/products";
 
 export const FindProduct = () => {
-  const state = useSelector((state) => state.product.productsGeneral);
+  const state = useSelector((state) => state.product);
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [formValues, setFormValues] = useState({
@@ -18,7 +19,7 @@ export const FindProduct = () => {
 
   const handleInputChange = ({ target }) => {
     let find = [];
-    find = state.filter(
+    find = state.productsGeneral.filter(
       (serie) =>
         serie.name.toLowerCase().indexOf(target.value.toLowerCase()) > -1
     );
@@ -37,6 +38,9 @@ export const FindProduct = () => {
     e.preventDefault();
     if (product !== "") {
       dispatch(findProductGeneral(product))
+      setFormValues({
+        product: '',
+      });
       navigate(`${Path.PRODUCT}/${Path.SERIES}`)
     }
   };
@@ -57,7 +61,7 @@ export const FindProduct = () => {
         id="visiblity-toggle"
         className="absolute right-0 h-5 w-5 cursor-pointer"
       >
-        <img src={zoom} alt="ojoabierto" />
+        <img src={state.titlePage !== 'Resultados de la búsqueda' ? zoom : tache} alt="ojoabierto" />
       </span>
       {productsFilter.length > 0 && (
         <div className="absolute z-20 w-full bg-white top-7 text-black">

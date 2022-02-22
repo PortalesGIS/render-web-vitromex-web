@@ -22,4 +22,6 @@ export const types = {
     seriesupdate: '[product] seriesupdate',
     productactive: '[product] productactive',
     findActive: '[product] findActive',
+    productSerie: '[product] productSerie',
+    colorSelect: '[product] colorSelect',
 }

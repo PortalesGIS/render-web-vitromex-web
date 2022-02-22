@@ -4,7 +4,7 @@ import descargar from '../../assets/descargar.svg'
 export const ButtonDownloadZip = () => {
   return (
     <div
-      className="buttonNameSerie"
+      className="buttonNameSerie cursor-pointer"
     >
       <div>
         <img src={descargar} alt="caras" />

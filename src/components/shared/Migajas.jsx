@@ -1,50 +1,40 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { eliminatePagination, migajasUpdate, productRoute } from "../../modules/actions/products";
+import { moveMigajas, realoadPage } from "../../modules/actions/products";
 
 export const Migajas = () => {
-  const state = useSelector((state) => state.product.migajas);
+  const state = useSelector((state) => state.product);
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (state.length === 0) {
-      let separatePath = location.pathname.split("/");
-      let dataMigajas = [];
-      let textPath = "/products";
-      for (let i = 2; i < separatePath.length; i++) {
-        const element = separatePath[i];
-        textPath = textPath + "/" + element;
-        dataMigajas.push({
-          path: textPath,
-          name: element,
-        });
+    if (state.productsGeneral.length > 0) {
+      if(state.migajas.length === 0){
+        dispatch(realoadPage(location.pathname));
       }
-      dispatch(eliminatePagination(dataMigajas));
     }
-  }, []);
+  }, [state.productsGeneral]);
   const redirectPath = (data, i) => {
     if (i === 0) {
-      let initial = state
+      let initial = state.migajas
       initial = initial.slice(0, i+1)
-      dispatch(productRoute(false));
-      dispatch(migajasUpdate(initial));
+      dispatch(moveMigajas(initial, initial[i].name ,false));
       navigate(data.path);
     }else {
-      if(i < state.length-1){
-        let removeData = state
+      if(i < state.migajas.length-1){
+        let removeData = state.migajas
         removeData = removeData.slice(0, i+1)
-        dispatch(migajasUpdate(removeData));
+        dispatch(moveMigajas(removeData, removeData[i].name));
         navigate(data.path);
       }
     }
   };
   return (
     <div>
-      {state.length > 0 &&
-        state.map((paths, i) => (
+      {state.migajas.length > 0 &&
+        state.migajas.map((paths, i) => (
           <span key={paths.name}>
             <span
               className="capitalize cursor-pointer"
@@ -54,7 +44,7 @@ export const Migajas = () => {
             >
               {paths.name}
             </span>
-            {i !== state.length - 1 && (
+            {i !== state.migajas.length - 1 && (
               <span>/</span>
             )}
           </span>

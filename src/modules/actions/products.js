@@ -1,17 +1,19 @@
-// import clientAxios from "../../config/axios"
+import clientAxios from "../../config/axios";
 import { types } from "../types/types";
-import fakeDatabase from "../../config/fakeDatabase";
+// import fakeDatabase from "../../config/fakeDatabase";
 import { separatePageHelper } from "../../helpers/separetePage";
+import { separateMigajasHelpers } from "../../helpers/separateMigajas";
 
 export const productAxios = () => {
   return async (dispatch) => {
     dispatch(loadingProduct(true));
     try {
-      // const responseDatabase = await clientAxios.get('series')
-      // console.log(responseDatabase);
+      const responseDatabase = await clientAxios.get("series");
+      // console.log(responseDatabase.data);
       // const {AlltotalProducts, products} = response.data
-      const response = fakeDatabase.products;
-      let seriesAll = response.serie;
+      // const response = fakeDatabase.products;
+      const response = responseDatabase.data;
+      let seriesAll = response.series;
       let totalProducts = response.total;
       let typologie = [];
       let formats = [];
@@ -19,7 +21,7 @@ export const productAxios = () => {
       let separatePage = [];
 
       //* tipologias
-      const separateTypologie = response.serie.reduce((acc, data) => {
+      const separateTypologie = response.series.reduce((acc, data) => {
         acc[data.typologie] = ++acc[data.typologie] || 0;
         return acc;
       }, {});
@@ -95,7 +97,7 @@ export const clearFilter = () => {
     let seriesAll = state.product.productsGeneral;
     let productViewRange = seriesAll.slice(0, 24);
     let separatePage = separatePageHelper(seriesAll.length);
-    dispatch(selectTypology(''));
+    dispatch(selectTypology(""));
     dispatch(seriesUpdate(seriesAll));
     dispatch(productsViewCards(productViewRange));
     dispatch(numberPagination(0));
@@ -114,24 +116,110 @@ export const eliminatePagination = (migajas) => {
   };
 };
 
-export const redirectCard = (name, path) => {
+export const redirectCard = (name, path, id) => {
   return async (dispatch, getState) => {
-    const state = getState();
-    let dataMigajas = [];
-    dataMigajas.push(...state.product.migajas, {
-      path: path,
-      name: name,
-    });
-    let seriesAll = state.product.productsGeneral;
-    let productViewRange = seriesAll.slice(0, 24);
-    let separatePage = separatePageHelper(seriesAll.length);
-    dispatch(migajasUpdate(dataMigajas));
-    dispatch(seriesUpdate(seriesAll));
-    dispatch(productsViewCards(productViewRange));
-    dispatch(numberPagination(0));
-    dispatch(numberPagePagination(separatePage));
-    dispatch(filterActiveUi(false));
-    dispatch(productRoute(true));
+    //* axios
+    dispatch(loadingProduct(true));
+    try {
+      const { data } = await clientAxios.post("series/products-series", {
+        id: id,
+      });
+      //* Info
+      const state = getState();
+      let dataMigajas = [];
+      dataMigajas.push(...state.product.migajas, {
+        path: path,
+        name: name,
+      });
+      console.log(dataMigajas);
+      dispatch(migajasUpdate(dataMigajas));
+      dispatch(productSerie(data));
+      dispatch(titlePages(name));
+      dispatch(filterActiveUi(false));
+      dispatch(productRoute(true));
+      dispatch(loadingProduct(false));
+    } catch (error) {
+      console.log(error);
+      dispatch(productsError());
+      dispatch(loadingProduct(false));
+    }
+  };
+};
+
+export const viewRender = (path, numberRender) => {
+  return async (dispatch, getState) => {
+    //* axios
+    dispatch(loadingProduct(true));
+    try {
+      //* Info
+      const state = getState();
+      let dataMigajas = [];
+      dataMigajas.push(...state.product.migajas, {
+        path: path,
+        name: numberRender,
+      });
+      let render = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+      dispatch(colorProductSelect(render));
+      dispatch(migajasUpdate(dataMigajas));
+      dispatch(titlePages("variaciones"));
+      dispatch(filterActiveUi(false));
+      dispatch(productRoute(true));
+      dispatch(loadingProduct(false));
+    } catch (error) {
+      console.log(error);
+      dispatch(productsError());
+      dispatch(loadingProduct(false));
+    }
+  };
+};
+
+export const realoadPage = (location) => {
+  return async (dispatch, getState) => {
+    //* axios
+    dispatch(loadingProduct(true));
+    try {
+      const state = getState();
+      let serieSelect = [];
+      let separatePath = location.split("/");
+      if (separatePath.length > 3) {
+        serieSelect = state.product.productsGeneral.find(
+          (serie) => serie.id === parseInt(separatePath[3])
+        );
+        const { data } = await clientAxios.post("series/products-series", {
+          id: serieSelect.id,
+        });
+        dispatch(productSerie(data));
+        if (separatePath.length > 4) {
+          dispatch(titlePages("variaciones"));
+          let render = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+          dispatch(colorProductSelect(render));
+        } else {
+          dispatch(titlePages(serieSelect.name));
+        }
+        dispatch(filterActiveUi(false));
+        dispatch(productRoute(true));
+      }else {
+        dispatch(titlePages('series disponibles'));
+      }
+      let dataMigajas = separateMigajasHelpers(
+        separatePath,
+        typeof serieSelect.id === 'number' ? serieSelect.name : null
+      );
+      dispatch(migajasUpdate(dataMigajas));
+      dispatch(loadingProduct(false));
+    } catch (error) {
+      console.log(error);
+      dispatch(productsError());
+      dispatch(loadingProduct(false));
+    }
+  };
+};
+
+export const moveMigajas = (migajas, name, route = true) => {
+  return async (dispatch, getState) => {
+    dispatch(migajasUpdate(migajas));
+    dispatch(titlePages(name === 'series' ? 'series disponibles' : name));
+    dispatch(productRoute(route));
   };
 };
 
@@ -155,6 +243,24 @@ export const findProductGeneral = (textFind) => {
 };
 
 //* ---- types reducer
+
+export const colorProductSelect = (value) => {
+  return {
+    type: types.colorSelect,
+    payload: {
+      color: value,
+    },
+  };
+};
+
+export const productSerie = (value) => {
+  return {
+    type: types.productSerie,
+    payload: {
+      products: value,
+    },
+  };
+};
 
 export const findActiveProduct = (value) => {
   return {

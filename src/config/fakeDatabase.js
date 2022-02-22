@@ -28,7 +28,7 @@ const fakeData = {
   ],
   products: {
     total: 189,
-    serie: [
+    series: [
       {
         id: "614e24e32f0742baec0b65a7",
         name: "LUMINARE",

@@ -18,7 +18,7 @@ export const CardProduct = ({ product }) => {
         </div>
         <div className="xsmall:text-12px medium:text-12px small:text-10px text-primario/gris">
           <span className="">
-            Color / Rectificado / Hasta 16
+            {product.color}/{product.rectified === '0' ? "No Rectificado" : "Rectificado"}/ Hasta 16
             variaciones
           </span>
         </div>
