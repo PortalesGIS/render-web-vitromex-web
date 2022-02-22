@@ -5,10 +5,10 @@ import { useShowMenu } from "../../../hooks/useShowMenu";
 import { filterTypology } from "../../../modules/actions/products";
 import { Path } from "../../../utils/route";
 
-export const Filtertype = ({ typeFilter, img }) => {
+export const Filtertype = ({ typeFilter, img, imgActive }) => {
   let filterState = [];
   const state = useSelector((state) => state.product);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [visibilityMenu, showMenu] = useShowMenu();
   if (typeFilter === "Por formato") {
@@ -17,7 +17,7 @@ export const Filtertype = ({ typeFilter, img }) => {
     filterState = state.typologie;
   }
   const selectFilter = (type) => {
-    navigate(`${Path.SERIES}`)
+    navigate(`${Path.SERIES}`);
     switch (typeFilter) {
       case "Por formato":
         console.log("formato");
@@ -32,11 +32,13 @@ export const Filtertype = ({ typeFilter, img }) => {
   return (
     <div className="text-white">
       <div
-        className="flex items-center gap-4 cursor-pointer"
+        className={`flex items-center gap-4 cursor-pointer hover:bg-neutral20 rounded-r-full ${
+          visibilityMenu && "bg-white text-black"
+        }`}
         onClick={showMenu}
       >
         <div>
-          <img src={img} alt="formato" />
+          <img src={visibilityMenu ? imgActive : img} alt="formato" />
         </div>
         <div>
           <span>{typeFilter} </span>
@@ -53,7 +55,11 @@ export const Filtertype = ({ typeFilter, img }) => {
             selectFilter(filter);
           }}
         >
-          <div className="h-10 hover:bg-white hover:text-black flex justify-start items-center pl-5 rounded-r-full">
+          <div
+            className={`${
+              state.selecttypology === filter && "bg-white text-black"
+            } h-10 hover:bg-white hover:text-black flex justify-start items-center pl-5 rounded-r-full`}
+          >
             <span className="capitalize text-14px ">{filter}</span>
           </div>
         </div>

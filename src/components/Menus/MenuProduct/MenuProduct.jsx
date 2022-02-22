@@ -8,7 +8,9 @@ import exit from "../../../assets/Exit.svg";
 import { ButtonClearFilter } from "../../Buttons/ButtonClearFilter";
 import { Filtertype } from "./Filtertype";
 import Tipología from "../../../assets/Tipología.svg";
+import TipologíaNegro from "../../../assets/TipologíaNegro.svg";
 import formato from "../../../assets/Formato.svg";
+import formatoNegro from "../../../assets/FormatoNegro.svg";
 import { useSelector } from "react-redux";
 
 export const MenuProduct = () => {
@@ -24,8 +26,8 @@ export const MenuProduct = () => {
           <div className="overflow-auto ">
             <div className="flex gap-4 flex-col">
               <FindProduct />
-              <Filtertype typeFilter={"Por formato"} img={formato} />
-              <Filtertype typeFilter={"Por tipologia"} img={Tipología} />
+              <Filtertype typeFilter={"Por formato"} img={formato} imgActive={formatoNegro}/>
+              <Filtertype typeFilter={"Por tipologia"} img={Tipología} imgActive={TipologíaNegro}/>
             </div>
           </div>
           {state && <ButtonClearFilter />}

@@ -32,20 +32,22 @@ export const FormLogin = () => {
   }, []);
 
   return (
-    <>
-      <TitleForm
-        direction={`${Path.FORM}/${Path.REGISTER}`}
-        title={"Login"}
-        text={"¿No tienes cuenta?"}
-        textdirection={"Regístrate"}
-      />
+    <div className="large:w-96">
+      <div className="mb-8">
+        <TitleForm
+          direction={`${Path.FORM}/${Path.REGISTER}`}
+          title={"Login"}
+          text={"¿No tienes cuenta?"}
+          textdirection={"Regístrate"}
+        />
+      </div>
       <div className="flex flex-col gap-11 text-white">
         <div>
           <input
             type="text"
             placeholder="Correo electronico"
             name="email"
-            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+            className={`w-full appearance-none border-b-2 ${!email && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
             value={email}
             onChange={handleInputChange}
           />
@@ -60,7 +62,7 @@ export const FormLogin = () => {
             type={hasVisibilityPassword ? "password" : "text"}
             placeholder="Contraseña"
             name="password"
-            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+            className={`w-full appearance-none border-b-2 ${!password && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
             value={password}
             onChange={handleInputChange}
           />
@@ -91,6 +93,6 @@ export const FormLogin = () => {
           validations={[validationsCompleteInput, isEmail]}
         />
       </div>
-    </>
+    </div>
   );
 };

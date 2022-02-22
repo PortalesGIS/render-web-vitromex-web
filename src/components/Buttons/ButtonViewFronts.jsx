@@ -17,7 +17,7 @@ export const ButtonViewFronts = ({ product }) => {
   return (
     <div
       onClick={viewColors}
-      className="border-2 border-black xsmall:h-8 h-6 w-28 flex gap-2 justify-start items-center px-2 cursor-pointer"
+      className="buttonNameSerie"
     >
       <div>
         <img src={aplicaciones} alt="caras" />

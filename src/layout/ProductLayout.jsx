@@ -9,6 +9,7 @@ import { HeaderSeries } from "../components/Headers/HeaderSeries";
 import { HeaderTitlePage } from "../components/Headers/HeaderTitlePage";
 import { ExitModal } from "../components/Modal/ExitModal";
 import { useSelector } from "react-redux";
+import { HeaderSub } from "../components/Headers/HeaderSub";
 
 export const ProductLayout = () => {
   const state = useSelector((state) => state.ui.modalStatus);
@@ -23,6 +24,7 @@ export const ProductLayout = () => {
     <>
       {state && <ExitModal />}
       <div className="gridLayout grid-rows-layout_product fixed inset-0 h-full">
+        <HeaderSub />
         <HeaderProduct menuValue={menuNavbar} actionmenu={showMenu} />
         {/* menu */}
         <Menu menuResponsive={menuNavbar} actionmenu={showMenu} />
