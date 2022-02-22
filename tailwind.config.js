@@ -88,7 +88,7 @@ module.exports = {
       },
       gridTemplateRows: {
         layout_product: '8% 92%',
-        layout_header: '10% 90%',
+        layout_header: '15% 85%',
         lading_header: '8% 42% 50%',
         layout_login: '56px 1fr',
         layout_menu_slide: '80% 20%',
