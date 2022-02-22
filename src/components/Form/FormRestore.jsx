@@ -29,18 +29,20 @@ export const FormRestore = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(errorLoginClean())
-    }
-  }, [])
+      dispatch(errorLoginClean());
+    };
+  }, []);
 
   return (
-    <>
-      <TitleForm
-        direction={`${Path.FORM}/${Path.LOGIN}`}
-        title={"RESTABLECER CONTRASEÑA"}
-        text={"¿Ya tienes cuenta?"}
-        textdirection={"Iniciar sesión"}
-      />
+    <div className="large:w-96">
+      <div className="mb-8">
+        <TitleForm
+          direction={`${Path.FORM}/${Path.LOGIN}`}
+          title={"RESTABLECER CONTRASEÑA"}
+          text={"¿Ya tienes cuenta?"}
+          textdirection={"Iniciar sesión"}
+        />
+      </div>
       <div className="flex flex-col gap-11 text-white">
         {/* email */}
         <div>
@@ -50,7 +52,7 @@ export const FormRestore = () => {
             name="email"
             value={email}
             onChange={handleInputChange}
-            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+            className={`w-full appearance-none border-b-2 ${!email && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
           />
           {!isEmail && (
             <InputError text={"No es un correo electronico valido"} />
@@ -66,7 +68,7 @@ export const FormRestore = () => {
             value={password}
             onChange={handleInputChange}
             name="password"
-            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+            className={`w-full appearance-none border-b-2 ${!password && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
           />
           <span
             id="visiblity-toggle"
@@ -88,7 +90,7 @@ export const FormRestore = () => {
             value={secondPassword}
             onChange={handleInputChange}
             name="secondPassword"
-            className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+            className={`w-full appearance-none border-b-2 ${!secondPassword && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
           />
           <span
             id="visiblity-toggle"
@@ -101,7 +103,9 @@ export const FormRestore = () => {
             />
           </span>
           {!equalPassword && <InputError text={"No es igual la contraseña"} />}
-          {!secondPassword && state && <InputError text={"Completa este campo"} />}
+          {!secondPassword && state && (
+            <InputError text={"Completa este campo"} />
+          )}
         </div>
         <div className="mt-12 flex justify-center items-center">
           <ButtonRedirect
@@ -113,6 +117,6 @@ export const FormRestore = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };

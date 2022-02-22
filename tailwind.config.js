@@ -56,6 +56,14 @@ module.exports = {
         neutral20: "#CDCDCD",
         neutral40: "#686868",
         neutral80: "#282828",
+        secundary10: "#FF6666", 
+        secundary20: "#66FFF6", 
+      },
+      backgroundImage: {
+        'landing': "url('./assets/background/landing.jpg')",
+        'register': "url('./assets/background/form.JPG')",
+        'login': "url('./assets/background/form.JPG')",
+        'restore': "url('./assets/background/form.JPG')",
       },
       width: {
         'menuResponsive': '16rem',
@@ -87,10 +95,10 @@ module.exports = {
         card_grid_xsmall: "repeat(2, 1fr)",
       },
       gridTemplateRows: {
+        lading_header: '5% 7% 88%',
+        layout_login: '5% 7% 1fr',
         layout_product: '8% 92%',
         layout_header: '15% 85%',
-        lading_header: '8% 42% 50%',
-        layout_login: '56px 1fr',
         layout_menu_slide: '80% 20%',
         menu_slide: '90% 10%'
       },

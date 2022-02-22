@@ -33,7 +33,7 @@ export const NameSerie = () => {
   ];
   return (
     <div className="h-full overflow-auto flex justify-between flex-col">
-      <div className="gridCardsNameSerie mb-4 gap-8 px-4">
+      <div className="gridCardsNameSerie mb-4 gap-4 px-4">
         {numViesta.map((product, i) => (
           <CardProduct product={product} key={i} />
         ))}

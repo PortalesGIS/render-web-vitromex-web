@@ -9,32 +9,34 @@ export const ButtonRedirect = ({
   direction,
   action = typesAuhtButton.landing,
   data = {},
-  validations = [true]
+  validations = [true],
 }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const passAction = validations.every(validation => validation)
+  const passAction = validations.every((validation) => validation);
 
   const actionForm = () => {
-    if(passAction){
-      if(action === typesAuhtButton.landing){
+    if (passAction) {
+      if (action === typesAuhtButton.landing) {
         navigate(direction);
-      }else {
+      } else {
         dispatch(authAxios(action, data));
       }
     }
   };
 
   useEffect(() => {
-    if(state.auth.authentication && action !== 'landing'){
+    if (state.auth.authentication && action !== "landing") {
       navigate(direction);
     }
-  }, [state])
-  
+  }, [state]);
+
   return (
     <button
-      className={`flex h-10 w-52 items-center justify-center bg-white text-black ${!passAction && 'opacity-50'}`}
+      className={`animate__animated flex h-10 w-52 items-center justify-center  ${
+        !passAction ? "bg-neutral20 text-neutral40" : "bg-neutral05 hover:bg-neutral10 focus:font-bold focus:bg-neutral00 text-black"
+      }`}
       onClick={actionForm}
       disabled={!passAction}
     >

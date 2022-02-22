@@ -7,7 +7,7 @@ export const TitleForm = ({ direction, title, text, textdirection }) => {
     navigate(direction);
   };
   return (
-    <div className="mb-14">
+    <div className="">
       <h1 className="text-subtitle_movil text-white font-bold uppercase">{title}</h1>
       <div className="text-paragraph_movil text-white">
         <span>{text} </span>
