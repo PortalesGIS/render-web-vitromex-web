@@ -4,6 +4,8 @@ import menu from "../../assets/Menú.svg";
 import menu2 from "../../assets/menu2.svg";
 import equis from "../../assets/equis.svg";
 import { useShowMenu } from "../../hooks/useShowMenu";
+import { LinkExterno } from "../shared/LinkExterno";
+import { MenuVitromex } from "../Menus/MenuVitromex";
 
 export const HeaderProduct = ({ menuValue, actionmenu }) => {
   return (
@@ -29,12 +31,10 @@ const MedimProduct = () => {
           <h1 className="text-white font-bold text-15px">VITRORENDER</h1>
         </div>
         <div className="text-white flex justify-between items-center w-96 text-12px">
-          <a href="https://www.vitromex.com.mx/catalogo">Catálogo</a>
-          <a href="https://www.vitromex.com.mx/cercadeti">Cerca de mí</a>
-          <a href="https://polite-tree-072d8e710.azurestaticapps.net/">
-            Mi proyecto
-          </a>
-          <a href="https://www.vitromex.com.mx/blog">Blog</a>
+          <LinkExterno url={"https://www.vitromex.com.mx/catalogo"} texto={'Catálogo'} />
+          <LinkExterno url={"https://www.vitromex.com.mx/cercadeti"} texto={'Cerca de mí'} />
+          <LinkExterno url={"ttps://polite-tree-072d8e710.azurestaticapps.net/"} texto={'Mi proyecto'} />
+          <LinkExterno url={"https://www.vitromex.com.mx/blog"} texto={'Blog'} />
         </div>
       </div>
     </div>
@@ -69,34 +69,9 @@ const ResponsiveHeader = ({ menuValue, actionmenu }) => {
           />
         </div>
       </div>
-      {menuNavbar && (
-        <div className="absolute z-10 w-full bg-white">
-          <div className="flex justify-center items-end flex-col bg-neutral10">
-            <div className="h-12 text-14px">
-              <div className="hover:bg-white rounded-l-2xl w-56 h-full flex justify-end items-center pr-3 hover:font-bold">
-                <a href="https://www.vitromex.com.mx/catalogo">Catálogo</a>
-              </div>
-            </div>
-            <div className="h-12 text-14px">
-              <div className="hover:bg-white rounded-l-2xl w-56 h-full flex justify-end items-center pr-3 hover:font-bold">
-                <a href="https://www.vitromex.com.mx/cercadeti">Cerca de mí</a>
-              </div>
-            </div>
-            <div className="h-12 text-14px">
-              <div className="hover:bg-white rounded-l-2xl w-56 h-full flex justify-end items-center pr-3 hover:font-bold">
-                <a href="https://polite-tree-072d8e710.azurestaticapps.net/">
-                  Mi proyecto
-                </a>
-              </div>
-            </div>
-            <div className="h-12 text-14px">
-              <div className="hover:bg-white rounded-l-2xl w-56 h-full flex justify-end items-center pr-3 hover:font-bold">
-                <a href="https://www.vitromex.com.mx/blog">Blog</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <div className={`absolute top-13 w-full h-80`}>
+        <MenuVitromex visibilityMenu={menuNavbar} />
+      </div>
     </>
   );
 };

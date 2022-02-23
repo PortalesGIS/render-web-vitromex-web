@@ -1,21 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import zoom from "../../assets/zoom.svg";
 import tache from "../../assets/tache.svg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../utils/route";
 import { useDispatch } from "react-redux";
-import { findProductGeneral } from "../../modules/actions/products";
+import { clearFilter, findProductGeneral } from "../../modules/actions/products";
 
 export const FindProduct = () => {
   const state = useSelector((state) => state.product);
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     product: "",
   });
   const [productsFilter, setproductsFilter] = useState([]);
   const { product } = formValues;
+
+
+  useEffect(() => {
+    if(state.migajas.length > 1){
+      setFormValues({
+        product: '',
+      });
+      dispatch(clearFilter())
+    }
+  }, [state.migajas])
+  
 
   const handleInputChange = ({ target }) => {
     let find = [];
@@ -23,9 +34,9 @@ export const FindProduct = () => {
       (serie) =>
         serie.name.toLowerCase().indexOf(target.value.toLowerCase()) > -1
     );
-    if(target.value === ''){
-      setproductsFilter([])
-    }else{
+    if (target.value === "") {
+      setproductsFilter([]);
+    } else {
       let viewFind = find.slice(0, 10);
       setproductsFilter(viewFind);
     }
@@ -34,21 +45,38 @@ export const FindProduct = () => {
     });
   };
 
-  const findObject = (e) => {
-    e.preventDefault();
+  const findObject = (productSelect = null) => {
     if (product !== "") {
-      dispatch(findProductGeneral(product))
-      setFormValues({
-        product: '',
-      });
-      navigate(`${Path.PRODUCT}/${Path.SERIES}`)
+      if(productSelect) {
+        dispatch(findProductGeneral(productSelect));
+      }else{
+        dispatch(findProductGeneral(product));
+      }
+      setproductsFilter([]);
+      navigate(`${Path.PRODUCT}/${Path.SERIES}`);
+    }
+  };
+  const inputEnter = (e) => {
+    e.preventDefault();
+    findObject()
+  };
+
+  const clickObject = (serie = null) => {
+    if (serie) {
+      findObject(serie)
+    } else {
+      if(state.titlePage !== "Resultados de la búsqueda"){
+        findObject()
+      }else{
+        dispatch(clearFilter())
+        setFormValues({
+          product: '',
+        });
+      }
     }
   };
   return (
-    <form
-      className="flex items-center text-white"
-      onSubmit={findObject}
-    >
+    <form className="flex items-center text-white" onSubmit={inputEnter}>
       <input
         type="text"
         placeholder="Buscar producto"
@@ -60,13 +88,27 @@ export const FindProduct = () => {
       <span
         id="visiblity-toggle"
         className="absolute right-0 h-5 w-5 cursor-pointer"
+        onClick={() => {
+          clickObject()
+        }}
       >
-        <img src={state.titlePage !== 'Resultados de la búsqueda' ? zoom : tache} alt="ojoabierto" />
+        <img
+          src={state.titlePage !== "Resultados de la búsqueda" ? zoom : tache}
+          alt="ojoabierto"
+        />
       </span>
       {productsFilter.length > 0 && (
         <div className="absolute z-20 w-full bg-white top-7 text-black">
           {productsFilter.map((serie, i) => (
-            <p className="text-14px" key={i}>{serie.name}</p>
+            <div
+              className="text-14px hover:bg-neutral hover:text-white cursor-pointer"
+              key={i}
+              onClick={() => {
+                clickObject(serie.name)
+              }}
+            >
+              <p>{serie.name}</p>
+            </div>
           ))}
         </div>
       )}

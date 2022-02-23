@@ -1,7 +1,6 @@
 export const addRenderIsNoExist = (data) => {
   let infoData = []
   infoData = data.map((info) => {
-    console.log(data.renders);
     if (info.renders === undefined) {
       info.renders = [
         {

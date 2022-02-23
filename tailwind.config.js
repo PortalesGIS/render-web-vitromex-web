@@ -73,7 +73,7 @@ module.exports = {
         card_xsmall_series: "10.25rem",
         card_medium_series_name: "17.5rem",
         card_small_series_name: "17.25rem",
-        card_xsmall_series_name: "21.438rem",
+        card_xsmall_series_name: "21rem",
         card_medium_series_name_color: "15rem",
         card_small_series_name_color: "8.125rem",
         card_xsmall_series_name_color: "10rem",
