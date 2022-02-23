@@ -45,30 +45,40 @@ export const FormRestore = () => {
       </div>
       <div className="flex flex-col gap-11 text-white">
         {/* email */}
-        <div>
+        <div className="relative">
           <input
             type="text"
             placeholder="Correo electronico"
             name="email"
             value={email}
             onChange={handleInputChange}
-            className={`w-full appearance-none border-b-2 ${!email && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+            className={`w-full appearance-none border-b-2 ${
+              !email && state ? "border-secundary10" : "border-white"
+            } bg-transparent focus:outline-none`}
           />
-          {!isEmail && (
-            <InputError text={"No es un correo electronico valido"} />
-          )}
-          {state && <InputError text={"Este correo existe"} />}
-          {!email && state && <InputError text={"Completa este campo"} />}
+          <div className="absolute w-full">
+            <div className="relative flex gap-0 flex-col">
+              {state ? (
+                <InputError text={"Este correo no existe"} />
+              ) : (
+                !isEmail && (
+                  <InputError text={"No es un correo electronico valido"} />
+                )
+              )}
+            </div>
+          </div>
         </div>
         {/* password */}
-        <div className="relative flex items-center">
+        <div className="relative">
           <input
             type={hasVisibilityPassword ? "password" : "text"}
             placeholder="Contraseña"
             value={password}
             onChange={handleInputChange}
             name="password"
-            className={`w-full appearance-none border-b-2 ${!password && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+            className={`w-full appearance-none border-b-2 ${
+              !password && state ? "border-secundary10" : "border-white"
+            } bg-transparent focus:outline-none`}
           />
           <span
             id="visiblity-toggle"
@@ -80,17 +90,25 @@ export const FormRestore = () => {
               alt="ojoabierto"
             />
           </span>
-          {!password && state && <InputError text={"Completa este campo"} />}
+          <div className="absolute w-full">
+            <div className="relative flex gap-0 flex-col">
+              {!password && state && (
+                <InputError text={"Completa este campo"} />
+              )}
+            </div>
+          </div>
         </div>
         {/* password confirm*/}
-        <div className="relative flex flex-col">
+        <div className="relative">
           <input
             type={hasVisibilityConfirmPassword ? "password" : "text"}
             placeholder="Confirmar contraseña"
             value={secondPassword}
             onChange={handleInputChange}
             name="secondPassword"
-            className={`w-full appearance-none border-b-2 ${!secondPassword && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+            className={`w-full appearance-none border-b-2 ${
+              !secondPassword && state ? "border-secundary10" : "border-white"
+            } bg-transparent focus:outline-none`}
           />
           <span
             id="visiblity-toggle"
@@ -102,10 +120,16 @@ export const FormRestore = () => {
               alt="ojoabierto"
             />
           </span>
-          {!equalPassword && <InputError text={"No es igual la contraseña"} />}
-          {!secondPassword && state && (
-            <InputError text={"Completa este campo"} />
-          )}
+          <div className="absolute w-full">
+            <div className="relative flex gap-0 flex-col">
+              {!equalPassword && (
+                <InputError text={"No es igual la contraseña"} />
+              )}
+              {!secondPassword && state && (
+                <InputError text={"Completa este campo"} />
+              )}
+            </div>
+          </div>
         </div>
         <div className="mt-12 flex justify-center items-center">
           <ButtonRedirect

@@ -56,42 +56,66 @@ export const FormRegister = () => {
       <div className="flex xsmall:flex-col medium:flex-row justify-between medium:gap-48 xsmall:gap-y-8 text-white">
         <div className="flex flex-col gap-y-8 w-72">
           {/* name */}
-          <div>
+          <div className="relative">
             <input
               type="text"
               placeholder="Nombre"
               name="name"
               value={name}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${!name && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+              className={`w-full appearance-none border-b-2 ${
+                !name && state ? "border-secundary10" : "border-white"
+              } bg-transparent focus:outline-none`}
             />
-            {!name && state && <InputError text={"Completa este campo"} />}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {!name && state && <InputError text={"Completa este campo"} />}
+              </div>
+            </div>
           </div>
           {/* lastName */}
-          <div>
+          <div className="relative">
             <input
               type="text"
               placeholder="Apellido"
               name="lastName"
               value={lastName}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${!lastName && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+              className={`w-full appearance-none border-b-2 ${
+                !lastName && state ? "border-secundary10" : "border-white"
+              } bg-transparent focus:outline-none`}
             />
-            {!lastName && state && <InputError text={"Completa este campo"} />}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {!lastName && state && (
+                  <InputError text={"Completa este campo"} />
+                )}
+              </div>
+            </div>
           </div>
           {/* email */}
-          <div>
+          <div className="relative">
             <input
               type="text"
               placeholder="Correo electronico"
               name="email"
               value={email}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${!email && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+              className={`w-full appearance-none border-b-2 ${
+                !email && state ? "border-secundary10" : "border-white"
+              } bg-transparent focus:outline-none`}
             />
-            {!isEmail && <InputError text={"No es un correo valido"} />}
-            {state && <InputError text={"Este correo existe"} />}
-            {!email && state && <InputError text={"Completa este campo"} />}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {state ? (
+                  <InputError text={"Este correo no existe"} />
+                ) : (
+                  !isEmail && (
+                    <InputError text={"No es un correo electronico valido"} />
+                  )
+                )}
+              </div>
+            </div>
           </div>
           {/* profession */}
           <div className="relative text-white">
@@ -117,46 +141,66 @@ export const FormRegister = () => {
             <div className="absolute h-5 w-5 top-1 right-0">
               <img src={selectactive} alt="" className="w-full h-auto" />
             </div>
-            {!profession && state && (
-              <InputError text={"Completa este campo"} />
-            )}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {!profession && state && (
+                  <InputError text={"Completa este campo"} />
+                )}
+              </div>
+            </div>
           </div>
         </div>
         {/* parte 2 */}
         <div className="flex flex-col gap-y-8 w-72">
           {/* country */}
-          <div>
+          <div className="relative">
             <input
               type="text"
               placeholder="Estado de la república"
               name="country"
               value={country}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${!country && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+              className={`w-full appearance-none border-b-2 ${
+                !country && state ? "border-secundary10" : "border-white"
+              } bg-transparent focus:outline-none`}
             />
-            {!country && state && <InputError text={"Completa este campo"} />}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {!country && state && (
+                  <InputError text={"Completa este campo"} />
+                )}
+              </div>
+            </div>
           </div>
           {/* city */}
-          <div>
+          <div className="relative">
             <input
               type="text"
               placeholder="Ciudad"
               name="city"
               value={city}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${!city && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+              className={`w-full appearance-none border-b-2 ${
+                !city && state ? "border-secundary10" : "border-white"
+              } bg-transparent focus:outline-none`}
             />
-            {!city && state && <InputError text={"Completa este campo"} />}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {!city && state && <InputError text={"Completa este campo"} />}
+              </div>
+            </div>
           </div>
           {/* password */}
-          <div className="relative flex items-center">
+          <div className="relative">
             <input
               type={hasVisibilityPassword ? "password" : "text"}
               placeholder="Contraseña"
               name="password"
               value={password}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${!password && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+              className={`w-full appearance-none border-b-2 ${
+                !password && state ? "border-secundary10" : "border-white"
+              } bg-transparent focus:outline-none`}
             />
             <span
               id="visiblity-toggle"
@@ -168,17 +212,25 @@ export const FormRegister = () => {
                 alt="ojoabierto"
               />
             </span>
-            {!password && state && <InputError text={"Completa este campo"} />}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {!password && state && (
+                  <InputError text={"Completa este campo"} />
+                )}
+              </div>
+            </div>
           </div>
           {/* password confirm*/}
-          <div className="relative flex flex-col">
+          <div className="relative">
             <input
               type={hasVisibilityConfirmPassword ? "password" : "text"}
               placeholder="Confirmar contraseña"
               name="secondPassword"
               value={secondPassword}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${!secondPassword && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+              className={`w-full appearance-none border-b-2 ${
+                !secondPassword && state ? "border-secundary10" : "border-white"
+              } bg-transparent focus:outline-none`}
             />
             <span
               id="visiblity-toggle"
@@ -190,12 +242,16 @@ export const FormRegister = () => {
                 alt="ojoabierto"
               />
             </span>
-            {!secondPassword && state && (
-              <InputError text={"Completa este campo"} />
-            )}
-            {!equalPassword && (
-              <InputError text={"No es igual la contraseña"} />
-            )}
+            <div className="absolute w-full">
+              <div className="relative flex gap-0 flex-col">
+                {!secondPassword && state && (
+                  <InputError text={"Completa este campo"} />
+                )}
+                {!equalPassword && (
+                  <InputError text={"No es igual la contraseña"} />
+                )}
+              </div>
+            </div>
           </div>
           {/* check */}
           <div className="my-0 mx-auto">
