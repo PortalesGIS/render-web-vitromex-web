@@ -3,6 +3,8 @@ import { types } from "../types/types";
 // import fakeDatabase from "../../config/fakeDatabase";
 import { separatePageHelper } from "../../helpers/separetePage";
 import { separateMigajasHelpers } from "../../helpers/separateMigajas";
+import { addRenderIsNoExist } from "../../helpers/addRenderTemporal";
+import { filterRender } from "../../helpers/filterRenders";
 
 export const productAxios = () => {
   return async (dispatch) => {
@@ -124,6 +126,9 @@ export const redirectCard = (name, path, id) => {
       const { data } = await clientAxios.post("series/products-series", {
         id: id,
       });
+      //! Solo es por el momento
+      const infoNew = addRenderIsNoExist(data);
+      // console.log(infoNew);
       //* Info
       const state = getState();
       let dataMigajas = [];
@@ -133,7 +138,8 @@ export const redirectCard = (name, path, id) => {
       });
       console.log(dataMigajas);
       dispatch(migajasUpdate(dataMigajas));
-      dispatch(productSerie(data));
+      dispatch(productSerie(infoNew));
+      // dispatch(productSerie(data));
       dispatch(titlePages(name));
       dispatch(filterActiveUi(false));
       dispatch(productRoute(true));
@@ -158,7 +164,7 @@ export const viewRender = (path, numberRender) => {
         path: path,
         name: numberRender,
       });
-      let render = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+      let render = filterRender(state.product.products, numberRender);
       dispatch(colorProductSelect(render));
       dispatch(migajasUpdate(dataMigajas));
       dispatch(titlePages("variaciones"));
@@ -188,22 +194,27 @@ export const realoadPage = (location) => {
         const { data } = await clientAxios.post("series/products-series", {
           id: serieSelect.id,
         });
-        dispatch(productSerie(data));
+        //! Solo es por el momento
+        const infoNew = addRenderIsNoExist(data);
+        // console.log(infoNew);
+
+        // dispatch(productSerie(data));
+        dispatch(productSerie(infoNew));
         if (separatePath.length > 4) {
           dispatch(titlePages("variaciones"));
-          let render = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+          let render = filterRender(infoNew, separatePath[separatePath.length -1])
           dispatch(colorProductSelect(render));
         } else {
           dispatch(titlePages(serieSelect.name));
         }
         dispatch(filterActiveUi(false));
         dispatch(productRoute(true));
-      }else {
-        dispatch(titlePages('series disponibles'));
+      } else {
+        dispatch(titlePages("series disponibles"));
       }
       let dataMigajas = separateMigajasHelpers(
         separatePath,
-        typeof serieSelect.id === 'number' ? serieSelect.name : null
+        typeof serieSelect.id === "number" ? serieSelect.name : null
       );
       dispatch(migajasUpdate(dataMigajas));
       dispatch(loadingProduct(false));
@@ -218,7 +229,7 @@ export const realoadPage = (location) => {
 export const moveMigajas = (migajas, name, route = true) => {
   return async (dispatch, getState) => {
     dispatch(migajasUpdate(migajas));
-    dispatch(titlePages(name === 'series' ? 'series disponibles' : name));
+    dispatch(titlePages(name === "series" ? "series disponibles" : name));
     dispatch(productRoute(route));
   };
 };

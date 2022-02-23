@@ -20,7 +20,7 @@ export const NameSerie = () => {
       <div className="h-full overflow-auto flex justify-between flex-col">
         <div className="gridCardsNameSerie mb-4 gap-4 px-4">
           {state.products.map((product, i) => (
-            <CardProduct product={product} key={i} />
+            <CardProduct product={product} key={i} number={i}/>
           ))}
         </div>
         <Footers />

@@ -1,11 +1,11 @@
 import React from "react";
 
-export const CardColor = (color) => {
+export const CardColor = ({color}) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="basis-4/5 rounded-2xl overflow-hidden">
         <img
-          src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
+          src={color.url ? color.url  : "https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"}
           alt="imagen"
           className="w-full object-cover"
         />
