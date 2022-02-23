@@ -48,12 +48,12 @@ export const FormLogin = () => {
             placeholder="Correo electronico"
             name="email"
             className={`w-full appearance-none border-b-2 ${
-              !email && state ? "border-secundary10" : "border-white"
+              !email && state ? "border-Feedback_Warning" : "border-white"
             } bg-transparent focus:outline-none`}
             value={email}
             onChange={handleInputChange}
           />
-           <div className="absolute w-full">
+          <div className="absolute w-full">
             <div className="relative flex gap-0 flex-col">
               {state ? (
                 <InputError text={"Este correo no existe"} />
@@ -71,7 +71,7 @@ export const FormLogin = () => {
             placeholder="Contraseña"
             name="password"
             className={`w-full appearance-none border-b-2 ${
-              !password && state ? "border-secundary10" : "border-white"
+              !password && state ? "border-Feedback_Warning" : "border-white"
             } bg-transparent focus:outline-none`}
             value={password}
             onChange={handleInputChange}

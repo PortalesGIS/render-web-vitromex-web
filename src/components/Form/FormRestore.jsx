@@ -53,7 +53,7 @@ export const FormRestore = () => {
             value={email}
             onChange={handleInputChange}
             className={`w-full appearance-none border-b-2 ${
-              !email && state ? "border-secundary10" : "border-white"
+              !email && state ? "border-Feedback_Warning" : "border-white"
             } bg-transparent focus:outline-none`}
           />
           <div className="absolute w-full">
@@ -77,7 +77,7 @@ export const FormRestore = () => {
             onChange={handleInputChange}
             name="password"
             className={`w-full appearance-none border-b-2 ${
-              !password && state ? "border-secundary10" : "border-white"
+              !password && state ? "border-Feedback_Warning" : "border-white"
             } bg-transparent focus:outline-none`}
           />
           <span
@@ -107,7 +107,7 @@ export const FormRestore = () => {
             onChange={handleInputChange}
             name="secondPassword"
             className={`w-full appearance-none border-b-2 ${
-              !secondPassword && state ? "border-secundary10" : "border-white"
+              !secondPassword && state ? "border-Feedback_Warning" : "border-white"
             } bg-transparent focus:outline-none`}
           />
           <span

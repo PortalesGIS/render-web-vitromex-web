@@ -16,7 +16,7 @@ export const InputForm = ({
         placeholder="Correo electronico"
         name={nameInput}
         className={`w-full appearance-none border-b-2 ${
-          !valueInput && errorInput ? "border-secundary10" : "border-white"
+          !valueInput && errorInput ? "border-Feedback_Warning" : "border-white"
         } bg-transparent focus:outline-none`}
         value={valueInput}
         onChange={handleInputChange}

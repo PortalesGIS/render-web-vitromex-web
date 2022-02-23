@@ -56,8 +56,8 @@ module.exports = {
         neutral20: "#CDCDCD",
         neutral40: "#686868",
         neutral80: "#282828",
-        secundary10: "#FF6666",
-        secundary20: "#66FFF6",
+        Feedback_Warning: "#FF6666",
+        Feedback_Information: "#66FFF6",
       },
       backgroundImage: {
         landing: "url('./assets/background/landing.jpg')",

@@ -64,7 +64,7 @@ export const FormRegister = () => {
               value={name}
               onChange={handleInputChange}
               className={`w-full appearance-none border-b-2 ${
-                !name && state ? "border-secundary10" : "border-white"
+                !name && state ? "border-Feedback_Warning" : "border-white"
               } bg-transparent focus:outline-none`}
             />
             <div className="absolute w-full">
@@ -82,7 +82,7 @@ export const FormRegister = () => {
               value={lastName}
               onChange={handleInputChange}
               className={`w-full appearance-none border-b-2 ${
-                !lastName && state ? "border-secundary10" : "border-white"
+                !lastName && state ? "border-Feedback_Warning" : "border-white"
               } bg-transparent focus:outline-none`}
             />
             <div className="absolute w-full">
@@ -102,7 +102,7 @@ export const FormRegister = () => {
               value={email}
               onChange={handleInputChange}
               className={`w-full appearance-none border-b-2 ${
-                !email && state ? "border-secundary10" : "border-white"
+                !email && state ? "border-Feedback_Warning" : "border-white"
               } bg-transparent focus:outline-none`}
             />
             <div className="absolute w-full">
@@ -161,7 +161,7 @@ export const FormRegister = () => {
               value={country}
               onChange={handleInputChange}
               className={`w-full appearance-none border-b-2 ${
-                !country && state ? "border-secundary10" : "border-white"
+                !country && state ? "border-Feedback_Warning" : "border-white"
               } bg-transparent focus:outline-none`}
             />
             <div className="absolute w-full">
@@ -181,7 +181,7 @@ export const FormRegister = () => {
               value={city}
               onChange={handleInputChange}
               className={`w-full appearance-none border-b-2 ${
-                !city && state ? "border-secundary10" : "border-white"
+                !city && state ? "border-Feedback_Warning" : "border-white"
               } bg-transparent focus:outline-none`}
             />
             <div className="absolute w-full">
@@ -199,7 +199,7 @@ export const FormRegister = () => {
               value={password}
               onChange={handleInputChange}
               className={`w-full appearance-none border-b-2 ${
-                !password && state ? "border-secundary10" : "border-white"
+                !password && state ? "border-Feedback_Warning" : "border-white"
               } bg-transparent focus:outline-none`}
             />
             <span
@@ -229,7 +229,7 @@ export const FormRegister = () => {
               value={secondPassword}
               onChange={handleInputChange}
               className={`w-full appearance-none border-b-2 ${
-                !secondPassword && state ? "border-secundary10" : "border-white"
+                !secondPassword && state ? "border-Feedback_Warning" : "border-white"
               } bg-transparent focus:outline-none`}
             />
             <span
@@ -265,7 +265,7 @@ export const FormRegister = () => {
               />
               <p className="text-12px">
                 Acepto los{" "}
-                <span className="cursor-pointer text-secundary20">
+                <span className="cursor-pointer text-Feedback_Information">
                   términos y condiciones{" "}
                 </span>{" "}
                 de Vitrorender
@@ -275,7 +275,7 @@ export const FormRegister = () => {
           {/* advertencia check */}
           <div className="my-0 mx-auto h-10">
             {!check && (
-              <div className="bg-secundary10 flex h-10 w-72 items-center justify-center gap-3">
+              <div className="bg-Feedback_Warning flex h-10 w-72 items-center justify-center gap-3">
                 <img src={advertencia} alt="advertancia" />
                 <span className="text-10px text-black">
                   Aún no has aceptado los terminos y condiciones
