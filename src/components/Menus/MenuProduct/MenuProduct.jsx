@@ -27,7 +27,7 @@ export const MenuProduct = () => {
             <div className="flex gap-4 flex-col">
               <FindProduct />
               <Filtertype typeFilter={"Por formato"} img={formato} imgActive={formatoNegro}/>
-              <Filtertype typeFilter={"Por tipologia"} img={Tipología} imgActive={TipologíaNegro}/>
+              <Filtertype typeFilter={"Por tipología"} img={Tipología} imgActive={TipologíaNegro}/>
             </div>
           </div>
           {state && <ButtonClearFilter />}
