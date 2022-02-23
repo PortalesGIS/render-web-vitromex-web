@@ -3,6 +3,11 @@ import { types } from "../types/types";
 // import fakeDatabase from "../../config/fakeDatabase";
 import { separatePageHelper } from "../../helpers/separetePage";
 import { separateMigajasHelpers } from "../../helpers/separateMigajas";
+import { addRenderIsNoExist } from "../../helpers/addRenderTemporal";
+import { filterRender } from "../../helpers/filterRenders";
+import JSZip from "jszip";
+import JSZipUtils from "jszip-utils";
+import { saveAs } from "file-saver";
 
 export const productAxios = () => {
   return async (dispatch) => {
@@ -124,6 +129,9 @@ export const redirectCard = (name, path, id) => {
       const { data } = await clientAxios.post("series/products-series", {
         id: id,
       });
+      //! Solo es por el momento
+      const infoNew = addRenderIsNoExist(data);
+      // console.log(infoNew);
       //* Info
       const state = getState();
       let dataMigajas = [];
@@ -131,9 +139,10 @@ export const redirectCard = (name, path, id) => {
         path: path,
         name: name,
       });
-      console.log(dataMigajas);
+      // console.log(dataMigajas);
       dispatch(migajasUpdate(dataMigajas));
-      dispatch(productSerie(data));
+      dispatch(productSerie(infoNew));
+      // dispatch(productSerie(data));
       dispatch(titlePages(name));
       dispatch(filterActiveUi(false));
       dispatch(productRoute(true));
@@ -158,7 +167,8 @@ export const viewRender = (path, numberRender) => {
         path: path,
         name: numberRender,
       });
-      let render = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+      let render = filterRender(state.product.products, numberRender);
+      dispatch(numberSelectProduct(numberRender));
       dispatch(colorProductSelect(render));
       dispatch(migajasUpdate(dataMigajas));
       dispatch(titlePages("variaciones"));
@@ -188,22 +198,27 @@ export const realoadPage = (location) => {
         const { data } = await clientAxios.post("series/products-series", {
           id: serieSelect.id,
         });
+        //! Solo es por el momento
+        const infoNew = addRenderIsNoExist(data);
         dispatch(productSerie(data));
+        dispatch(productSerie(infoNew));
         if (separatePath.length > 4) {
           dispatch(titlePages("variaciones"));
-          let render = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+          let numberColor = parseInt(separatePath[separatePath.length - 1]);
+          let render = filterRender(infoNew, 0);
+          dispatch(numberSelectProduct(parseInt(numberColor)));
           dispatch(colorProductSelect(render));
         } else {
           dispatch(titlePages(serieSelect.name));
         }
         dispatch(filterActiveUi(false));
         dispatch(productRoute(true));
-      }else {
-        dispatch(titlePages('series disponibles'));
+      } else {
+        dispatch(titlePages("series disponibles"));
       }
       let dataMigajas = separateMigajasHelpers(
         separatePath,
-        typeof serieSelect.id === 'number' ? serieSelect.name : null
+        typeof serieSelect.id === "number" ? serieSelect.name : null
       );
       dispatch(migajasUpdate(dataMigajas));
       dispatch(loadingProduct(false));
@@ -218,7 +233,7 @@ export const realoadPage = (location) => {
 export const moveMigajas = (migajas, name, route = true) => {
   return async (dispatch, getState) => {
     dispatch(migajasUpdate(migajas));
-    dispatch(titlePages(name === 'series' ? 'series disponibles' : name));
+    dispatch(titlePages(name === "series" ? "series disponibles" : name));
     dispatch(productRoute(route));
   };
 };
@@ -242,7 +257,66 @@ export const findProductGeneral = (textFind) => {
   };
 };
 
+export const downloadZip = (number) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    let renders = state.product.products[number].renders;
+
+    const parseURI = async (d) => {
+      let reader = new FileReader();
+      reader.readAsDataURL(d);
+      return new Promise((res, rej) => {
+        reader.onload = (e) => {
+          res(e.target.result);
+        };
+      });
+    };
+
+    const getDataBlob = async (url) => {
+      let res = await fetch(url);
+      let blob = await res.blob();
+      let uri = await parseURI(blob);
+      return uri;
+    };
+
+    let zip = new JSZip();
+    let zipFilename = "zipVitromex.zip";
+    let img = zip.folder("renders");
+    const dataObject = await Promise.all(
+      renders.map(async (render, i) => {
+        let url = await getDataBlob(render.url);
+        return url;
+      })
+    );
+
+    let count = 0;
+    dataObject.map((url, index) => {
+      let filename = "file-" + index + ".jpg";
+      JSZipUtils.getBinaryContent(url, async (err, data) => {
+        if (err) {
+          console.log(err); // or handle the error
+        }
+        img.file(filename, data, { binary: true });
+        count++;
+        if (count === dataObject.length) {
+          var zipFile = await zip.generateAsync({ type: "blob" });
+          saveAs(zipFile, zipFilename);
+        }
+      });
+    });
+  };
+};
+
 //* ---- types reducer
+
+export const numberSelectProduct = (value) => {
+  return {
+    type: types.numberProduct,
+    payload: {
+      numberProduct: value,
+    },
+  };
+};
 
 export const colorProductSelect = (value) => {
   return {

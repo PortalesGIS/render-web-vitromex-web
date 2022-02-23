@@ -24,4 +24,5 @@ export const types = {
     findActive: '[product] findActive',
     productSerie: '[product] productSerie',
     colorSelect: '[product] colorSelect',
+    numberProduct: '[product] numberProduct',
 }

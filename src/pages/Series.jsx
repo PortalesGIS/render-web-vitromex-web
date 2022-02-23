@@ -18,8 +18,8 @@ export const Series = () => {
     );
   } else if (state.productsView.length > 0) {
     return (
-      <div className="h-full overflow-auto flex justify-between flex-col">
-        <div className="gridCards24 mb-4 gap-8 px-4">
+      <div className="h-full overflow-auto flex justify-between flex-col gap-y-8">
+        <div className="gridCards24 gap-x-4 gap-y-8 px-4">
           {state.productsView.map((data, i) => (
             <CardSeries data={data} key={i} />
           ))}

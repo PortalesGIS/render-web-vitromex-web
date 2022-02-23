@@ -15,6 +15,7 @@ const initialState = {
   selectformat: '', //* tipologia escogida
   productActive: false, //* producto activo
   findActive: false, //* busqueda activada
+  numberProduct: false, //* busqueda activada
   loading: true,
   errorproducts: false,
   migajas: [],
@@ -23,6 +24,11 @@ const initialState = {
 
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.numberProduct:
+      return {
+        ...state,
+        numberProduct: action.payload.numberProduct,
+      }
     case types.colorSelect:
       return {
         ...state,

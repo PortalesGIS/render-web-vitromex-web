@@ -12,19 +12,19 @@ export const CardSeries = ({ data }) => {
     navigate(`${Path.PRODUCT}/${Path.SERIES}/${data.id}`)
   }
   return (
-    <div className="flex flex-col cursor-pointer" onClick={navigateParams}>
-      <div className="rounded-3xl overflow-hidden h-full basis-4/5">
+    <div className="flex flex-col justify-between gap-1 cursor-pointer cardSerie" onClick={navigateParams}>
+      <div className="rounded-3xl overflow-hidden h-4/5">
         <img
           src={data.img ? data.img : "https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"}
           alt="serie"
           className="h-full w-full object-cover"
         />
       </div>
-      <div className="basis-1/5">
+      <div className="">
         <div>
           <h1 className="medium:text-Text-xl small:text-14px text-black font-semibold">{data.name}</h1>
         </div>
-        <div className="medium:text-12px small:text-10px text-primario/gris">
+        <div className="medium:text-12px xsmall:text-10px text-primario/gris">
           <span className="">
             35x35,40x40 / Rectificado / Antiderrapante brillante / Hasta 16
             variaciones

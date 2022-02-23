@@ -22,7 +22,7 @@ export const Filtertype = ({ typeFilter, img, imgActive }) => {
       case "Por formato":
         console.log("formato");
         break;
-      case "Por tipologia":
+      case "Por tipología":
         dispatch(filterTypology(type, state.productsGeneral));
         break;
       default:
