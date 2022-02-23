@@ -34,7 +34,7 @@
 
 
 .buttonNameSerie{
-  @apply border-2 border-black xsmall:h-8 small:h-full flex gap-2 justify-start items-center px-2 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
+  @apply border-2 border-black flex gap-2 justify-start items-center px-2 xsmall:h-8 small:h-full hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
 }
 
 /* scroll */

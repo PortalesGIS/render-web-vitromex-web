@@ -168,6 +168,7 @@ export const viewRender = (path, numberRender) => {
         name: numberRender,
       });
       let render = filterRender(state.product.products, numberRender);
+      dispatch(selectTypology(""));
       dispatch(numberSelectProduct(numberRender));
       dispatch(colorProductSelect(render));
       dispatch(migajasUpdate(dataMigajas));

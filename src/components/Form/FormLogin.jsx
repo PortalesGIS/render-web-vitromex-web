@@ -42,27 +42,37 @@ export const FormLogin = () => {
         />
       </div>
       <div className="flex flex-col gap-11 text-white">
-        <div>
+        <div className="relative">
           <input
             type="text"
             placeholder="Correo electronico"
             name="email"
-            className={`w-full appearance-none border-b-2 ${!email && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+            className={`w-full appearance-none border-b-2 ${
+              !email && state ? "border-Feedback_Warning" : "border-white"
+            } bg-transparent focus:outline-none`}
             value={email}
             onChange={handleInputChange}
           />
-          {!isEmail && (
-            <InputError text={"No es un correo electronico valido"} />
-          )}
-          {state && <InputError text={"No existe correo"} />}
-          {!email && state && <InputError text={"Completa este campo"} />}
+          <div className="absolute w-full">
+            <div className="relative flex gap-0 flex-col">
+              {state ? (
+                <InputError text={"Este correo no existe"} />
+              ) : (
+                !isEmail && (
+                  <InputError text={"No es un correo electronico valido"} />
+                )
+              )}
+            </div>
+          </div>
         </div>
-        <div className="relative flex items-center">
+        <div className="relative">
           <input
             type={hasVisibilityPassword ? "password" : "text"}
             placeholder="Contraseña"
             name="password"
-            className={`w-full appearance-none border-b-2 ${!password && state ? "border-secundary10" : "border-white"} bg-transparent focus:outline-none`}
+            className={`w-full appearance-none border-b-2 ${
+              !password && state ? "border-Feedback_Warning" : "border-white"
+            } bg-transparent focus:outline-none`}
             value={password}
             onChange={handleInputChange}
           />
@@ -76,7 +86,13 @@ export const FormLogin = () => {
               alt="ojoabierto"
             />
           </span>
-          {!password && state && <InputError text={"Completa este campo"} />}
+          <div className="absolute w-full">
+            <div className="relative flex gap-0 flex-col">
+              {!password && state && (
+                <InputError text={"Completa este campo"} />
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <FooterForm
