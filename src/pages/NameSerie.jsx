@@ -18,7 +18,7 @@ export const NameSerie = () => {
   }else{
     return (
       <div className="h-full overflow-auto flex justify-between flex-col">
-        <div className="gridCardsNameSerie mb-4 gap-4 px-4">
+        <div className="gridCardsNameSerie mb-4 gap-4 xsmall:px-4 medium:px-12">
           {state.products.map((product, i) => (
             <CardProduct product={product} key={i} number={i}/>
           ))}

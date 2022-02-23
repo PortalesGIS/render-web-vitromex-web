@@ -31,7 +31,7 @@ export const ProductLayout = () => {
         {/* cuerpo */}
         <div className="medium:col-span-10 col-span-full">
           <div className="gridLayout h-full grid-rows-layout_header">
-            <div className="col-span-full h-full px-4 pt-2 small:pt-4">
+            <div className="col-span-full h-full xsmall:px-4 medium:px-12 pt-2 small:pt-4">
               <div className="flex justify-between flex-col h-full gap-4">
                 <HeaderSeries />
                 <HeaderTitlePage />

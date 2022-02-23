@@ -25,7 +25,7 @@ export const ColorSerie = () => {
   } else {
     return (
       <div className="h-full overflow-auto flex justify-between flex-col">
-        <div className="gridCardsColorName mb-8 xsmall:gap-y-8 xsmall:gap-x-4 small:gap-4 medium:gap-6 px-4">
+        <div className="gridCardsColorName mb-8 xsmall:gap-y-8 xsmall:px-4 medium:px-12 xsmall:gap-x-4 small:gap-4 medium:gap-6">
           {state.color.map((color, i) => (
             <CardColor color={color} key={i} number={i}/>
           ))}
