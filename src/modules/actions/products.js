@@ -200,8 +200,6 @@ export const realoadPage = (location) => {
         });
         //! Solo es por el momento
         const infoNew = addRenderIsNoExist(data);
-        console.log(infoNew);
-
         dispatch(productSerie(data));
         dispatch(productSerie(infoNew));
         if (separatePath.length > 4) {

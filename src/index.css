@@ -20,12 +20,16 @@
 
 
 .cardSerie{
-  @apply medium:w-card_medium_series medium:h-card_medium_series small:w-card_small_series small:h-card_small_series xsmall:w-card_xsmall_series xsmall:h-card_xsmall_series;
+  @apply large:w-card_large_series large:h-card_large_series medium:w-card_medium_series medium:h-card_medium_series small:w-card_small_series small:h-card_small_series xsmall:w-card_xsmall_series xsmall:h-card_xsmall_series;
 }
 
 
 .cardNameSerie{
   @apply medium:w-card_medium_series_name medium:h-card_medium_series_name small:w-card_small_series_name small:h-card_small_series_name xsmall:h-card_xsmall_series_name xsmall:w-card_xsmall_series_name;
+}
+
+.cardColorSerie{
+  @apply medium:w-card_medium_series_name_color medium:h-card_medium_series_name_color small:w-card_small_series_name_color small:h-card_small_series_name_color xsmall:h-card_xsmall_series_name_color xsmall:w-card_xsmall_series_name_color;
 }
 
 
