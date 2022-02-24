@@ -283,7 +283,7 @@ export const FormRegister = () => {
               </div>
             )}
           </div>
-          <div className="my-12 flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <ButtonRedirect
               text={"Crear Usuario"}
               direction={`${Path.PRODUCT}/${Path.SERIES}`}
