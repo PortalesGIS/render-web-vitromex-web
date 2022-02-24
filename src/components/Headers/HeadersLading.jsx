@@ -22,7 +22,9 @@ const MediumHeaderLanding = () => {
   return (
     <div className="flex justify-between h-full px-4 items-center">
       <div>
-        <img src={vitromex} alt="vitromex" />
+        <a href="https://www.vitromex.com.mx/">
+          <img src={vitromex} alt="vitromex" />
+        </a>
       </div>
       <div className="text-white text-12px flex gap-4">
         <LinkExterno
@@ -49,7 +51,9 @@ const ResponsiveHeaderLanding = () => {
     <>
       <div className="flex justify-between h-full px-4 items-center">
         <div>
-          <img src={vitromex} alt="vitromex" />
+          <a href="https://www.vitromex.com.mx/">
+            <img src={vitromex} alt="vitromex" />
+          </a>
         </div>
         <div>
           <img

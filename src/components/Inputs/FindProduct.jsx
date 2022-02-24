@@ -53,7 +53,6 @@ export const FindProduct = () => {
   const findObject = (productSelect = null) => {
     if (product !== "") {
       if (state.migajas.length > 1) {
-        console.log("migajas 2");
         let initial = state.migajas;
         initial = initial.slice(0, 1);
         dispatch(moveMigajas(initial, 'Series', false));
