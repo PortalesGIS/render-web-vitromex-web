@@ -12,7 +12,7 @@ export const CardSeries = ({ data }) => {
     navigate(`${Path.PRODUCT}/${Path.SERIES}/${data.id}`)
   }
   return (
-    <div className="flex flex-col justify-between gap-1 cursor-pointer cardSerie" onClick={navigateParams}>
+    <div className="flex flex-col justify-between gap-1 cursor-pointer" onClick={navigateParams}>
       <div className="rounded-3xl overflow-hidden h-4/5">
         <img
           src={data.img ? data.img : "https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"}

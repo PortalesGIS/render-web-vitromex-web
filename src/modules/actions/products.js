@@ -1,12 +1,11 @@
 import clientAxios from "../../config/axios";
 import { types } from "../types/types";
-// import fakeDatabase from "../../config/fakeDatabase";
 import { separatePageHelper } from "../../helpers/separetePage";
 import { separateMigajasHelpers } from "../../helpers/separateMigajas";
 import { addRenderIsNoExist } from "../../helpers/addRenderTemporal";
 import { filterRender } from "../../helpers/filterRenders";
+import { imagesBase64 } from "../../helpers/imagesBase64";
 import JSZip from "jszip";
-import JSZipUtils from "jszip-utils";
 import { saveAs } from "file-saver";
 
 export const productAxios = () => {
@@ -14,9 +13,6 @@ export const productAxios = () => {
     dispatch(loadingProduct(true));
     try {
       const responseDatabase = await clientAxios.get("series");
-      // console.log(responseDatabase.data);
-      // const {AlltotalProducts, products} = response.data
-      // const response = fakeDatabase.products;
       const response = responseDatabase.data;
       let seriesAll = response.series;
       let totalProducts = response.total;
@@ -260,51 +256,22 @@ export const findProductGeneral = (textFind) => {
 
 export const downloadZip = (number) => {
   return async (dispatch, getState) => {
+    let zip = new JSZip();
+    let img = zip.folder("rendes");
     const state = getState();
     let renders = state.product.products[number].renders;
-
-    const parseURI = async (d) => {
-      let reader = new FileReader();
-      reader.readAsDataURL(d);
-      return new Promise((res, rej) => {
-        reader.onload = (e) => {
-          res(e.target.result);
-        };
+    let imagesBase = await imagesBase64(renders);
+    let isNotEmpty = imagesBase.every((img) => img !== "");
+    if (isNotEmpty) {
+      imagesBase.map((images, i) => {
+        let nameFile = "file " + i + ".jpg";
+        img.file(nameFile, images, { base64: true });
       });
-    };
-
-    const getDataBlob = async (url) => {
-      let res = await fetch(url);
-      let blob = await res.blob();
-      let uri = await parseURI(blob);
-      return uri;
-    };
-
-    let zip = new JSZip();
-    let zipFilename = "zipVitromex.zip";
-    let img = zip.folder("renders");
-    const dataObject = await Promise.all(
-      renders.map(async (render, i) => {
-        let url = await getDataBlob(render.url);
-        return url;
-      })
-    );
-
-    let count = 0;
-    dataObject.map((url, index) => {
-      let filename = "file-" + index + ".jpg";
-      JSZipUtils.getBinaryContent(url, async (err, data) => {
-        if (err) {
-          console.log(err); // or handle the error
-        }
-        img.file(filename, data, { binary: true });
-        count++;
-        if (count === dataObject.length) {
-          var zipFile = await zip.generateAsync({ type: "blob" });
-          saveAs(zipFile, zipFilename);
-        }
+      zip.generateAsync({ type: "blob" }).then(function (content) {
+        // see FileSaver.js
+        saveAs(content, "vitromexRender.zip");
       });
-    });
+    }
   };
 };
 
