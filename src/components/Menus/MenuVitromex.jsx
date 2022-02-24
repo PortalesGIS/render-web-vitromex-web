@@ -3,7 +3,7 @@ import { LinkExterno } from "../shared/LinkExterno";
 
 export const MenuVitromex = ({ visibilityMenu }) => {
   return (
-    <div className="relative h-full overflow-hidden">
+    <div className={`relative ${visibilityMenu ? 'menuTransition' : 'menuCloseTransition'} overflow-hidden`}>
       <div
         className={`absolute w-full animate__animated ${
           visibilityMenu ? "animate__slideInDown" : "animate__slideOutUp"

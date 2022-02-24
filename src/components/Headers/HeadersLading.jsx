@@ -60,7 +60,7 @@ const ResponsiveHeaderLanding = () => {
           />
         </div>
       </div>
-      <div className={`absolute top-13 w-full h-80`}>
+      <div className={`absolute z-10 top-13 w-full`}>
         <MenuVitromex visibilityMenu={visibilityMenu} />
       </div>
     </>

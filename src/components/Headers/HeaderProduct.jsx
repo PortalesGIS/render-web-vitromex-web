@@ -69,7 +69,7 @@ const ResponsiveHeader = ({ menuValue, actionmenu }) => {
           />
         </div>
       </div>
-      <div className={`absolute top-13 w-full h-80`}>
+      <div className={`absolute top-13 w-full`}>
         <MenuVitromex visibilityMenu={menuNavbar} />
       </div>
     </>
