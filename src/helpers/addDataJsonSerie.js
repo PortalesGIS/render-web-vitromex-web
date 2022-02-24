@@ -1,45 +1,52 @@
 export const addDataJson = (products, series) => {
   let newSeries = [];
   let newProducts = [];
-  products.map(({ serie, color, finish, sized, renders, ...data }) => {
+  products.map(({ serie, color, finish, sized, renders, rectified, ...data }) => {
     if (newProducts[serie] === undefined) {
       newProducts[serie] = {
-        color: [color],
-        rectificated: [finish],
         format: [sized],
+        color: [color],
+        finish: [finish],
         renders: renders.length,
-        countSerie: 1
+        countSerie: 1,
+        rectified: [rectified]
       };
     } else {
       let colorsSave = newProducts[serie].color
-      let rectificatedSave = newProducts[serie].rectificated
+      let finishSave = newProducts[serie].finish
       let formatSave = newProducts[serie].format
       let rendersSave =  newProducts[serie].renders
       let countSerieSave = newProducts[serie].countSerie
+      let rectifiedSave = newProducts[serie].rectified
       let addData = {
         color: colorsSave,
-        rectificated: rectificatedSave,
+        finish: finishSave,
         format: formatSave,
         renders: rendersSave,
-        countSerie: countSerieSave
+        countSerie: countSerieSave,
+        rectified: rectifiedSave
       }
 
       if(!colorsSave.includes(color)){
         addData.color = [...colorsSave, color]
       }
-      if(!rectificatedSave.includes(finish)){
-        addData.rectificated = [...rectificatedSave, finish]
+      if(!finishSave.includes(finish)){
+        addData.finish = [...finishSave, finish]
       }
       if(!formatSave.includes(sized)){
         addData.format = [...formatSave, sized]
       }
+      if(!rectifiedSave.includes(rectified)){
+        addData.rectified = [...rectifiedSave, rectified]
+      }
 
       newProducts[serie] = {
         color: addData.color,
-        rectificated: addData.rectificated,
+        finish: addData.finish,
         format: addData.format,
         renders: addData.renders + renders.length,
-        countSerie: addData.countSerie + 1
+        countSerie: addData.countSerie + 1,
+        rectified: addData.rectified
       };
     }
   });
@@ -48,17 +55,19 @@ export const addDataJson = (products, series) => {
     let dataProduct = newProducts[serie.name]
     if(dataProduct === undefined){
       serie.color = []  
-      serie.rectificated = [] 
+      serie.finish = [] 
       serie.format = [] 
       serie.renders = 0  
       serie.countSerie = 1  
+      serie.rectified = []  
       return serie
     }else {
       serie.color = dataProduct.color  
-      serie.rectificated = dataProduct.rectificated  
+      serie.finish = dataProduct.finish  
       serie.format = dataProduct.format  
       serie.renders = dataProduct.renders  
       serie.countSerie = dataProduct.countSerie  
+      serie.rectified = dataProduct.rectified  
       return serie
     }
   })
