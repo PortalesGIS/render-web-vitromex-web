@@ -63,9 +63,6 @@ export const FindProduct = () => {
         dispatch(findProductGeneral(product));
       }
       setproductsFilter([]);
-      setFormValues({
-        product: "",
-      });
       navigate(`${Path.PRODUCT}/${Path.SERIES}`);
     }
   };
@@ -77,6 +74,9 @@ export const FindProduct = () => {
   const clickObject = (serie = null) => {
     if (serie) {
       findObject(serie);
+      setFormValues({
+        product: serie.toLowerCase(),
+      });
     } else {
       if (state.titlePage !== "Resultados de la búsqueda") {
         findObject();

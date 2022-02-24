@@ -7,22 +7,36 @@ import { filterRender } from "../../helpers/filterRenders";
 import { imagesBase64 } from "../../helpers/imagesBase64";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
+import { addDataJson } from "../../helpers/addDataJsonSerie";
+import { countFormats } from "../../helpers/formastHelpers";
 
 export const productAxios = () => {
   return async (dispatch) => {
     dispatch(loadingProduct(true));
     try {
-      const responseDatabase = await clientAxios.get("series");
-      const response = responseDatabase.data;
-      let seriesAll = response.series;
-      let totalProducts = response.total;
+      let newSeries = []
+      const [seriesDatabase, productDatabase] = await Promise.all([
+        clientAxios.get("series"),
+        clientAxios.get("product"),
+      ]);
+      // console.log(productDatabase.data);
+      newSeries = addDataJson(
+        productDatabase.data.products,
+        seriesDatabase.data.series
+      );
+      
+      let seriesAll = newSeries;
+      let totalProducts = newSeries.length;
       let typologie = [];
       let formats = [];
       let productsView = [];
       let separatePage = [];
 
+      //* Formatos
+      formats = countFormats(seriesAll)
+
       //* tipologias
-      const separateTypologie = response.series.reduce((acc, data) => {
+      const separateTypologie = seriesAll.reduce((acc, data) => {
         acc[data.typologie] = ++acc[data.typologie] || 0;
         return acc;
       }, {});
@@ -41,7 +55,7 @@ export const productAxios = () => {
       dispatch(numberPagination(0));
       dispatch(numberPagePagination(separatePage));
       dispatch(
-        productsGeneral(seriesAll, totalProducts, typologie.sort(), formats)
+        productsGeneral(seriesAll, totalProducts, typologie.sort(), formats.sort())
       );
       dispatch(productsViewCards(productsView));
       dispatch(loadingProduct(false));
@@ -70,13 +84,34 @@ export const startPaginationView = (num = 1) => {
   };
 };
 
-export const filterTypology = (type, seriesAll) => {
+export const filterTypology = (type) => {
   return async (dispatch, getState) => {
     const state = getState();
     let productViewRange = [];
     let productsView = [];
-    productsView = seriesAll.filter((serie) => {
+    productsView =  state.product.productsGeneral.filter((serie) => {
       return serie.typologie === type;
+    });
+    let separatePage = [];
+    separatePage = separatePageHelper(productsView.length);
+    productViewRange = productsView.slice(0, 24);
+    dispatch(selectTypology(type));
+    dispatch(seriesUpdate(productsView));
+    dispatch(productsViewCards(productViewRange));
+    dispatch(numberPagination(0));
+    dispatch(numberPagePagination(separatePage));
+    dispatch(filterActiveUi(true));
+    let initial = state.product.migajas.slice(0, 1);
+    dispatch(migajasUpdate(initial));
+  };
+};
+export const filterFormat = (type) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    let productViewRange = [];
+    let productsView = [];
+    productsView = state.product.productsGeneral.filter((serie) => {
+      return serie.format.includes(type);
     });
     let separatePage = [];
     separatePage = separatePageHelper(productsView.length);

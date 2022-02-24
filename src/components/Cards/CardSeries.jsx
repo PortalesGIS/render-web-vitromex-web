@@ -11,6 +11,7 @@ export const CardSeries = ({ data }) => {
     dispatch(redirectCard(data.name,`${Path.PRODUCT}/${Path.SERIES}/${data.id}`, data.id))
     navigate(`${Path.PRODUCT}/${Path.SERIES}/${data.id}`)
   }
+  // console.log(data);
   return (
     <div className="flex flex-col justify-between gap-1 cursor-pointer" onClick={navigateParams}>
       <div className="rounded-3xl overflow-hidden h-4/5">
@@ -25,10 +26,28 @@ export const CardSeries = ({ data }) => {
           <h1 className="medium:text-Text-xl small:text-14px text-black font-semibold">{data.name}</h1>
         </div>
         <div className="medium:text-12px xsmall:text-10px text-primario/gris">
-          <span className="">
-            35x35,40x40 / Rectificado / Antiderrapante brillante / Hasta 16
+          {data.format.map(format => (
+            <span key={format}>
+              {format}{" "}
+            </span>
+          ))}
+          <span>/</span>
+          {data.color.map(color => (
+            <span key={color}>
+              {color}{" "}
+            </span>
+          ))}
+          <span></span>
+          {data.rectificated.map(rectificated => (
+            <span key={rectificated}>
+              {rectificated}{" "}
+            </span>
+          ))}
+          <span>/Hasta {data.renders} variaciones</span>
+          {/* <span className="">
+            formato / Rectificado / Antiderrapante brillante / Hasta 16
             variaciones
-          </span>
+          </span> */}
         </div>
       </div>
     </div>

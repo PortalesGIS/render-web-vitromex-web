@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useShowMenu } from "../../../hooks/useShowMenu";
-import { filterTypology } from "../../../modules/actions/products";
+import { filterFormat, filterTypology } from "../../../modules/actions/products";
 import { Path } from "../../../utils/route";
 
 export const Filtertype = ({ typeFilter, img, imgActive }) => {
@@ -20,10 +20,10 @@ export const Filtertype = ({ typeFilter, img, imgActive }) => {
     navigate(`${Path.SERIES}`);
     switch (typeFilter) {
       case "Por formato":
-        console.log("formato");
+        dispatch(filterFormat(type));
         break;
       case "Por tipología":
-        dispatch(filterTypology(type, state.productsGeneral));
+        dispatch(filterTypology(type));
         break;
       default:
         break;
