@@ -78,7 +78,20 @@ module.exports = {
         card_small_series_name_color: "8.125rem",
         card_xsmall_series_name_color: "10rem",
       },
+      maxHeight: {
+        img_instalation_medium: "33rem",
+        img_instalation_small: "19rem",
+        img_instalation_xsmall: "13.5rem",
+      },
+      minHeight: {
+        img_instalation_medium: "33rem",
+        img_instalation_small: "19rem",
+        img_instalation_xsmall: "13.5rem",
+      },
       height: {
+        img_instalation_medium: "33rem",
+        img_instalation_small: "19rem",
+        img_instalation_xsmall: "13.5rem",
         card_large_series: "23rem",
         card_medium_series: "18rem",
         card_small_series: "13.5rem",

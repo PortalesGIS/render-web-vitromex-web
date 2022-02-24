@@ -5,7 +5,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../utils/route";
 import { useDispatch } from "react-redux";
-import { clearFilter, findProductGeneral } from "../../modules/actions/products";
+import {
+  clearFilter,
+  findProductGeneral,
+  moveMigajas,
+} from "../../modules/actions/products";
 
 export const FindProduct = () => {
   const state = useSelector((state) => state.product);
@@ -17,16 +21,17 @@ export const FindProduct = () => {
   const [productsFilter, setproductsFilter] = useState([]);
   const { product } = formValues;
 
-
   useEffect(() => {
-    if(state.migajas.length > 1){
+    if (state.migajas.length > 1) {
       setFormValues({
-        product: '',
+        product: "",
       });
-      dispatch(clearFilter())
+      dispatch(clearFilter());
+      setFormValues({
+        product: "",
+      });
     }
-  }, [state.migajas])
-  
+  }, [state.migajas]);
 
   const handleInputChange = ({ target }) => {
     let find = [];
@@ -47,30 +52,39 @@ export const FindProduct = () => {
 
   const findObject = (productSelect = null) => {
     if (product !== "") {
-      if(productSelect) {
+      if (state.migajas.length > 1) {
+        console.log("migajas 2");
+        let initial = state.migajas;
+        initial = initial.slice(0, 1);
+        dispatch(moveMigajas(initial, 'Series', false));
+      }
+      if (productSelect) {
         dispatch(findProductGeneral(productSelect));
-      }else{
+      } else {
         dispatch(findProductGeneral(product));
       }
       setproductsFilter([]);
+      setFormValues({
+        product: "",
+      });
       navigate(`${Path.PRODUCT}/${Path.SERIES}`);
     }
   };
   const inputEnter = (e) => {
     e.preventDefault();
-    findObject()
+    findObject();
   };
 
   const clickObject = (serie = null) => {
     if (serie) {
-      findObject(serie)
+      findObject(serie);
     } else {
-      if(state.titlePage !== "Resultados de la búsqueda"){
-        findObject()
-      }else{
-        dispatch(clearFilter())
+      if (state.titlePage !== "Resultados de la búsqueda") {
+        findObject();
+      } else {
+        dispatch(clearFilter());
         setFormValues({
-          product: '',
+          product: "",
         });
       }
     }
@@ -89,7 +103,7 @@ export const FindProduct = () => {
         id="visiblity-toggle"
         className="absolute right-0 h-5 w-5 cursor-pointer"
         onClick={() => {
-          clickObject()
+          clickObject();
         }}
       >
         <img
@@ -104,7 +118,7 @@ export const FindProduct = () => {
               className="text-14px hover:bg-neutral hover:text-white cursor-pointer"
               key={i}
               onClick={() => {
-                clickObject(serie.name)
+                clickObject(serie.name);
               }}
             >
               <p>{serie.name}</p>
