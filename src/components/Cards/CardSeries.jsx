@@ -20,48 +20,50 @@ export const CardSeries = ({ data }) => {
   // console.log(data.rectified);
   return (
     <div
-      className="flex flex-col justify-between gap-1 cursor-pointer"
+      className="cursor-pointer"
       onClick={navigateParams}
     >
-      <div className="rounded-3xl overflow-hidden h-4/5">
-        <img
-          src={
-            data.img
-              ? data.img
-              : "https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
-          }
-          alt="serie"
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <div className="">
-        <div>
-          <h1 className="medium:text-Text-xl small:text-14px text-black font-semibold">
-            {data.name}
-          </h1>
+      <div className="max-h-card_large_series">
+        <div className="rounded-3xl overflow-hidden h-4/5">
+          <img
+            src={
+              data.img
+                ? data.img
+                : "https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
+            }
+            alt="serie"
+            className="h-full w-full object-cover"
+          />
         </div>
-        <div className="medium:text-12px xsmall:text-10px text-primario/gris">
-          {data.format.map((format) => (
-            <span key={format}>{format} </span>
-          ))}
-          <span>/</span>
-          {data.rectified.map((rectified, i) => (
-            <span key={rectified}>
-              {i > 0 && <span>/</span>}
-              {rectified === "0" && "Rectificado"}
-              {rectified === "1" && "No rectificado"}
-            </span>
-          ))}
-          <span>/</span>
-          {data.color.map((color) => (
-            <span key={color}>{color} </span>
-          ))}
-          <span>/</span>
-          {data.finish.map((finish) => (
-            <span key={finish}>{finish} </span>
-          ))}
-          <span>/</span>
-          <span>Hasta {data.renders} variaciones</span>
+        <div className="h-1/5">
+          <div>
+            <h1 className="medium:text-Text-xl small:text-14px text-black font-semibold">
+              {data.name}
+            </h1>
+          </div>
+          <div className="medium:text-12px xsmall:text-10px text-primario/gris">
+            {data.format.map((format) => (
+              <span key={format}>{format} </span>
+            ))}
+            <span>/</span>
+            {data.rectified.map((rectified, i) => (
+              <span key={rectified}>
+                {i > 0 && <span>/</span>}
+                {rectified === "0" && "Rectificado"}
+                {rectified === "1" && "No rectificado"}
+              </span>
+            ))}
+            <span>/</span>
+            {data.color.map((color) => (
+              <span key={color}>{color} </span>
+            ))}
+            <span>/</span>
+            {data.finish.map((finish) => (
+              <span key={finish}>{finish} </span>
+            ))}
+            <span>/</span>
+            <span>Hasta {data.renders} variaciones</span>
+          </div>
         </div>
       </div>
     </div>

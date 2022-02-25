@@ -10,7 +10,7 @@ export const Series = () => {
   if (state.loading) {
     return (
       <div className="h-full overflow-auto flex justify-between flex-col">
-        <div className="mb-4 gap-4 px-4">
+        <div className="flex justify-center items-center flex-col min-h-full">
           <h1>Cargando</h1>
         </div>
         <Footers />
