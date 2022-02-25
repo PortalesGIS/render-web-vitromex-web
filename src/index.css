@@ -71,7 +71,7 @@ p {
 }
 
 .cardColorSerie {
-  @apply medium:w-card_medium_series_name_color medium:h-card_medium_series_name_color small:w-card_small_series_name_color small:h-card_small_series_name_color xsmall:h-card_xsmall_series_name_color xsmall:w-card_xsmall_series_name_color;
+  @apply xsmall:h-card_xsmall_series_name_color small:h-card_small_series_name_color medium:h-card_medium_series_name_color large:min-h-card_large_series_name_color;
 }
 
 .buttonNameSerie {

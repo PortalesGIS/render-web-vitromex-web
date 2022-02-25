@@ -85,6 +85,7 @@ module.exports = {
         card_large_series: "30rem",
         card_large_series_name: "8rem",
         card_medium_series_name: "8rem",
+        card_large_series_name_color: "20rem",
       },
       minHeight: {
         img_instalation_medium: "33rem",
@@ -93,6 +94,7 @@ module.exports = {
         card_large_series: "30rem",
         card_large_series_name: "8rem",
         card_medium_series_name: "8rem",
+        card_large_series_name_color: "24rem",
       },
       height: {
         img_instalation_medium: "33rem",
@@ -109,6 +111,7 @@ module.exports = {
         card_medium_series_name_color: "15rem",
         card_small_series_name_color: "10rem",
         card_xsmall_series_name_color: "13rem",
+        card_large_series_name_color: "20rem",
       },
       gridTemplateColumns: {
         xsmall: "repeat(4, 25%)",

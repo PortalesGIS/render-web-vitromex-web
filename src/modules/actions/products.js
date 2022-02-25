@@ -296,7 +296,7 @@ export const downloadZip = (number) => {
     let renders = state.product.products[number].renders;
     let imagesBase = await imagesBase64(renders);
     let isNotEmpty = imagesBase.every((img) => img !== "");
-    console.log(state.product.products[number]);
+    // console.log(state.product.products[number]);
     let {name, color, sized} = state.product.products[number]
     //* Carpeta nombre
     let img = zip.folder(name);

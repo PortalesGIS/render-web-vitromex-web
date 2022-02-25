@@ -10,7 +10,7 @@ export const ButtonDownloadZip = ({number = null}) => {
   const download = () => {
     let path = location.pathname.split('/')
     if(path.length > 4){
-      console.log('url');
+      dispatch(downloadZip(parseInt(path[path.length -1])))
     }else{
       dispatch(downloadZip(number))
     }
