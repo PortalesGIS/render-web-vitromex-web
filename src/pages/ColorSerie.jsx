@@ -12,7 +12,7 @@ export const ColorSerie = () => {
   useEffect(() => {
     dispatch(titlePages("Variaciones"));
   }, []);
-
+  let product = state.products[state.numberProduct];
   if (state.loading) {
     return (
       <div className="h-full overflow-auto flex justify-between flex-col">
@@ -24,24 +24,40 @@ export const ColorSerie = () => {
     );
   } else {
     return (
-      <div className="h-full overflow-auto flex justify-between flex-col gap-y-4">
-        <div className="gridCardsColorName mb-8 xsmall:gap-y-8 xsmall:px-4 medium:px-12 xsmall:gap-x-4 small:gap-4 medium:gap-6">
-          {state.color.map((color, i) => (
-            <CardColor color={color} key={i} number={i} />
-          ))}
-        </div>
-        <div className="w-full xsmall:px-4 medium:px-12">
-          <div className="medium:h-img_instalation_medium small:h-img_instalation_small xsmall:h-img_instalation_xsmall">
-            <img
-              src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
-              alt="Render grande"
-              className="h-full w-full"
-            />
-          </div>
-          <div className="text-12px text-primario/gris text-center">
-            <span>texto de instalación</span>
-          </div>
-        </div>
+      <div className="h-full overflow-auto flex justify-between flex-col gap-y-8">
+        {product !== undefined ?(
+          <>
+            <div className="xsmall:px-4 medium:px-12">
+              <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4">
+                {state.color.map((color, i) => (
+                  <CardColor
+                    color={color}
+                    key={i}
+                    number={i}
+                    product={product}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="w-full xsmall:px-4 medium:px-12">
+              <div className="medium:h-img_instalation_medium small:h-img_instalation_small xsmall:h-img_instalation_xsmall">
+                <img
+                  src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
+                  alt="Render grande"
+                  className="h-full w-full"
+                />
+              </div>
+              <div className="text-12px text-primario/gris text-center">
+                <span>
+                  {product.name}/{product.color}/{product.sized}
+                  /Instalación sugerida
+                </span>
+              </div>
+            </div>
+          </>
+        ):(
+          <div></div>
+        )}
         <Footers />
       </div>
     );

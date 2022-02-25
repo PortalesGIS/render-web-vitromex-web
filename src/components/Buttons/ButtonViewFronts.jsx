@@ -20,7 +20,7 @@ export const ButtonViewFronts = ({ product, number }) => {
       <div>
         <img src={aplicaciones} alt="caras" />
       </div>
-      <div className="text-10px medium:text-12px">
+      <div className="text-10px large:text-15px ">
         <span>Ver caras</span>
       </div>
     </div>
