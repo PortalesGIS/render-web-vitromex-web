@@ -19,7 +19,7 @@ const TextInformation = () => {
     <div className="row-start-3 small:col-span-6 medium:col-span-7 col-span-4 self-end text-white px-4 flex flex-col gap-y-8 pb-28">
       <div>
         <h1 className="text-title_movil small:text-title_table medium:text-title_desktop font-bold">
-          VITRORENDERdd
+          VITRORENDER
         </h1>
         <div className="text-10">
           <p className="">
