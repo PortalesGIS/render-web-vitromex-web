@@ -23,7 +23,7 @@ export const ButtonDownloadZip = ({number = null}) => {
       <div>
         <img src={descargar} alt="caras" />
       </div>
-      <div className="text-10px">
+      <div className="text-10px large:text-15px  ">
         <span>Descargar ZIP</span>
       </div>
     </div>

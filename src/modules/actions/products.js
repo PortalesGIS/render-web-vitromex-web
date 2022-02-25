@@ -291,15 +291,19 @@ export const findProductGeneral = (textFind) => {
 
 export const downloadZip = (number) => {
   return async (dispatch, getState) => {
-    let zip = new JSZip();
-    let img = zip.folder("rendes");
     const state = getState();
+    let zip = new JSZip();
     let renders = state.product.products[number].renders;
     let imagesBase = await imagesBase64(renders);
     let isNotEmpty = imagesBase.every((img) => img !== "");
+    console.log(state.product.products[number]);
+    let {name, color, sized} = state.product.products[number]
+    //* Carpeta nombre
+    let img = zip.folder(name);
     if (isNotEmpty) {
       imagesBase.map((images, i) => {
-        let nameFile = "file " + i + ".jpg";
+        //* Nombre de cada imagen
+        let nameFile = `${name} ${color} ${sized} - ${i+1}.jpg`
         img.file(nameFile, images, { base64: true });
       });
       zip.generateAsync({ type: "blob" }).then(function (content) {

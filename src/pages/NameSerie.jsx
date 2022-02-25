@@ -17,11 +17,13 @@ export const NameSerie = () => {
     );
   } else {
     return (
-      <div className="h-full overflow-auto flex justify-between flex-col">
-        <div className="gridCardsNameSerie xsmall:gap-y-8 small:gap-x-4 small:gap-y-6 medium:gap-6  xsmall:px-4 medium:px-12">
-          {state.products.map((product, i) => (
-            <CardProduct product={product} key={i} number={i} />
-          ))}
+      <div className="h-full overflow-auto flex justify-between flex-col gap-y-8">
+        <div className="xsmall:px-4 medium:px-12">
+          <div className="gridCardsNameSerie gap-y-6">
+            {state.products.map((product, i) => (
+              <CardProduct product={product} key={i} number={i} />
+            ))}
+          </div>
         </div>
         <Footers />
       </div>

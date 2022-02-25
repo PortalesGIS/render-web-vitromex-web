@@ -75,7 +75,7 @@ p {
 }
 
 .buttonNameSerie {
-  @apply border-2 border-black flex gap-2 justify-start items-center px-2 xsmall:h-8 small:h-full hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
+  @apply border-2 border-black flex gap-2 items-center medium:w-4/5 p-1 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
 }
 
 /* scroll */

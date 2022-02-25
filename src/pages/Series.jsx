@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { CardSeries } from "../components/Cards/CardSeries";
 import { Footers } from "../components/Footers/Footers";
-import Icono from '../assets/Icono.svg'
+import Icono from "../assets/Icono.svg";
 
 export const Series = () => {
   const state = useSelector((state) => state.product);
@@ -19,10 +19,12 @@ export const Series = () => {
   } else if (state.productsView.length > 0) {
     return (
       <div className="h-full overflow-auto flex justify-between flex-col gap-y-8">
-        <div className="gridCards24 gap-x-4 gap-y-8 xsmall:px-4 medium:px-12">
-          {state.productsView.map((data, i) => (
-            <CardSeries data={data} key={i} />
-          ))}
+        <div className="xsmall:px-4 medium:px-12">
+          <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4">
+            {state.productsView.map((data, i) => (
+              <CardSeries data={data} key={i} />
+            ))}
+          </div>
         </div>
         <Footers />
       </div>
@@ -35,7 +37,9 @@ export const Series = () => {
             <img src={Icono} alt="icono" />
           </div>
           <div>
-            <p className="text-neutral40">Desafortunadamente, la búsqueda  no tiene resultados </p>
+            <p className="text-neutral40">
+              Desafortunadamente, la búsqueda no tiene resultados{" "}
+            </p>
           </div>
         </div>
         <Footers />
