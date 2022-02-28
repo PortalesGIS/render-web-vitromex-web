@@ -28,7 +28,7 @@ export const ColorSerie = () => {
         {product !== undefined ?(
           <>
             <div className="xsmall:px-4 medium:px-12">
-              <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4">
+              <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4 gap-6 w-full">
                 {state.color.map((color, i) => (
                   <CardColor
                     color={color}

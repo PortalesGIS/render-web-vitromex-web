@@ -40,7 +40,7 @@ h1{
 }
 
 span,
-p, button {
+p, button, a {
   font-family: "Montserrat-Regular", Arial, sans-serif;
 }
 
@@ -51,7 +51,7 @@ p, button {
 }
 
 .gridCards24 {
-  @apply grid medium:grid-cols-card_grid_medium small:grid-cols-card_grid_small xsmall:grid-cols-card_grid_xsmall;
+  @apply grid  small:grid-cols-4 xsmall:grid-cols-2;
 }
 
 .gridCardsColorName {
@@ -84,6 +84,11 @@ p, button {
 
 .formloging{
   @apply bg-red-400;
+}
+
+
+.text-shadow{
+  text-shadow: 0px 3px 6px rgba(150, 150, 150, 1);
 }
 
 /* scroll */

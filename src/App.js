@@ -5,10 +5,10 @@ import "./App.css";
 import 'animate.css';
 
 function App() {
-  console.log("v0.40.5");
+  console.log("v0.40.7");
   return (
     <>
-      <div className="fixed z-50 bg-blue-100 top-0 left-0">v0.40.5</div>
+      <div className="fixed z-50 bg-blue-100 top-0 left-0">v0.40.7</div>
       <Provider store={store}>
         <AppRouter />
       </Provider>

@@ -39,16 +39,16 @@ export const HeaderProduct = ({ menuValue, actionmenu }) => {
 const MedimProduct = ({moveSeries}) => {
   return (
     <div className="gridLayout h-full">
-      <div className="medium:col-span-2 self-center justify-self-center ">
+      <div className="medium:col-span-2 self-center pl-5 w-40 large:w-44">
         <a href="https://www.vitromex.com.mx/">
-          <img src={logovitromex} alt="logo" className="h-4 w-24" />
+          <img src={logovitromex} alt="logo" className="h-full w-full" />
         </a>
       </div>
       <div className=" col-span-10 flex justify-between items-center pr-14">
         <div className="cursor-pointer" onClick={moveSeries}>
-          <h1 className="text-white font-bold text-15px">VITRORENDER</h1>
+          <h1 className="text-white font-bold text-15px large:text-subtitle_movil">VITRORENDER</h1>
         </div>
-        <div className="text-white flex justify-between items-center w-96 text-12px">
+        <div className="text-white flex justify-between items-center text-12px gap-x-10">
           <LinkExterno
             url={"https://www.vitromex.com.mx/catalogo"}
             texto={"Catálogo"}

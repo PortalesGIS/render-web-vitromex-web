@@ -19,21 +19,20 @@ export const CardSeries = ({ data }) => {
   };
   // console.log(data.rectified);
   return (
-    <div
-      className={`cursor-pointer px-3`}
-      onClick={navigateParams}
-    >
+    <div className={`cursor-pointer`} onClick={navigateParams}>
       <div className="h-full overflow-hidden">
-        <div className="rounded-3xl overflow-hidden">
-          <img
-            src={
-              data.img
-                ? data.img
-                : "https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
-            }
-            alt="serie"
-            className="h-full w-full object-cover"
-          />
+        <div className="xsmall:h-img_series_xsmall small:h-img_series_small medium:h-img_series_medium large:h-img_series_large">
+          <div className="rounded-3xl overflow-hidden h-full">
+            <img
+              src={
+                data.img
+                  ? data.img
+                  : "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"
+              }
+              alt="serie"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
         <div className="">
           <div>
@@ -43,12 +42,11 @@ export const CardSeries = ({ data }) => {
           </div>
           <div className="medium:text-12px xsmall:text-10px text-primario/gris">
             {data.format.map((format, i) => (
-              <span  key={format}>
+              <span key={format}>
                 {i < 2 && `${format}`}
-                {i !== format.length - 1 && i < 1&& ','}
-                {i === 2 && '...'}
+                {i !== format.length - 1 && i < 1 && ","}
+                {i === 2 && "..."}
               </span>
-
             ))}
             <span>/</span>
             {data.rectified.map((rectified, i) => (

@@ -67,6 +67,7 @@ module.exports = {
         neutral80: "#282828",
         Feedback_Warning: "#FF6666",
         Feedback_Information: "#66FFF6",
+        "Gris_oscuro": "#242424",
       },
       backgroundImage: {
         landing: "url('./assets/background/landing.jpg')",
@@ -91,6 +92,7 @@ module.exports = {
         card_xsmall_series_name_color: "10rem",
       },
       maxHeight: {
+        img_series_medium: "33rem",
         img_instalation_medium: "33rem",
         img_instalation_small: "19rem",
         img_instalation_xsmall: "13.5rem",
@@ -100,6 +102,7 @@ module.exports = {
         card_large_series_name_color: "20rem",
       },
       minHeight: {
+        img_series_medium: "33rem",
         img_instalation_medium: "33rem",
         img_instalation_small: "19rem",
         img_instalation_xsmall: "13.5rem",
@@ -109,6 +112,10 @@ module.exports = {
         card_large_series_name_color: "24rem",
       },
       height: {
+        img_series_large: "21.5rem",
+        img_series_medium: "13rem",
+        img_series_small: "8rem",
+        img_series_xsmall: "9.5rem",
         img_instalation_medium: "33rem",
         img_instalation_small: "19rem",
         img_instalation_xsmall: "13.5rem",
@@ -123,7 +130,7 @@ module.exports = {
         card_medium_series_name_color: "15rem",
         card_small_series_name_color: "10rem",
         card_xsmall_series_name_color: "13rem",
-        card_large_series_name_color: "20rem",
+        card_large_series_name_color: "15rem",
       },
       gridTemplateColumns: {
         xsmall: "repeat(4, 25%)",

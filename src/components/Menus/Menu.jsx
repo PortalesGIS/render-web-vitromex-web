@@ -12,7 +12,7 @@ export const Menu = ({ menuResponsive, actionmenu }) => {
 
 const MediumMenu = () => {
   return (
-    <div className={`bg-neutral hidden medium:block medium:col-span-2`}>
+    <div className={`bg-Gris_oscuro hidden medium:block medium:col-span-2`}>
       <MenuProduct />
     </div>
   );
@@ -26,7 +26,7 @@ const ResponsiveMenu = ({ menuResponsive, actionmenu }) => {
       }`}
     >
       <div className={`gridLayout h-full`}>
-        <div className="bg-neutral col-span-3 small:col-span-5 overflow-hidden">
+        <div className="bg-Gris_oscuro col-span-3 small:col-span-5 overflow-hidden">
           <MenuProduct />
         </div>
         <div className="small:col-span-3" onClick={actionmenu}></div>
