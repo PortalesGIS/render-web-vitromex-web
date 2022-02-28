@@ -7,8 +7,8 @@ export const FooterForm = ({ direction,text, textdirection }) => {
     navigate(direction);
   };
   return (
-    <div className="mt-14">
-      <div className="text-paragraph_movil text-white">
+    <div className="mt-6">
+      <div className="text-paragraph_movil text-white flex flex-col items-center">
         <span>{text} </span>
         <span
           className="cursor-pointer font-bold underline"

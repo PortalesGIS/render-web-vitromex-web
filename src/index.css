@@ -78,6 +78,14 @@ p, button {
   @apply border-2 border-black flex gap-2 items-center medium:w-4/5 p-1 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
 }
 
+.formGrid{
+  @apply grid xsmall:grid-cols-xsmall small:grid-cols-small medium:grid-cols-form_medium pt-forms;
+}
+
+.formloging{
+  @apply bg-red-400;
+}
+
 /* scroll */
 ::-webkit-scrollbar {
   width: 5px;

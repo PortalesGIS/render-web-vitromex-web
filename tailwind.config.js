@@ -7,6 +7,15 @@ module.exports = {
       medium: "1240px",
       large: "1448px",
     },
+    borderWidth: {
+      DEFAULT: '1px',
+      '0': '0',
+      '2': '2px',
+      '3': '3px',
+      '4': '4px',
+      '6': '6px',
+      '8': '8px',
+    },
     fontSize: {
       title_movil: "2.5rem",
       title_table: "3.125rem",
@@ -65,6 +74,9 @@ module.exports = {
         login: "url('./assets/background/form.JPG')",
         restore: "url('./assets/background/restablecer.png')",
       },
+      padding: {
+        'forms': '5.5rem',
+      },
       width: {
         menuResponsive: "16rem",
         card_large_series: "18rem",
@@ -117,6 +129,10 @@ module.exports = {
         xsmall: "repeat(4, 25%)",
         small: "repeat(8, 12.5%)",
         medium: "repeat(12, 8.33%)",
+        form_medium: "repeat(7, 14.28%)",
+        form_small: "repeat(8, 12.5%)",
+        form_medium_space: "repeat(5, 20%)",
+        form_small_space: "repeat(6, 16.66%)",
         header_product: "20% 80%",
         card_grid_medium_color_name: "repeat(4, 25%)",
         card_grid_medium_name: "repeat(3, 33.3%)",
@@ -126,6 +142,7 @@ module.exports = {
         card_grid_xsmall: "repeat(2, 50%)",
       },
       gridTemplateRows: {
+        form_medium_space: "20% 80%",
         lading_header: "5% 7% 88%",
         layout_login: "5% 7% 1fr",
         layout_product: "5% 7% 88%",

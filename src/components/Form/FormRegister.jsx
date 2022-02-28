@@ -4,7 +4,7 @@ import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
 import advertencia from "../../assets/advertencia.svg";
 import selectactive from "../../assets/select_flecha_active.svg";
-import { TitleForm } from "./TextForm/TitleForm";
+import flechadesactive from "../../assets/flechadesactive.svg";
 import { ButtonRedirect } from "../Buttons/ButtonRedirect";
 import { useShowPassword } from "../../hooks/useShowPassword";
 import { useForm } from "../../hooks/useForm";
@@ -18,6 +18,7 @@ export const FormRegister = () => {
   const state = useSelector((state) => state.ui.errorInput);
   const dispatch = useDispatch();
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
+  const [hasVisibilitySelect, showVisibilitySelect] = useShowPassword(false);
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
     useShowPassword(true);
   const [formValues, handleInputChange, validationInput] = useForm({
@@ -42,7 +43,7 @@ export const FormRegister = () => {
     secondPassword,
     check,
   } = formValues;
-  const { equalPassword, isEmail } = validationInput;
+  const { equalPassword } = validationInput;
   const [validationsCompleteInput] = useCompleteInput(formValues);
 
   useEffect(() => {
@@ -51,160 +52,217 @@ export const FormRegister = () => {
     };
   }, []);
 
+  const addProfesion = (profesion) => {
+    showVisibilitySelect();
+    handleInputChange({ target: { name: "profession", value: profesion } });
+  };
+
   return (
     <div className="">
-      <div className="flex xsmall:flex-col medium:flex-row justify-between medium:gap-48 xsmall:gap-y-8 text-white">
-        <div className="flex flex-col gap-y-8 w-72">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="flex xsmall:flex-col medium:flex-row justify-between medium:gap-48 xsmall:gap-y-8 text-white"
+      >
+        <div className="flex flex-col w-72 gap-y-3">
           {/* name */}
-          <div className="relative">
+          <div className="relative z-0 mb-6 w-full group">
             <input
-              type="text"
-              placeholder="Nombre"
+              type="name"
               name="name"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !name && state ? "border-Feedback_Warning" : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
               value={name}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${
-                !name && state ? "border-Feedback_Warning" : "border-white"
-              } bg-transparent focus:outline-none`}
             />
+            <label
+              htmlFor="name"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Nombre
+            </label>
             <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {!name && state && <InputError text={"Completa este campo"} />}
-              </div>
+              {!name && state && <InputError text={"Completa este campo"} />}
             </div>
           </div>
           {/* lastName */}
-          <div className="relative">
+          <div className="relative z-0 mb-6 w-full group">
             <input
-              type="text"
-              placeholder="Apellido"
+              type="lastName"
               name="lastName"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !lastName && state
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
               value={lastName}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${
-                !lastName && state ? "border-Feedback_Warning" : "border-white"
-              } bg-transparent focus:outline-none`}
             />
+            <label
+              htmlFor="lastName"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Apellidos
+            </label>
             <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {!lastName && state && (
-                  <InputError text={"Completa este campo"} />
-                )}
-              </div>
+              {!lastName && state && (
+                <InputError text={"Completa este campo"} />
+              )}
             </div>
           </div>
           {/* email */}
-          <div className="relative">
+          <div className="relative z-0 mb-6 w-full group">
             <input
-              type="text"
-              placeholder="Correo electrónico"
+              type="email"
               name="email"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !email && state ? "border-Feedback_Warning" : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
               value={email}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${
-                !email && state ? "border-Feedback_Warning" : "border-white"
-              } bg-transparent focus:outline-none`}
             />
+            <label
+              htmlFor="email"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Correo electrónico
+            </label>
             <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {state ? (
-                  <InputError text={"Este correo no existe"} />
-                ) : (
-                  !isEmail && (
-                    <InputError text={"No es un correo electrónico válido."} />
-                  )
-                )}
-              </div>
+              {state && (
+                <InputError text={"No es un correo electrónico válido."} />
+              )}
             </div>
           </div>
           {/* profession */}
-          <div className="relative text-white">
-            <select
-              className="w-full appearance-none border-b-2 bg-transparent focus:outline-none"
-              name="profession"
-              value={profession}
-              onChange={handleInputChange}
+          <div className="relative z-1 mb-6 w-full group">
+            <div
+              id="dropdownButton"
+              data-dropdown-toggle="dropdown"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !profession && state
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              type="button"
             >
-              <option className="text-white" hidden value="null">
-                Profesión
-              </option>
-              <option className="text-black" value="Arquitecto">
-                Arquitecto
-              </option>
-              <option className="text-black" value="Diseñador">
-                Diseñador
-              </option>
-              <option className="text-black" value="Otro">
-                Otro
-              </option>
-            </select>
-            <div className="absolute h-5 w-5 top-1 right-0">
-              <img src={selectactive} alt="" className="w-full h-auto" />
+              {profession === "" ? (
+                <span>Profesión</span>
+              ) : (
+                <span>{profession}</span>
+              )}
             </div>
-            <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {!profession && state && (
-                  <InputError text={"Completa este campo"} />
-                )}
+            <div
+              className={`absolute w-full bg-white top-12 ${
+                hasVisibilitySelect ? "hidden" : "none"
+              }`}
+            >
+              <div
+                className="pl-2 h-8 flex items-center hover:bg-neutral40 text-black hover:text-white cursor-pointer"
+                onClick={() => addProfesion("Arquitecto")}
+              >
+                <span>Arquitecto</span>
+              </div>
+              <div
+                className="pl-2 h-8 flex items-center hover:bg-neutral40 text-black hover:text-white cursor-pointer"
+                onClick={() => addProfesion("Diseñador")}
+              >
+                <span>Diseñador</span>
+              </div>
+              <div
+                className="pl-2 h-8 flex items-center hover:bg-neutral40 text-black hover:text-white cursor-pointer"
+                onClick={() => addProfesion("Otro")}
+              >
+                <span>Otro</span>
               </div>
             </div>
+            <span
+              id="visiblity-toggle"
+              className="absolute top-5 right-0 h-5 w-5 cursor-pointer"
+              onClick={showVisibilitySelect}
+            >
+              <img
+                src={hasVisibilitySelect ? selectactive : flechadesactive}
+                alt="ojoabierto"
+              />
+            </span>
           </div>
         </div>
         {/* parte 2 */}
-        <div className="flex flex-col gap-y-8 w-72">
+        <div className="flex flex-col w-72 gap-y-3">
           {/* country */}
-          <div className="relative">
+          <div className="relative z-0 mb-6 w-full group">
             <input
-              type="text"
-              placeholder="Estado de la república"
+              type="country"
               name="country"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !country && state
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
               value={country}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${
-                !country && state ? "border-Feedback_Warning" : "border-white"
-              } bg-transparent focus:outline-none`}
             />
+            <label
+              htmlFor="country"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Estado de la república
+            </label>
             <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {!country && state && (
-                  <InputError text={"Completa este campo"} />
-                )}
-              </div>
+              {!country && state && <InputError text={"Completa este campo"} />}
             </div>
           </div>
           {/* city */}
-          <div className="relative">
+          <div className="relative z-0 mb-6 w-full group">
             <input
-              type="text"
-              placeholder="Ciudad"
+              type="city"
               name="city"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !city && state ? "border-Feedback_Warning" : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
               value={city}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${
-                !city && state ? "border-Feedback_Warning" : "border-white"
-              } bg-transparent focus:outline-none`}
             />
+            <label
+              htmlFor="city"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Ciudad
+            </label>
             <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {!city && state && <InputError text={"Completa este campo"} />}
-              </div>
+              {!city && state && <InputError text={"Completa este campo"} />}
             </div>
           </div>
           {/* password */}
-          <div className="relative">
+          <div className="relative z-0 mb-6 w-full group">
             <input
               type={hasVisibilityPassword ? "password" : "text"}
-              placeholder="Contraseña"
               name="password"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !password && state
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
               value={password}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${
-                !password && state ? "border-Feedback_Warning" : "border-white"
-              } bg-transparent focus:outline-none`}
             />
+            <label
+              htmlFor="password"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Contraseña
+            </label>
             <span
               id="visiblity-toggle"
-              className="absolute right-0 h-5 w-5 cursor-pointer"
+              className="absolute top-5 right-0 h-5 w-5 cursor-pointer"
               onClick={showPassword}
             >
               <img
@@ -213,28 +271,32 @@ export const FormRegister = () => {
               />
             </span>
             <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {!password && state && (
-                  <InputError text={"Completa este campo"} />
-                )}
-              </div>
+              {!password && state && (
+                <InputError text={"Completa este campo"} />
+              )}
             </div>
           </div>
           {/* password confirm*/}
-          <div className="relative">
+          <div className="relative z-0 mb-6 w-full group">
             <input
               type={hasVisibilityConfirmPassword ? "password" : "text"}
-              placeholder="Confirmar contraseña"
               name="secondPassword"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !equalPassword ? "border-Feedback_Warning" : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
               value={secondPassword}
               onChange={handleInputChange}
-              className={`w-full appearance-none border-b-2 ${
-                !secondPassword && state ? "border-Feedback_Warning" : "border-white"
-              } bg-transparent focus:outline-none`}
             />
+            <label
+              htmlFor="secondPassword"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Confirmar contraseña
+            </label>
             <span
               id="visiblity-toggle"
-              className="absolute right-0 h-5 w-5 cursor-pointer"
+              className="absolute top-5 right-0 h-5 w-5 cursor-pointer"
               onClick={showConfirmPassword}
             >
               <img
@@ -243,14 +305,9 @@ export const FormRegister = () => {
               />
             </span>
             <div className="absolute w-full">
-              <div className="relative flex gap-0 flex-col">
-                {!secondPassword && state && (
-                  <InputError text={"Completa este campo"} />
-                )}
-                {!equalPassword && (
-                  <InputError text={"La contraseña no coincide"} />
-                )}
-              </div>
+              {!equalPassword && (
+                <InputError text={"La contraseña no coincide"} />
+              )}
             </div>
           </div>
           {/* check */}
@@ -293,7 +350,7 @@ export const FormRegister = () => {
             />
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
