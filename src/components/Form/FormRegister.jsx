@@ -97,7 +97,7 @@ export const FormRegister = () => {
           <div className="relative">
             <input
               type="text"
-              placeholder="Correo electronico"
+              placeholder="Correo electrónico"
               name="email"
               value={email}
               onChange={handleInputChange}
@@ -111,7 +111,7 @@ export const FormRegister = () => {
                   <InputError text={"Este correo no existe"} />
                 ) : (
                   !isEmail && (
-                    <InputError text={"No es un correo electronico valido"} />
+                    <InputError text={"No es un correo electrónico válido."} />
                   )
                 )}
               </div>
@@ -248,7 +248,7 @@ export const FormRegister = () => {
                   <InputError text={"Completa este campo"} />
                 )}
                 {!equalPassword && (
-                  <InputError text={"No es igual la contraseña"} />
+                  <InputError text={"La contraseña no coincide"} />
                 )}
               </div>
             </div>
@@ -278,14 +278,14 @@ export const FormRegister = () => {
               <div className="bg-Feedback_Warning flex h-10 w-72 items-center justify-center gap-3">
                 <img src={advertencia} alt="advertancia" />
                 <span className="text-10px text-black">
-                  Aún no has aceptado los terminos y condiciones
+                  Aún no has aceptado el aviso de privacidad
                 </span>
               </div>
             )}
           </div>
           <div className="flex justify-center items-center">
             <ButtonRedirect
-              text={"Crear Usuario"}
+              text={"Registrarme"}
               direction={`${Path.PRODUCT}/${Path.SERIES}`}
               action={typesAuhtButton.register}
               data={formValues}

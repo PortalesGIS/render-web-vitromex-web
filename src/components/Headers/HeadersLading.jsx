@@ -21,9 +21,9 @@ export const HeadersLading = () => {
 const MediumHeaderLanding = () => {
   return (
     <div className="flex justify-between h-full px-4 items-center">
-      <div>
+      <div className="w-40">
         <a href="https://www.vitromex.com.mx/">
-          <img src={vitromex} alt="vitromex" />
+          <img src={vitromex} alt="vitromex" className="h-full w-full"/>
         </a>
       </div>
       <div className="text-white text-12px flex gap-4">

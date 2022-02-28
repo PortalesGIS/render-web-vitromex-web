@@ -48,7 +48,7 @@ export const FormRestore = () => {
         <div className="relative">
           <input
             type="text"
-            placeholder="Correo electronico"
+            placeholder="Correo electrónico"
             name="email"
             value={email}
             onChange={handleInputChange}
@@ -62,7 +62,7 @@ export const FormRestore = () => {
                 <InputError text={"Este correo no existe"} />
               ) : (
                 !isEmail && (
-                  <InputError text={"No es un correo electronico valido"} />
+                  <InputError text={"No es un correo electrónico válido."} />
                 )
               )}
             </div>
@@ -123,7 +123,7 @@ export const FormRestore = () => {
           <div className="absolute w-full">
             <div className="relative flex gap-0 flex-col">
               {!equalPassword && (
-                <InputError text={"No es igual la contraseña"} />
+                <InputError text={"La contraseña no coincide"} />
               )}
               {!secondPassword && state && (
                 <InputError text={"Completa este campo"} />

@@ -45,7 +45,7 @@ export const FormLogin = () => {
         <div className="relative">
           <input
             type="text"
-            placeholder="Correo electronico"
+            placeholder="Correo electrónico"
             name="email"
             className={`w-full appearance-none border-b-2 ${
               !email && state ? "border-Feedback_Warning" : "border-white"
@@ -59,7 +59,7 @@ export const FormLogin = () => {
                 <InputError text={"Este correo no existe"} />
               ) : (
                 !isEmail && (
-                  <InputError text={"No es un correo electronico valido"} />
+                  <InputError text={"No es un correo electrónico válido."} />
                 )
               )}
             </div>

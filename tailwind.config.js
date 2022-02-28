@@ -61,9 +61,9 @@ module.exports = {
       },
       backgroundImage: {
         landing: "url('./assets/background/landing.jpg')",
-        register: "url('./assets/background/form.JPG')",
+        register: "url('./assets/background/registro.png')",
         login: "url('./assets/background/form.JPG')",
-        restore: "url('./assets/background/form.JPG')",
+        restore: "url('./assets/background/restablecer.png')",
       },
       width: {
         menuResponsive: "16rem",
