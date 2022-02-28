@@ -1,6 +1,7 @@
 import React from "react";
 import { useShowMenu } from "../../hooks/useShowMenu";
 import menu from "../../assets/Menú.svg";
+import equis from "../../assets/equis.svg";
 import vitromex from "../../assets/VITROMEX_LOGO.svg";
 import { LinkExterno } from "../shared/LinkExterno";
 import { MenuVitromex } from "../Menus/MenuVitromex";
@@ -57,7 +58,7 @@ const ResponsiveHeaderLanding = () => {
         </div>
         <div>
           <img
-            src={menu}
+            src={visibilityMenu ? equis : menu}
             alt="menu"
             className="cursor-pointer"
             onClick={showMenu}

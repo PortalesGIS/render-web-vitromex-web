@@ -2,10 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useShowMenu } from "../../../hooks/useShowMenu";
-import { filterFormat, filterTypology } from "../../../modules/actions/products";
+import {
+  filterFormat,
+  filterTypology,
+} from "../../../modules/actions/products";
 import { Path } from "../../../utils/route";
 
-export const Filtertype = ({ typeFilter, img, imgActive }) => {
+export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
   let filterState = [];
   const state = useSelector((state) => state.product);
   const navigate = useNavigate();
@@ -30,18 +33,24 @@ export const Filtertype = ({ typeFilter, img, imgActive }) => {
     }
   };
   return (
-    <div className="text-white">
+    <div className="text-white" style={{width: '90%'}}>
       <div
-        className={`flex items-center gap-4 cursor-pointer hover:bg-neutral20 rounded-r-full ${
-          visibilityMenu && "bg-white text-black"
-        }`}
+        className={`flex items-center gap-4 h-8 cursor-pointer hover:bg-neutral20 hover:text-neutral80 rounded-r-full ${
+          visibilityMenu && "bg-white text-black font-bold"
+        } relative`}
         onClick={showMenu}
       >
-        <div>
-          <img src={visibilityMenu ? imgActive : img} alt="formato" />
-        </div>
-        <div>
-          <span>{typeFilter} </span>
+        {visibilityMenu ?(
+          <div
+          className={`ml-1 h-5 w-full absolute  bg-left bg-no-repeat bg-contain ${activeButton}`}
+          />
+          ) : (
+          <div
+            className={`ml-1 h-5 w-full absolute  bg-left bg-no-repeat bg-contain ${imgActive} ${img}`}
+          />
+        )}
+        <div className={`pl-12 flex justify-center items-center `}>
+          <span className="text-14px ">{typeFilter} </span>
         </div>
       </div>
       {/* base */}

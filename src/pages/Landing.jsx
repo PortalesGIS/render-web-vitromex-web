@@ -37,7 +37,7 @@ const TextInformation = () => {
           </p>
         </div>
       </div>
-      <div>
+      <div className="">
         <ButtonRedirect
           text={"Empezar a construir"}
           direction={`${Path.FORM}/${Path.LOGIN}`}

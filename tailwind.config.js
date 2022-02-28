@@ -74,6 +74,13 @@ module.exports = {
         register: "url('./assets/background/registro.png')",
         login: "url('./assets/background/form.JPG')",
         restore: "url('./assets/background/restablecer.png')",
+        usuario: "url('./assets/Usuario.svg')",
+        exit: "url('./assets/Exit.svg')",
+        exit_hover: "url('./assets/exitnegro.svg')",
+        formato: "url('./assets/Formato.svg')",
+        formato_hover: "url('./assets/FormatoNegro.svg')",
+        tipologia: "url('./assets/Tipología.svg')",
+        tipologia_hover: "url('./assets/TipologíaNegro.svg')"
       },
       padding: {
         'forms': '5.5rem',
