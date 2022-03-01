@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Path } from "../../utils/route";
 import ojoabierto from "../../assets/ojoabierto.svg";
 import ojoscerrado from "../../assets/ojocerrado.svg";
@@ -15,12 +15,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { errorLoginClean } from "../../modules/actions/auth";
 
 export const FormRegister = () => {
-  const state = useSelector((state) => state.ui.errorInput);
+  const state = useSelector((state) => state.ui);
   const dispatch = useDispatch();
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [hasVisibilitySelect, showVisibilitySelect] = useShowPassword(false);
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
     useShowPassword(true);
+    const [check, setcheck] = useState(false)
   const [formValues, handleInputChange, validationInput] = useForm({
     name: "",
     lastName: "",
@@ -29,8 +30,7 @@ export const FormRegister = () => {
     country: "",
     city: "",
     password: "",
-    secondPassword: "",
-    check: false,
+    secondPassword: ""
   });
   const {
     name,
@@ -40,8 +40,7 @@ export const FormRegister = () => {
     country,
     city,
     password,
-    secondPassword,
-    check,
+    secondPassword
   } = formValues;
   const { equalPassword } = validationInput;
   const [validationsCompleteInput] = useCompleteInput(formValues);
@@ -51,6 +50,10 @@ export const FormRegister = () => {
       dispatch(errorLoginClean());
     };
   }, []);
+
+  const handleInputChangeCheck = ({ target }) => {
+    setcheck(!check);
+  }
 
   const addProfesion = (profesion) => {
     showVisibilitySelect();
@@ -72,7 +75,7 @@ export const FormRegister = () => {
               type="name"
               name="name"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !name && state ? "border-Feedback_Warning" : "border-gray-300"
+                !name && state.errorInput ? "border-Feedback_Warning" : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
               placeholder=" "
               value={name}
@@ -85,7 +88,7 @@ export const FormRegister = () => {
               Nombre
             </label>
             <div className="absolute w-full">
-              {!name && state && <InputError text={"Completa este campo"} />}
+              {!name && state.errorInput && <InputError text={"Completa este campo"} />}
             </div>
           </div>
           {/* lastName */}
@@ -94,7 +97,7 @@ export const FormRegister = () => {
               type="lastName"
               name="lastName"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !lastName && state
+                !lastName && state.errorInput
                   ? "border-Feedback_Warning"
                   : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
@@ -109,7 +112,7 @@ export const FormRegister = () => {
               Apellidos
             </label>
             <div className="absolute w-full">
-              {!lastName && state && (
+              {!lastName && state.errorInput && (
                 <InputError text={"Completa este campo"} />
               )}
             </div>
@@ -120,7 +123,7 @@ export const FormRegister = () => {
               type="email"
               name="email"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !email && state ? "border-Feedback_Warning" : "border-gray-300"
+                !email && state.errorInput ? "border-Feedback_Warning" : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
               placeholder=" "
               value={email}
@@ -133,7 +136,7 @@ export const FormRegister = () => {
               Correo electrónico
             </label>
             <div className="absolute w-full">
-              {state && (
+              {state.errorInput && (
                 <InputError text={"No es un correo electrónico válido."} />
               )}
             </div>
@@ -144,7 +147,7 @@ export const FormRegister = () => {
               id="dropdownButton"
               data-dropdown-toggle="dropdown"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !profession && state
+                !profession && state.errorInput
                   ? "border-Feedback_Warning"
                   : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
@@ -200,7 +203,7 @@ export const FormRegister = () => {
               type="country"
               name="country"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !country && state
+                !country && state.errorInput
                   ? "border-Feedback_Warning"
                   : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
@@ -215,7 +218,7 @@ export const FormRegister = () => {
               Estado de la república
             </label>
             <div className="absolute w-full">
-              {!country && state && <InputError text={"Completa este campo"} />}
+              {!country && state.errorInput && <InputError text={"Completa este campo"} />}
             </div>
           </div>
           {/* city */}
@@ -224,7 +227,7 @@ export const FormRegister = () => {
               type="city"
               name="city"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !city && state ? "border-Feedback_Warning" : "border-gray-300"
+                !city && state.errorInput ? "border-Feedback_Warning" : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
               placeholder=" "
               value={city}
@@ -237,7 +240,7 @@ export const FormRegister = () => {
               Ciudad
             </label>
             <div className="absolute w-full">
-              {!city && state && <InputError text={"Completa este campo"} />}
+              {!city && state.errorInput && <InputError text={"Completa este campo"} />}
             </div>
           </div>
           {/* password */}
@@ -246,7 +249,7 @@ export const FormRegister = () => {
               type={hasVisibilityPassword ? "password" : "text"}
               name="password"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !password && state
+                !password && state.errorInput
                   ? "border-Feedback_Warning"
                   : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
@@ -271,7 +274,7 @@ export const FormRegister = () => {
               />
             </span>
             <div className="absolute w-full">
-              {!password && state && (
+              {!password && state.errorInput && (
                 <InputError text={"Completa este campo"} />
               )}
             </div>
@@ -318,20 +321,22 @@ export const FormRegister = () => {
                 className="accent-neutral80 h-6 w-6"
                 name="check"
                 value={check}
-                onChange={handleInputChange}
+                onChange={handleInputChangeCheck}
               />
               <p className="text-12px">
-                Acepto los{" "}
-                <span className="cursor-pointer text-Feedback_Information">
-                  términos y condiciones{" "}
-                </span>{" "}
+                Acepta el{" "}
+                <a href="https://www.vitromex.com.mx/assets/pdf/aviso-de-privacidad.pdf">
+                  <span className="cursor-pointer text-Feedback_Information">
+                    aviso de privacidad{" "}
+                  </span>{" "}
+                </a>
                 de Vitrorender
               </p>
             </div>
           </div>
           {/* advertencia check */}
           <div className="my-0 mx-auto h-10">
-            {!check && (
+            {!check && state.validationExtra && (
               <div className="bg-Feedback_Warning flex h-10 w-72 items-center justify-center gap-3">
                 <img src={advertencia} alt="advertancia" />
                 <span className="text-10px text-black">
@@ -346,7 +351,8 @@ export const FormRegister = () => {
               direction={`${Path.PRODUCT}/${Path.SERIES}`}
               action={typesAuhtButton.register}
               data={formValues}
-              validations={[equalPassword, check, validationsCompleteInput]}
+              validations={[equalPassword, validationsCompleteInput]}
+              validation_extra={[check]}
             />
           </div>
         </div>

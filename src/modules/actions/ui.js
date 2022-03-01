@@ -16,3 +16,12 @@ export const modalActive = (value) => {
     },
   };
 };
+
+export const validationExtraActive = (value) => {
+  return {
+    type: types.validationExtra,
+    payload: {
+      validationExtra: value,
+    },
+  };
+};

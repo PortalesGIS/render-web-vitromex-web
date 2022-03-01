@@ -8,6 +8,7 @@ export const types = {
     uiErrorInput: '[ui] errorinput',
     modalStatus: '[ui] modalStatus',
     filterActive: '[ui] filterActive',
+    validationExtra: '[ui] validationExtra',
     products: '[product] getproducts',
     productsError: '[product] errorproducts',
     loading: '[product] loading',

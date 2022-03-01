@@ -4,10 +4,16 @@ const initialState = {
   errorInput: false,
   modalStatus: false,
   filterActive: false,
+  validationExtra: false
 };
 
 export const uiReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.validationExtra:
+      return {
+        ...state,
+        validationExtra: action.payload.validationExtra,
+      };
     case types.uiErrorInput:
       return {
         ...state,

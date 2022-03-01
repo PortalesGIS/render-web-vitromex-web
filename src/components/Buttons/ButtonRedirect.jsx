@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authAxios } from "../../modules/actions/auth";
 import { useNavigate } from "react-router-dom";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
+import { validationExtraActive } from "../../modules/actions/ui";
 
 export const ButtonRedirect = ({
   text,
@@ -10,6 +11,7 @@ export const ButtonRedirect = ({
   action = typesAuhtButton.landing,
   data = {},
   validations = [true],
+  validation_extra = [true]
 }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -21,13 +23,19 @@ export const ButtonRedirect = ({
       if (action === typesAuhtButton.landing) {
         navigate(direction);
       } else {
-        dispatch(authAxios(action, data));
+        const passExtra = validation_extra.every((validation) => validation);
+        if(passExtra){
+          dispatch(authAxios(action, data));
+        }else {
+          dispatch(validationExtraActive(true))
+        }
       }
     }
   };
 
   useEffect(() => {
     if (state.auth.authentication && action !== "landing") {
+      dispatch(validationExtraActive(false))
       navigate(direction);
     }
   }, [state]);

@@ -14,6 +14,7 @@ export const authAxios = (type, dataform) => {
         localStorage.setItem('name', response.data.name)
         localStorage.setItem('email', email)
         // localStorage.setItem('password', password)
+        dispatch(errorLoginClean());
         dispatch(login(response.data.name));
       } catch (error) {
         console.log(error);
@@ -27,6 +28,7 @@ export const authAxios = (type, dataform) => {
         localStorage.setItem('name', response.data.name)
         localStorage.setItem('email', res.email)
         // localStorage.setItem('password', res.password)
+        dispatch(errorLoginClean());
         dispatch(restore(response.data.name));
       } catch (error) {
         console.log(error);
@@ -39,6 +41,7 @@ export const authAxios = (type, dataform) => {
         localStorage.setItem('name', response.data.name)
         localStorage.setItem('email', res.email)
         // localStorage.setItem('password', res.password)
+        dispatch(errorLoginClean());
         dispatch(resgiter(response.data.name));
       } catch (error) {
         console.log(error);
