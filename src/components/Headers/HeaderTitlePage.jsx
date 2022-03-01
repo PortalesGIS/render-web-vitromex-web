@@ -11,7 +11,7 @@ export const HeaderTitlePage = () => {
     return (
       <div className="h-full items-center grid grid-cols-3">
         <div></div>
-        <div className="text-20px large:text-subtitle_table font-bold uppercase text-shadow justify-self-center">
+        <div className="text-paragraph_table large:text-subtitle_table font-bold uppercase text-shadow justify-self-center">
           <h1>{state}</h1>
         </div>
         <div className="justify-self-end small:block hidden small:w-44">
@@ -22,7 +22,7 @@ export const HeaderTitlePage = () => {
   } else {
     return (
       <div className="h-full flex justify-center items-center text-neutral80">
-        <h1 className="text-20px large:text-subtitle_table font-bold uppercase text-shadow">{state}</h1>
+        <h1 className="text-paragraph_table large:text-subtitle_table font-bold uppercase text-shadow">{state}</h1>
       </div>
     );
   }
