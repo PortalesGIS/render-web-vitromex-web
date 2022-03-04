@@ -94,7 +94,7 @@ export const FindProduct = () => {
         type="text"
         placeholder="Buscar producto"
         name="product"
-        className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+        className="w-full appearance-none border-b-[1px] border-white bg-transparent focus:outline-none"
         value={product}
         onChange={handleInputChange}
       />

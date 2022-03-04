@@ -43,7 +43,7 @@ export const ButtonRedirect = ({
   return (
     <button
       className={`animate__animated flex h-10 w-56 items-center justify-center text-[18px] ${
-        !passAction ? "bg-neutral20 text-neutral40" : "bg-neutral05 hover:bg-neutral10 focus:font-bold focus:bg-neutral00 text-black"
+        !passAction ? "bg-neutral20 text-neutral40" : "bg-neutral05 hover:bg-neutral10 focus:font-medium focus:bg-neutral00 text-black"
       }`}
       onClick={actionForm}
       disabled={!passAction}

@@ -18,7 +18,7 @@ export const ButtonMenu = ({ text, action }) => {
         } `}
       />
       <div className={`pl-12 flex justify-center items-center `}>
-        <span className="text-14px ">{text}</span>
+        <span className="text-14px ">{text === 'null' ? 'Nombre de usuario' : text}</span>
       </div>
     </div>
   );
