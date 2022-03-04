@@ -58,18 +58,20 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
         <>
           {separatePage.map((page, i) => (
             <div
-              className={`h-5 w-5 medium:hover:bg-black medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
+              className={`h-5 w-5 medium:hover:bg-neutral80 medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
                 page.numberpage === numberPage &&
-                "bg-black font-bold text-white"
+                "bg-neutral80 font-bold text-white"
               }`}
+              onClick={() => {
+                if(page.numberpage < 3){
+                  selectPage(page.numberpage);
+                }
+              }}
               key={i}
             >
               {page.numberpage < 3 ? (
                 <span
                   className="block"
-                  onClick={() => {
-                    selectPage(page.numberpage);
-                  }}
                 >
                   {page.numberpage + 1}
                 </span>
@@ -92,18 +94,20 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
         <>
           {separatePage.map((page, i) => (
             <div
-              className={`h-5 w-5 medium:hover:bg-black medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
+              className={`h-5 w-5 medium:hover:bg-neutral80 medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
                 page.numberpage === numberPage &&
-                "bg-black font-bold text-white"
+                "bg-neutral80 font-bold text-white"
               }`}
               key={i}
+              onClick={() => {
+                if(i < 3){
+                  selectPage(page.numberpage);
+                }
+              }}
             >
               {i < 3 ? (
                 <span
                   className="block"
-                  onClick={() => {
-                    selectPage(page.numberpage);
-                  }}
                 >
                   {page.numberpage + 1}
                 </span>
@@ -126,9 +130,9 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
         <>
           {separatePage.map((page, i) => (
             <div
-              className={`h-5 w-5 medium:hover:bg-black medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
+              className={`h-5 w-5 medium:hover:bg-neutral80 medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
                 page.numberpage === numberPage &&
-                "bg-black font-bold text-white"
+                "bg-neutral80 font-bold text-white"
               }`}
               onClick={() => {
                 selectPage(page.numberpage);

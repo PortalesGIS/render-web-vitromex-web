@@ -14,7 +14,7 @@ export const MenuProduct = () => {
     dispatch(logoutButton());
   };
   return (
-    <div className="h-full grid grid-rows-layout_menu_slide">
+    <div className="h-full grid grid-rows-layout_menu_slide font-normal">
       <div className="pt-[60px] pl-[16px] pr-[32px] flex flex-col justify-between">
         <div className="flex flex-col justify-between h-full">
           <div className="overflow-hidden h-full flex flex-col gap-y-6">
