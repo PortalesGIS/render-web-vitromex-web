@@ -128,7 +128,7 @@ export const FormRestore = () => {
             <span
               id="visiblity-toggle"
               className="absolute top-5 right-0 h-5 w-5 cursor-pointer"
-              onClick={showPassword}
+              onClick={showConfirmPassword}
             >
               <img
                 src={hasVisibilityConfirmPassword ? ojoabierto : ojoscerrado}

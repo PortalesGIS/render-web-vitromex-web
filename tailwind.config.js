@@ -72,7 +72,7 @@ module.exports = {
       backgroundImage: {
         landing: "url('./assets/background/landing.jpg')",
         register: "url('./assets/background/registro.png')",
-        login: "url('./assets/background/form.JPG')",
+        login: "url('./assets/background/form.jpg')",
         restore: "url('./assets/background/restablecer.png')",
         usuario: "url('./assets/Usuario.svg')",
         exit: "url('./assets/Exit.svg')",

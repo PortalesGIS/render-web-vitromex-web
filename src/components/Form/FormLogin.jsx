@@ -36,7 +36,7 @@ export const FormLogin = () => {
       <div className="mb-8">
         <TitleForm
           direction={`${Path.FORM}/${Path.REGISTER}`}
-          title={"Login"}
+          title={"INICIO DE SESIÓN"}
           text={"¿No tienes cuenta?"}
           textdirection={"Regístrate"}
         />
@@ -105,7 +105,7 @@ export const FormLogin = () => {
       <FooterForm
         direction={`${Path.FORM}/${Path.RESTORE}`}
         text={"¿No pudes acceder?"}
-        textdirection={"Recupera tu contraseña"}
+        textdirection={"Restablecer tu contraseña"}
       />
       <div className="mt-12 flex justify-center items-center">
         <ButtonRedirect

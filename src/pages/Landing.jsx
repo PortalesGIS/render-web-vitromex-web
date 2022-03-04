@@ -13,7 +13,7 @@ export const Landing = () => {
         <div className="bg-landing bg-no-repeat bg-center bg-cover h-full relative">
           <div className="bg-black opacity-50 absolute h-full w-full z-1" />
           <div className="absolute z-10 h-full w-full">
-            <div className="grid gridLayout h-full items-end">
+            <div className="grid gridLayout h-full items-end text-white px-4">
               <TextInformation />
             </div>
           </div>
@@ -25,13 +25,13 @@ export const Landing = () => {
 
 const TextInformation = () => {
   return (
-    <div className="small:col-span-6 medium:col-span-7 col-span-4 text-white px-4 flex flex-col gap-y-8 pb-28">
+    <div className="small:col-span-6 medium:col-span-6 col-span-4 text-white flex flex-col gap-y-14 pb-32">
       <div>
-        <h1 className="text-title_movil small:text-title_table medium:text-title_desktop font-bold">
+        <h1 className="xsmall:text-[60px] font-bold">
           VITRORENDER
         </h1>
-        <div className="text-10px small:text-15px font-thin">
-          <p className="">
+        <div className="xsmall:text-[20px] leading-6">
+          <p className="font-extralight">
             Descarga los productos y sus variaciones necesarias para tus
             proyectos. Recursos hechos por y para profesionales.
           </p>

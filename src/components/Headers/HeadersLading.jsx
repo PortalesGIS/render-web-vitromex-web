@@ -22,12 +22,12 @@ export const HeadersLading = () => {
 const MediumHeaderLanding = () => {
   return (
     <div className="flex justify-between h-full px-4 items-center">
-      <div className="w-40">
+      <div className="w-[136px]">
         <a href="https://www.vitromex.com.mx/">
           <img src={vitromex} alt="vitromex" className="h-full w-full"/>
         </a>
       </div>
-      <div className="text-white text-12px flex gap-4">
+      <div className="text-white text-12px flex gap-x-10">
         <LinkExterno
           url={"https://www.vitromex.com.mx/catalogo"}
           texto={"Catálogo"}

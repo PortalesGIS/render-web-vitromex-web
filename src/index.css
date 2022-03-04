@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @font-face {
   font-family: "Montserrat-Bold";
   src: url("./assets/fonts/Montserrat-Bold.otf") format("opentype");
@@ -20,12 +22,12 @@
   height: 200px;
 }
 
-.menuCloseTransition{
+.menuCloseTransition {
   transition: height 1s;
   height: 0px;
 }
 
-.MontserratBold {
+/* .MontserratBold {
   font-family: "Montserrat-Bold", Arial, sans-serif;
 }
 .MontserratRegular {
@@ -36,15 +38,25 @@
 }
 
 h1{
-  font-family: "Montserrat-Bold", Arial, sans-serif;
+  font-family: "Montserrat-Bold";
 }
 
 span,
 p, button, a {
-  font-family: "Montserrat-Regular", Arial, sans-serif;
+  font-family: "Montserrat-Regular";
+}  */
+
+/* font-family: 'Be Vietnam Pro', sans-serif;
+font-family: 'Montserrat', sans-serif;*/
+
+span,
+p,
+button,
+a,
+h1,
+label {
+  font-family: "Montserrat", sans-serif;
 }
-
-
 
 .gridLayout {
   @apply grid-cols-xsmall small:grid-cols-small medium:grid-cols-medium grid;
@@ -78,16 +90,15 @@ p, button, a {
   @apply border-2 border-black flex gap-2 items-center medium:w-4/5 p-1 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
 }
 
-.formGrid{
+.formGrid {
   @apply grid xsmall:grid-cols-xsmall small:grid-cols-small medium:grid-cols-form_medium pt-forms;
 }
 
-.formloging{
+.formloging {
   @apply bg-red-400;
 }
 
-
-.text-shadow{
+.text-shadow {
   text-shadow: 0px 3px 6px rgba(150, 150, 150, 1);
 }
 

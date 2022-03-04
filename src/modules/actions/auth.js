@@ -1,6 +1,7 @@
 import clientAxios from "../../config/axios";
 import { types } from "../types/types";
 import { typesAuhtButton } from "../types/typesAuthButton";
+import { validationExtraActive } from "./ui";
 
 export const authAxios = (type, dataform) => {
   return async (dispatch) => {
@@ -15,6 +16,7 @@ export const authAxios = (type, dataform) => {
         localStorage.setItem('email', email)
         // localStorage.setItem('password', password)
         dispatch(errorLoginClean());
+        dispatch(validationExtraActive(false));
         dispatch(login(response.data.name));
       } catch (error) {
         console.log(error);
@@ -29,6 +31,7 @@ export const authAxios = (type, dataform) => {
         localStorage.setItem('email', res.email)
         // localStorage.setItem('password', res.password)
         dispatch(errorLoginClean());
+        dispatch(validationExtraActive(false));
         dispatch(restore(response.data.name));
       } catch (error) {
         console.log(error);
@@ -42,6 +45,7 @@ export const authAxios = (type, dataform) => {
         localStorage.setItem('email', res.email)
         // localStorage.setItem('password', res.password)
         dispatch(errorLoginClean());
+        dispatch(validationExtraActive(false));
         dispatch(resgiter(response.data.name));
       } catch (error) {
         console.log(error);
