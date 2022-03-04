@@ -13,6 +13,7 @@ export const ColorSerie = () => {
     dispatch(titlePages("Variaciones"));
   }, []);
   let product = state.products[state.numberProduct];
+  console.log(product);
   if (state.loading) {
     return (
       <div className="h-full overflow-auto flex justify-between flex-col">
@@ -42,7 +43,7 @@ export const ColorSerie = () => {
             <div className="w-full xsmall:px-4 medium:px-12">
               <div className="medium:h-img_instalation_medium small:h-img_instalation_small xsmall:h-img_instalation_xsmall">
                 <img
-                  src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
+                  src={product.bigImg}
                   alt="Render grande"
                   className="h-full w-full"
                 />
