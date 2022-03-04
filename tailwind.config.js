@@ -158,7 +158,7 @@ module.exports = {
       gridTemplateRows: {
         form_medium_space: "20% 80%",
         lading_header: "5% 7% 88%",
-        layout_login: "5% 7% 1fr",
+        layout_login: "5% 7% 88%",
         layout_product: "5% 7% 88%",
         layout_header: "15% 85%",
         layout_menu_slide: "80% 20%",
