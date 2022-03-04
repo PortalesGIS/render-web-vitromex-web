@@ -15,7 +15,7 @@ export const Register = () => {
 const RegistroMedium = () => {
   return (
     <div className="medium:col-span-9 xsmall:col-span-full flex justify-center items-center bg-neutral80">
-      <div className="flex flex-col gap-y-14 pt-20 mb-28">
+      <div className="flex flex-col gap-y-14 xsmall:pt-20 medium:pt-10 mb-28">
         <div>
           <div className="uppercase text-left font-bold text-Text-4xl text-white">
             <h1>Vitrorender</h1>

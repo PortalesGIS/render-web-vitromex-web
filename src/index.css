@@ -54,7 +54,8 @@ p,
 button,
 a,
 h1,
-label {
+label,
+input {
   font-family: "Montserrat", sans-serif;
 }
 
