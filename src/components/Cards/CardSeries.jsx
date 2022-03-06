@@ -34,9 +34,9 @@ export const CardSeries = ({ data }) => {
             />
           </div>
         </div>
-        <div className="">
-          <div>
-            <h1 className="medium:text-Text-xl small:text-14px text-black font-semibold">
+        <div className="flex flex-col gap-y-2">
+          <div className="lowercase medium:text-Text-xl small:text-14px text-black font-semibold">
+            <h1>
               {data.name}
             </h1>
           </div>

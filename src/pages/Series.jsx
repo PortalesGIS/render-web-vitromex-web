@@ -21,7 +21,7 @@ export const Series = () => {
       <div className="h-full overflow-auto">
         <div className="flex flex-col justify-between min-h-full gap-8">
           <div className="xsmall:px-4 medium:px-12">
-            <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4 gap-6 w-full">
+            <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4 xsmall:gap-6 large:gap-10 w-full">
             {state.productsView.map((data, i) => (
               <CardSeries data={data} key={i} />
             ))}

@@ -119,7 +119,7 @@ module.exports = {
         card_large_series_name_color: "24rem",
       },
       height: {
-        img_series_large: "21.5rem",
+        img_series_large: "19rem",
         img_series_medium: "13rem",
         img_series_small: "8rem",
         img_series_xsmall: "9.5rem",

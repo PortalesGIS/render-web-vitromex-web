@@ -13,7 +13,7 @@ export const CardColor = ({ color, number, product }) => {
                   : "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"
               }
               alt="serie"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
             />
           </div>
         </div>

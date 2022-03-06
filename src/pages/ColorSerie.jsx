@@ -13,7 +13,7 @@ export const ColorSerie = () => {
     dispatch(titlePages("Variaciones"));
   }, []);
   let product = state.products[state.numberProduct];
-  console.log(product);
+  // console.log(product);
   if (state.loading) {
     return (
       <div className="h-full overflow-auto flex justify-between flex-col">
@@ -45,7 +45,7 @@ export const ColorSerie = () => {
                 <img
                   src={product.bigImg}
                   alt="Render grande"
-                  className="h-full w-full"
+                  className="object-contain h-full w-full"
                 />
               </div>
               <div className="text-12px text-primario/gris text-center">
