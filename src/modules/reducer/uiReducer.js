@@ -1,6 +1,10 @@
 import { types } from "../types/types";
 
 const initialState = {
+  errorFormPersonality: {
+    email: false,
+    password: false
+  },
   errorInput: false,
   modalStatus: false,
   filterActive: false,
@@ -9,6 +13,11 @@ const initialState = {
 
 export const uiReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.errorFormPersonality:
+      return {
+        ...state,
+        errorFormPersonality: action.payload.errorFormPersonality,
+      };
     case types.validationExtra:
       return {
         ...state,

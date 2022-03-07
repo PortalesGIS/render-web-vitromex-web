@@ -14,7 +14,7 @@ import { errorLoginClean } from "../../modules/actions/auth";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 
 export const FormLogin = () => {
-  const state = useSelector((state) => state.ui.errorInput);
+  const state = useSelector((state) => state.ui.errorFormPersonality);
   const dispatch = useDispatch();
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [formValues, handleInputChange, validationInput] = useForm({
@@ -30,7 +30,6 @@ export const FormLogin = () => {
       dispatch(errorLoginClean());
     };
   }, []);
-
   return (
     <div className="large:w-96">
       <div className="mb-8">
@@ -52,7 +51,7 @@ export const FormLogin = () => {
             type="email"
             name="email"
             className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-              state ? "border-Feedback_Warning" : "border-gray-300"
+              state.email ? "border-Feedback_Warning" : "border-gray-300"
             }  appearance-none focus:outline-none focus:ring-0 peer`}
             placeholder=" "
             value={email}
@@ -65,7 +64,7 @@ export const FormLogin = () => {
             Correo electrónico
           </label>
           <div className="absolute w-full">
-            {state && (
+            {state.email && (
               <InputError text={"No es un correo electrónico válido."} />
             )}
           </div>
@@ -75,7 +74,7 @@ export const FormLogin = () => {
             type={hasVisibilityPassword ? "password" : "text"}
             name="password"
             className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-              !password && state ? "border-Feedback_Warning" : "border-gray-300"
+              state.password ? "border-Feedback_Warning" : "border-gray-300"
             }  appearance-none focus:outline-none focus:ring-0 peer`}
             placeholder=" "
             value={password}
@@ -98,7 +97,9 @@ export const FormLogin = () => {
             />
           </span>
           <div className="absolute w-full">
-            {!password && state && <InputError text={"Completa este campo"} />}
+            {state.password && (
+              <InputError text={"La contraseña no es correcta"} />
+            )}
           </div>
         </div>
       </form>

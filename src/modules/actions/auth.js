@@ -4,7 +4,8 @@ import { typesAuhtButton } from "../types/typesAuthButton";
 import { validationExtraActive } from "./ui";
 
 export const authAxios = (type, dataform) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const state = getState();
     if (type === typesAuhtButton.login) {
       const { email, password } = dataform;
       try {
@@ -19,8 +20,16 @@ export const authAxios = (type, dataform) => {
         dispatch(validationExtraActive(false));
         dispatch(login(response.data.name));
       } catch (error) {
-        console.log(error);
-        dispatch(errorLogin());
+        console.log(error.response.data);
+        let msg = error.response.data.msg
+        let errors = state.ui.errorFormPersonality
+        let newState = {}
+        if(msg.includes('x')) {
+          newState = {...errors, email: true, password: true}
+        }else if(msg.includes('z')){
+          newState = {...errors, password: true, email: false}
+        }
+        dispatch(errorFormPersonalityState(newState));
       }
     } else if (type === typesAuhtButton.restore) {
       const { secondPassword, ...res } = dataform;
@@ -34,7 +43,9 @@ export const authAxios = (type, dataform) => {
         dispatch(validationExtraActive(false));
         dispatch(restore(response.data.name));
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
+        let msg = error.response.data
+        console.log(msg, 'mgs');
         dispatch(errorLogin());
       }
     } else if (type === typesAuhtButton.register) {
@@ -48,12 +59,21 @@ export const authAxios = (type, dataform) => {
         dispatch(validationExtraActive(false));
         dispatch(resgiter(response.data.name));
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
         dispatch(errorLogin());
       }
     }
   };
 };
+
+export const errorFormPersonalityState = (errorFormPersonality) => {
+  return {
+    type: types.errorFormPersonality,
+    payload: {
+      errorFormPersonality: errorFormPersonality,
+    },
+  };
+}
 
 export const errorLogin = () => {
   return {
