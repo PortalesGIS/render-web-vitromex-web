@@ -15,13 +15,13 @@ export const MenuProduct = () => {
   };
   return (
     <div className="h-full grid grid-rows-layout_menu_slide font-normal">
-      <div className="pt-[60px] pl-[16px] pr-[32px] flex flex-col justify-between">
+      <div className="pt-[60px] pl-[16px] pr-[32px] flex flex-col justify-between overflow-hidden">
         <div className="flex flex-col justify-between h-full">
           <div className="overflow-hidden h-full flex flex-col gap-y-6">
             <div className="relative">
               <FindProduct />
             </div>
-            <div className="overflow-auto h-full flex flex-col gap-y-4">
+            <div className="overflow-auto h-full w-full flex flex-col gap-y-4">
               <Filtertype
                 typeFilter={"Por formato"}
                 img={"bg-formato"}

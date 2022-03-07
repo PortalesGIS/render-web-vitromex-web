@@ -22,9 +22,9 @@ export const Series = () => {
         <div className="flex flex-col justify-between min-h-full gap-8">
           <div className="xsmall:px-4 medium:px-12">
             <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4 xsmall:gap-6 large:gap-10 w-full">
-            {state.productsView.map((data, i) => (
-              <CardSeries data={data} key={i} />
-            ))}
+              {state.productsView.map((data, i) => (
+                <CardSeries data={data} key={i} />
+              ))}
             </div>
           </div>
           <Footers />

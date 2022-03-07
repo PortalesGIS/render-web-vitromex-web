@@ -8,6 +8,10 @@ const initialState = {
   errorInput: false,
   modalStatus: false,
   filterActive: false,
+  whatFilterActive: {
+    tipology: false,
+    format: false
+  },
   validationExtra: false
 };
 
@@ -38,6 +42,11 @@ export const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         filterActive: action.payload.filterActive,
+      };
+    case types.whatFilterActive:
+      return {
+        ...state,
+        whatFilterActive: action.payload.whatFilterActive,
       };
 
     default:
