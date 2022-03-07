@@ -23,9 +23,9 @@ export const CardProduct = ({ product, number }) => {
               </div>
               <div className="xsmall:text-12px large:text-15px small:text-10px text-primario/gris">
                 <span className="">
-                  {product.color}/
-                  {product.rectified === "0" ? "No Rectificado" : "Rectificado"}
-                  /{product.renders.length} variaciones
+                  {product.color} /{" "}
+                  {product.rectified === "0" ? "No Rectificado" : "Rectificado"}{" "}
+                  / {product.renders.length} variaciones
                 </span>
               </div>
             </div>

@@ -20,7 +20,7 @@ export const CardColor = ({ color, number, product }) => {
         <div className="">
           <div className="medium:text-12px xsmall:text-10px text-primario/gris">
             <span className="">
-              {product.serie}/{product.color} /{product.sized} / Variación{" "}
+              {product.serie} / {product.color} / {product.sized} / Variación{" "}
               {number}
             </span>
           </div>

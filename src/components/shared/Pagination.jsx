@@ -24,27 +24,34 @@ export const Pagination = () => {
       dispatch(updatePagination(num, numbersPages));
     }
   };
-  return (
-    <div className="bg-neutral10 flex justify-center gap-x-1 items-center py-1">
-      <div
-        className="h-5 w-5 flex justify-center items-center cursor-pointer"
-        onClick={backPage}
-      >
-        <img src={mayor} alt="mayor" />
+  if(numbersPages.length >2 ){
+    return (
+      <div className="bg-neutral10 flex justify-center gap-x-1 items-center py-1">
+        <div
+          className="h-5 w-5 flex justify-center items-center cursor-pointer"
+          onClick={backPage}
+        >
+          <img src={mayor} alt="mayor" />
+        </div>
+        <NumberPagination
+          numbersPages={numbersPages}
+          numberPage={numberPage}
+          selectPage={selectPage}
+        />
+        <div
+          className="h-5 w-5 flex justify-center items-center cursor-pointer"
+          onClick={nextPage}
+        >
+          <img src={menor} alt="menor" />
+        </div>
       </div>
-      <NumberPagination
-        numbersPages={numbersPages}
-        numberPage={numberPage}
-        selectPage={selectPage}
-      />
-      <div
-        className="h-5 w-5 flex justify-center items-center cursor-pointer"
-        onClick={nextPage}
-      >
-        <img src={menor} alt="menor" />
-      </div>
-    </div>
-  );
+    );
+  }else{
+    return (
+      <>
+      </>
+    )
+  }
 };
 
 const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {

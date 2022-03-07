@@ -36,7 +36,7 @@ export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
     <div className="text-white" style={{width: '90%'}}>
       <div
         className={`flex items-center gap-4 h-8 cursor-pointer hover:bg-neutral20 hover:text-neutral80 rounded-r-full ${
-          visibilityMenu && "bg-white text-black font-bold"
+          visibilityMenu && "bg-neutral20 text-black font-bold"
         } relative`}
         onClick={showMenu}
       >
@@ -66,7 +66,7 @@ export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
         >
           <div
             className={`${
-              state.selecttypology === filter && "bg-white text-black"
+              state.selecttypology === filter && "bg-neutral20 text-black"
             } h-10 hover:bg-white hover:text-black flex justify-start items-center pl-5 rounded-r-full`}
           >
             <span className="capitalize text-14px ">{filter}</span>

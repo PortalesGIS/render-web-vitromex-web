@@ -48,7 +48,7 @@ export const CardSeries = ({ data }) => {
                 {i === 2 && "..."}
               </span>
             ))}
-            <span>/</span>
+            <span> / </span>
             {data.rectified.map((rectified, i) => (
               <span key={rectified}>
                 {i > 0 && <span> y </span>}
@@ -56,11 +56,11 @@ export const CardSeries = ({ data }) => {
                 {rectified === "1" && "No rectificado"}
               </span>
             ))}
-            <span>/</span>
+            <span> / </span>
             {data.finish.map((finish) => (
               <span key={finish}>{finish} </span>
             ))}
-            <span>/</span>
+            <span> / </span>
             <span>Hasta {data.renders} variaciones</span>
           </div>
         </div>
