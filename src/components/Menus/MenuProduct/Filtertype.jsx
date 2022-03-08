@@ -46,20 +46,20 @@ export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
     <div className="text-white" style={{ width: "90%" }}>
       <div
         className={`flex items-center gap-4 h-8 cursor-pointer hover:bg-neutral20 hover:text-neutral80 rounded-r-full ${
-          visibilityMenu && "bg-neutral20 text-black font-bold"
+          visibilityMenu && "bg-neutral20 text-black font-semibold"
         } relative`}
         onClick={showMenuFilter}
       >
         {visibilityMenu ? (
           <div
-            className={`ml-1 h-5 w-full absolute  bg-left bg-no-repeat bg-contain ${activeButton}`}
+            className={`ml-[1px] h-8 w-full absolute  bg-left bg-no-repeat ${activeButton}`}
           />
         ) : (
           <div
-            className={`ml-1 h-5 w-full absolute  bg-left bg-no-repeat bg-contain ${imgActive} ${img}`}
+            className={`ml-[1px]  h-8 w-full absolute  bg-left bg-no-repeat ${imgActive} ${img}`}
           />
         )}
-        <div className={`pl-12 flex justify-center items-center `}>
+        <div className={`pl-10 flex justify-center items-center `}>
           <span className="text-14px ">{typeFilter} </span>
         </div>
       </div>
@@ -72,8 +72,8 @@ export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
         {filterState.map((filter) => (
           <div
             className={`${
-              state.product.selecttypology === filter && "bg-neutral20 text-black font-bold"
-            } w-full hover:bg-neutral20 hover:text-black flex justify-start items-center pl-5 rounded-r-full`}
+              state.product.selecttypology === filter && "bg-neutral20 text-black font-semibold"
+            } w-full hover:bg-neutral20 hover:text-black flex justify-start items-center pl-10 rounded-r-full`}
             onClick={() => {
               selectFilter(filter);
             }}

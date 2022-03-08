@@ -81,7 +81,7 @@ export const Footers = () => {
           />
           <ImagesLinks
             img={pinteres}
-            url={"https://www.vitromex.com.mx/assets/img/pinterest.png"}
+            url={"https://www.pinterest.com.mx/vitromex/"}
           />
           <ImagesLinks img={insta} url={"https://www.instagram.com/vitromex/"} />
           <ImagesLinks
