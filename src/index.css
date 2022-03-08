@@ -72,7 +72,7 @@ input {
 }
 
 .gridCardsNameSerie {
-  @apply grid medium:grid-cols-card_grid_medium_name small:grid-cols-card_grid_small_name;
+  @apply grid  medium:grid-cols-card_grid_medium_name small:grid-cols-card_grid_small_name;
 }
 
 .cardSerie {
@@ -88,7 +88,7 @@ input {
 }
 
 .buttonNameSerie {
-  @apply border-2 border-black flex gap-2 items-center medium:w-4/5 p-1 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
+  @apply border-2 border-black flex gap-x-2 items-center  pl-2 h-8 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
 }
 
 .formGrid {

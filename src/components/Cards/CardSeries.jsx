@@ -21,7 +21,7 @@ export const CardSeries = ({ data }) => {
   return (
     <div className={`cursor-pointer`} onClick={navigateParams}>
       <div className="h-full overflow-hidden">
-        <div className="xsmall:h-img_series_xsmall small:h-img_series_small medium:h-img_series_medium large:h-img_series_large">
+        <div className="xsmall:h-img_series_xsmall small:h-img_series_small smallTwo:h-img_series_smalltwo medium:h-img_series_medium large:h-img_series_large">
           <div className="rounded-3xl overflow-hidden h-full">
             <img
               src={

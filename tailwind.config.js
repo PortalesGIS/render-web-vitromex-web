@@ -4,6 +4,7 @@ module.exports = {
     screens: {
       xsmall: "355px",
       small: "600px",
+      smallTwo: "800px",
       medium: "1240px",
       large: "1448px",
     },
@@ -107,6 +108,7 @@ module.exports = {
         card_large_series_name: "8rem",
         card_medium_series_name: "8rem",
         card_large_series_name_color: "20rem",
+        img_series_small: "13rem",
       },
       minHeight: {
         img_series_medium: "33rem",
@@ -117,11 +119,13 @@ module.exports = {
         card_large_series_name: "8rem",
         card_medium_series_name: "8rem",
         card_large_series_name_color: "24rem",
+        img_series_small: "13rem",
       },
       height: {
         img_series_large: "19rem",
         img_series_medium: "13rem",
-        img_series_small: "8rem",
+        img_series_small: "9rem",
+        img_series_smalltwo: "12rem",
         img_series_xsmall: "9.5rem",
         img_instalation_medium: "33rem",
         img_instalation_small: "19rem",
@@ -149,6 +153,7 @@ module.exports = {
         form_small_space: "repeat(6, 16.66%)",
         header_product: "20% 80%",
         card_grid_medium_color_name: "repeat(4, 25%)",
+        card_grid_large_name: "repeat(4, 25%)",
         card_grid_medium_name: "repeat(3, 33.3%)",
         card_grid_medium: "repeat(4, 25%)",
         card_grid_small: "repeat(4, 25%)",

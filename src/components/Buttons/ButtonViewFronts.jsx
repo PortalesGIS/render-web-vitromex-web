@@ -18,7 +18,7 @@ export const ButtonViewFronts = ({ product, number }) => {
   return (
     <div onClick={viewColors} className="buttonNameSerie cursor-pointer">
       <div>
-        <img src={aplicaciones} alt="caras" />
+        <img src={aplicaciones} alt="caras" className="h-4"/>
       </div>
       <div className="text-10px large:text-15px ">
         <span>Ver caras</span>
