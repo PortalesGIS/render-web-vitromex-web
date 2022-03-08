@@ -3,7 +3,7 @@ import { LinkExterno } from "../shared/LinkExterno";
 
 export const HeaderSub = () => {
   return (
-    <div className="bg-neutral h-full flex justify-end items-center col-span-full pr-3">
+    <div className="bg-neutral h-full flex justify-end items-center col-span-full pr-11">
       <div className="flex justify-between gap-x-10 text-white text-12px ">
         <div>
           <LinkExterno url={'https://www.vitromex.com.mx/contacto'} texto={'Contacto'} />

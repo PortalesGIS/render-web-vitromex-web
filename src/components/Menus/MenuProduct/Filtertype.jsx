@@ -52,11 +52,11 @@ export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
       >
         {visibilityMenu ? (
           <div
-            className={`ml-[1px] h-8 w-full absolute  bg-left bg-no-repeat ${activeButton}`}
+            className={`h-8 w-full absolute  bg-left bg-no-repeat ${activeButton}`}
           />
         ) : (
           <div
-            className={`ml-[1px]  h-8 w-full absolute  bg-left bg-no-repeat ${imgActive} ${img}`}
+            className={`h-8 w-full absolute  bg-left bg-no-repeat ${imgActive} ${img}`}
           />
         )}
         <div className={`pl-10 flex justify-center items-center `}>

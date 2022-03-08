@@ -17,13 +17,13 @@ export const ButtonDownloadZip = ({number = null}) => {
   }
   return (
     <div
-      className="buttonNameSerie cursor-pointer"
+      className="buttonNameSerie"
       onClick={download}
     >
       <div>
         <img src={descargar} alt="caras" />
       </div>
-      <div className="text-10px large:text-15px  ">
+      <div className="textNameSerieButton">
         <span>Descargar ZIP</span>
       </div>
     </div>

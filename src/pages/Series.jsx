@@ -40,7 +40,7 @@ export const Series = () => {
           </div>
           <div>
             <p className="text-neutral40">
-              Desafortunadamente, la búsqueda no tiene resultados{" "}
+              Desafortunadamente la búsqueda no tiene resultados{" "}
             </p>
           </div>
         </div>
