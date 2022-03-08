@@ -46,7 +46,7 @@ export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
     <div className="text-white" style={{ width: "90%" }}>
       <div
         className={`flex items-center gap-4 h-8 cursor-pointer hover:bg-neutral20 hover:text-neutral80 rounded-r-full ${
-          visibilityMenu && "bg-neutral20 text-black font-semibold"
+          visibilityMenu && "bg-white text-black font-semibold"
         } relative`}
         onClick={showMenuFilter}
       >
@@ -72,8 +72,8 @@ export const Filtertype = ({ typeFilter, img, imgActive, activeButton }) => {
         {filterState.map((filter) => (
           <div
             className={`${
-              state.product.selecttypology === filter && "bg-neutral20 text-black font-semibold"
-            } w-full hover:bg-neutral20 hover:text-black flex justify-start items-center pl-10 rounded-r-full`}
+              state.product.selecttypology === filter && "bg-white text-black font-semibold"
+            } h-8 w-full hover:bg-neutral20 hover:text-black flex justify-start items-center pl-10 rounded-r-full`}
             onClick={() => {
               selectFilter(filter);
             }}
