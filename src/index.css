@@ -26,28 +26,15 @@
   transition: height 1s;
   height: 0px;
 }
-
-/* .MontserratBold {
-  font-family: "Montserrat-Bold", Arial, sans-serif;
-}
-.MontserratRegular {
-  font-family: "Montserrat-Regular", Arial, sans-serif;
-}
-.MontserratSemiBold {
-  font-family: "Montserrat-SemiBold", Arial, sans-serif;
+.menuTransitionSlide {
+  transition: width 1s;
+  width: 100%;
 }
 
-h1{
-  font-family: "Montserrat-Bold";
+.menuCloseTransitionSlide {
+  transition: width 1s;
+  width: 0px;
 }
-
-span,
-p, button, a {
-  font-family: "Montserrat-Regular";
-}  */
-
-/* font-family: 'Be Vietnam Pro', sans-serif;
-font-family: 'Montserrat', sans-serif;*/
 
 span,
 p,

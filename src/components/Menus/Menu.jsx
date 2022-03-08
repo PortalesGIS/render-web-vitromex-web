@@ -26,7 +26,7 @@ const ResponsiveMenu = ({ menuResponsive, actionmenu }) => {
       }`}
     >
       <div className={`gridLayout h-full`}>
-        <div className="bg-Gris_oscuro col-span-3 small:col-span-5 overflow-hidden">
+        <div className={`bg-Gris_oscuro ${menuResponsive ? 'menuTransitionSlide' : 'menuCloseTransitionSlide'}  col-span-3 small:col-span-5 overflow-hidden`}>
           <MenuProduct />
         </div>
         <div className="small:col-span-3" onClick={actionmenu}></div>
