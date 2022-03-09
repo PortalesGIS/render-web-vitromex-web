@@ -59,7 +59,7 @@ input {
 }
 
 .gridCardsNameSerie {
-  @apply grid small:grid-cols-2 smallTwo:grid-cols-3 large:grid-cols-4;
+  @apply grid small:grid-cols-2  smallTwo:grid-cols-3 large:grid-cols-4;
 }
 
 .cardSerie {
@@ -75,11 +75,11 @@ input {
 }
 
 .buttonNameSerie {
-  @apply cursor-pointer border-2 border-black flex gap-x-2 items-center  pl-2 h-8 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
+  @apply cursor-pointer border-2 border-black flex gap-x-2 items-center  pl-2 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
 }
 
 .buttonNameSerie{
-  @apply w-full xsmall:h-8 small:h-6;
+  @apply  medium:w-[128px] small:w-[125px] xsmall:w-[140px] xsmall:h-8 small:h-6;
 }
 
 .buttonNameSerie img {

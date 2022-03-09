@@ -26,7 +26,7 @@ export const CardProduct = ({ product, number }) => {
             {product.renders.length} variaciones
           </span>
         </div>
-        <div className="flex flex-col justify-end xsmall:pr-16 small:pr-6 medium:pr-6">
+        <div className="flex flex-col justify-end">
           <div className="flex flex-col  xsmall:gap-y-4 small:gap-y-2">
             <ButtonViewFronts product={product} number={number} />
             <ButtonDownloadZip number={number} />

@@ -4,7 +4,8 @@ module.exports = {
     screens: {
       xsmall: "355px",
       small: "600px",
-      smallTwo: "800px",
+      smallThree: "700px",
+      smallTwo: "900px",
       medium: "1240px",
       large: "1448px",
     },
