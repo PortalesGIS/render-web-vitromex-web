@@ -13,6 +13,7 @@ import { InputError } from "./Errors/InputError";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 import { useSelector, useDispatch } from "react-redux";
 import { errorLoginClean } from "../../modules/actions/auth";
+import { Repcap } from "../Recaptch/Repcap";
 
 export const FormRegister = () => {
   const state = useSelector((state) => state.ui);
@@ -21,7 +22,8 @@ export const FormRegister = () => {
   const [hasVisibilitySelect, showVisibilitySelect] = useShowPassword(false);
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
     useShowPassword(true);
-    const [check, setcheck] = useState(false)
+  const [check, setcheck] = useState(false);
+  const [recaptchaState, setrecaptchaState] = useState(false);
   const [formValues, handleInputChange, validationInput] = useForm({
     name: "",
     lastName: "",
@@ -30,7 +32,7 @@ export const FormRegister = () => {
     country: "",
     city: "",
     password: "",
-    secondPassword: ""
+    secondPassword: "",
   });
   const {
     name,
@@ -40,7 +42,7 @@ export const FormRegister = () => {
     country,
     city,
     password,
-    secondPassword
+    secondPassword,
   } = formValues;
   const { equalPassword } = validationInput;
   const [validationsCompleteInput] = useCompleteInput(formValues);
@@ -53,7 +55,7 @@ export const FormRegister = () => {
 
   const handleInputChangeCheck = ({ target }) => {
     setcheck(!check);
-  }
+  };
 
   const addProfesion = (profesion) => {
     showVisibilitySelect();
@@ -75,7 +77,9 @@ export const FormRegister = () => {
               type="name"
               name="name"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !name && state.errorInput ? "border-Feedback_Warning" : "border-gray-300"
+                !name && state.errorInput
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
               placeholder=" "
               value={name}
@@ -88,7 +92,9 @@ export const FormRegister = () => {
               Nombre
             </label>
             <div className="absolute w-full">
-              {!name && state.errorInput && <InputError text={"Completa este campo"} />}
+              {!name && state.errorInput && (
+                <InputError text={"Completa este campo"} />
+              )}
             </div>
           </div>
           {/* lastName */}
@@ -123,7 +129,9 @@ export const FormRegister = () => {
               type="email"
               name="email"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !email && state.errorInput ? "border-Feedback_Warning" : "border-gray-300"
+                !email && state.errorInput
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
               placeholder=" "
               value={email}
@@ -216,7 +224,9 @@ export const FormRegister = () => {
               Estado de la república
             </label>
             <div className="absolute w-full">
-              {!country && state.errorInput && <InputError text={"Completa este campo"} />}
+              {!country && state.errorInput && (
+                <InputError text={"Completa este campo"} />
+              )}
             </div>
           </div>
           {/* city */}
@@ -225,7 +235,9 @@ export const FormRegister = () => {
               type="city"
               name="city"
               className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
-                !city && state.errorInput ? "border-Feedback_Warning" : "border-gray-300"
+                !city && state.errorInput
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
               }  appearance-none focus:outline-none focus:ring-0 peer`}
               placeholder=" "
               value={city}
@@ -238,7 +250,9 @@ export const FormRegister = () => {
               Ciudad
             </label>
             <div className="absolute w-full">
-              {!city && state.errorInput && <InputError text={"Completa este campo"} />}
+              {!city && state.errorInput && (
+                <InputError text={"Completa este campo"} />
+              )}
             </div>
           </div>
           {/* password */}
@@ -343,13 +357,16 @@ export const FormRegister = () => {
               </div>
             )}
           </div>
+          <div className="">
+            <Repcap setrecaptchaState={setrecaptchaState}/>
+          </div>
           <div className="flex justify-center items-center">
             <ButtonRedirect
               text={"Registrarme"}
               direction={`${Path.PRODUCT}/${Path.SERIES}`}
               action={typesAuhtButton.register}
               data={formValues}
-              validations={[equalPassword, validationsCompleteInput]}
+              validations={[equalPassword, validationsCompleteInput, recaptchaState]}
               validation_extra={[check]}
             />
           </div>
