@@ -1,6 +1,7 @@
 import React from "react";
 import { useShowMenu } from "../../hooks/useShowMenu";
 import menu from "../../assets/Menú.svg";
+import equis from "../../assets/equis.svg";
 import vitromex from "../../assets/VITROMEX_LOGO.svg";
 import { LinkExterno } from "../shared/LinkExterno";
 import { MenuVitromex } from "../Menus/MenuVitromex";
@@ -20,13 +21,13 @@ export const HeadersLading = () => {
 
 const MediumHeaderLanding = () => {
   return (
-    <div className="flex justify-between h-full px-4 items-center">
-      <div>
+    <div className="flex justify-between h-full pl-4 pr-12 items-center">
+      <div className="w-[136px]">
         <a href="https://www.vitromex.com.mx/">
-          <img src={vitromex} alt="vitromex" />
+          <img src={vitromex} alt="vitromex" className="h-full w-full"/>
         </a>
       </div>
-      <div className="text-white text-12px flex gap-4">
+      <div className="text-white text-12px flex gap-x-10">
         <LinkExterno
           url={"https://www.vitromex.com.mx/catalogo"}
           texto={"Catálogo"}
@@ -57,7 +58,7 @@ const ResponsiveHeaderLanding = () => {
         </div>
         <div>
           <img
-            src={menu}
+            src={visibilityMenu ? equis : menu}
             alt="menu"
             className="cursor-pointer"
             onClick={showMenu}

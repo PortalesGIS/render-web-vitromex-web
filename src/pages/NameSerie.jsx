@@ -19,7 +19,7 @@ export const NameSerie = () => {
     return (
       <div className="h-full overflow-auto flex justify-between flex-col gap-y-8">
         <div className="xsmall:px-4 medium:px-12">
-          <div className="gridCardsNameSerie gap-y-6">
+          <div className="gridCardsNameSerie medium:gap-6 small:gap-x-4 small:gap-y-6 xsmall:gap-y-8">
             {state.products.map((product, i) => (
               <CardProduct product={product} key={i} number={i} />
             ))}

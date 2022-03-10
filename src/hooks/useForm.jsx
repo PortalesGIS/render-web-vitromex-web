@@ -7,7 +7,6 @@ export const useForm = (initialState = {}) => {
     equalPassword: true,
     isEmail: true
   })
-  // console.log(initialState);
   const handleInputChange = ({ target }) => {
     if(target.name === 'secondPassword'){
       setValidationInput({

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Path } from "../../utils/route";
 import { useDispatch } from "react-redux";
 import {
-  clearFilter,
+  clearFind,
   findProductGeneral,
   moveMigajas,
 } from "../../modules/actions/products";
@@ -26,12 +26,21 @@ export const FindProduct = () => {
       setFormValues({
         product: "",
       });
-      dispatch(clearFilter());
+      dispatch(clearFind());
       setFormValues({
         product: "",
       });
     }
   }, [state.migajas]);
+
+  useEffect(() => {
+    if(!state.findActive){
+      setFormValues({
+        product: "",
+      });
+    }
+  }, [state.findActive])
+  
 
   const handleInputChange = ({ target }) => {
     let find = [];
@@ -78,10 +87,10 @@ export const FindProduct = () => {
         product: serie.toLowerCase(),
       });
     } else {
-      if (state.titlePage !== "Resultados de la búsqueda") {
+      if (!state.findActive) {
         findObject();
       } else {
-        dispatch(clearFilter());
+        dispatch(clearFind());
         setFormValues({
           product: "",
         });
@@ -94,7 +103,7 @@ export const FindProduct = () => {
         type="text"
         placeholder="Buscar producto"
         name="product"
-        className="w-full appearance-none border-b-2 border-white bg-transparent focus:outline-none"
+        className="w-full appearance-none border-b-[1px] border-white bg-transparent focus:outline-none"
         value={product}
         onChange={handleInputChange}
       />
@@ -106,7 +115,7 @@ export const FindProduct = () => {
         }}
       >
         <img
-          src={state.titlePage !== "Resultados de la búsqueda" ? zoom : tache}
+          src={!state.findActive ? zoom : tache}
           alt="ojoabierto"
         />
       </span>

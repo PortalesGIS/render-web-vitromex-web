@@ -18,15 +18,17 @@ export const Series = () => {
     );
   } else if (state.productsView.length > 0) {
     return (
-      <div className="h-full overflow-auto flex justify-between flex-col gap-y-8">
-        <div className="xsmall:px-4 medium:px-12">
-          <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4">
-            {state.productsView.map((data, i) => (
-              <CardSeries data={data} key={i} />
-            ))}
+      <div className="h-full overflow-auto">
+        <div className="flex flex-col justify-between min-h-full gap-8">
+          <div className="xsmall:px-4 medium:px-12">
+            <div className="gridCards24 xsmall:gap-y-8 small:gap-y-4 xsmall:gap-6 large:gap-10 w-full">
+              {state.productsView.map((data, i) => (
+                <CardSeries data={data} key={i} />
+              ))}
+            </div>
           </div>
+          <Footers />
         </div>
-        <Footers />
       </div>
     );
   } else {
@@ -38,7 +40,7 @@ export const Series = () => {
           </div>
           <div>
             <p className="text-neutral40">
-              Desafortunadamente, la búsqueda no tiene resultados{" "}
+              Desafortunadamente la búsqueda no tiene resultados{" "}
             </p>
           </div>
         </div>

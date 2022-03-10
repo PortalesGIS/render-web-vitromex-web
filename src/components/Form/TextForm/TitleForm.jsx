@@ -8,9 +8,9 @@ export const TitleForm = ({ direction, title, text, textdirection }) => {
   };
   return (
     <div className="">
-      <h1 className="text-subtitle_movil text-white font-bold uppercase">{title}</h1>
+      <h1 className="text-[20px] text-white font-bold uppercase">{title}</h1>
       <div className="text-paragraph_movil text-white">
-        <span>{text} </span>
+        <span className="">{text} </span>
         <span
           className="cursor-pointer font-bold underline"
           onClick={() => {

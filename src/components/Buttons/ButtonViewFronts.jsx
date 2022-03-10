@@ -16,11 +16,11 @@ export const ButtonViewFronts = ({ product, number }) => {
     navigate(`${Path.PRODUCT}/${Path.SERIES}/${seriesId}/${number}`);
   };
   return (
-    <div onClick={viewColors} className="buttonNameSerie cursor-pointer">
+    <div onClick={viewColors} className="buttonNameSerie">
       <div>
-        <img src={aplicaciones} alt="caras" />
+        <img src={aplicaciones} alt="caras"/>
       </div>
-      <div className="text-10px large:text-15px ">
+      <div>
         <span>Ver caras</span>
       </div>
     </div>

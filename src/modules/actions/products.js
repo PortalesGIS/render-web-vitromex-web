@@ -95,6 +95,7 @@ export const filterTypology = (type) => {
     let separatePage = [];
     separatePage = separatePageHelper(productsView.length);
     productViewRange = productsView.slice(0, 24);
+    dispatch(findActiveProduct(false));
     dispatch(selectTypology(type));
     dispatch(seriesUpdate(productsView));
     dispatch(productsViewCards(productViewRange));
@@ -116,6 +117,7 @@ export const filterFormat = (type) => {
     let separatePage = [];
     separatePage = separatePageHelper(productsView.length);
     productViewRange = productsView.slice(0, 24);
+    dispatch(findActiveProduct(false));
     dispatch(selectTypology(type));
     dispatch(seriesUpdate(productsView));
     dispatch(productsViewCards(productViewRange));
@@ -278,14 +280,32 @@ export const findProductGeneral = (textFind) => {
     );
     let productViewRange = seriesAll.slice(0, 24);
     let separatePage = separatePageHelper(seriesAll.length);
+    dispatch(selectTypology(""));
     dispatch(seriesUpdate(seriesAll));
     dispatch(productsViewCards(productViewRange));
     dispatch(numberPagination(0));
     dispatch(numberPagePagination(separatePage));
     dispatch(productRoute(false));
-    dispatch(filterActiveUi(true));
+    // dispatch(filterActiveUi(true));
+    dispatch(filterActiveUi(false));
     dispatch(findActiveProduct(true));
     dispatch(titlePages("Resultados de la búsqueda"));
+  };
+};
+export const clearFind = () => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    let seriesAll = state.product.productsGeneral;
+    let productViewRange = seriesAll.slice(0, 24);
+    let separatePage = separatePageHelper(seriesAll.length);
+    dispatch(selectTypology(""));
+    dispatch(seriesUpdate(seriesAll));
+    dispatch(productsViewCards(productViewRange));
+    dispatch(numberPagination(0));
+    dispatch(numberPagePagination(separatePage));
+    dispatch(filterActiveUi(false));
+    dispatch(findActiveProduct(false));
+    dispatch(titlePages("Series disponibles"));
   };
 };
 

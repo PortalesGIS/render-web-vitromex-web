@@ -10,7 +10,7 @@ export const ButtonClearFilter = () => {
   return (
     <div className="">
       <button
-        className={`flex h-10 w-full items-center justify-center bg-neutral20 text-neutral80 font-bold`}
+        className={`flex h-10 mb-4 w-full items-center justify-center bg-neutral20 text-neutral80 font-bold`}
         onClick={clearFilterAll}
       >
         Quitar filtro

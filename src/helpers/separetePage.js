@@ -1,7 +1,7 @@
 export const separatePageHelper = (total) => {
   let separate = 0;
   let residuos = 0;
-  let numberPage = 0;
+  let numberPage = 1;
   let separatePage = []
   separate = (total / 24).toFixed(2);
   residuos = total % 24;

@@ -14,7 +14,7 @@ import { errorLoginClean } from "../../modules/actions/auth";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 
 export const FormLogin = () => {
-  const state = useSelector((state) => state.ui.errorInput);
+  const state = useSelector((state) => state.ui.errorFormPersonality);
   const dispatch = useDispatch();
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [formValues, handleInputChange, validationInput] = useForm({
@@ -30,55 +30,65 @@ export const FormLogin = () => {
       dispatch(errorLoginClean());
     };
   }, []);
-
   return (
     <div className="large:w-96">
       <div className="mb-8">
         <TitleForm
           direction={`${Path.FORM}/${Path.REGISTER}`}
-          title={"Login"}
+          title={"INICIO DE SESIÓN"}
           text={"¿No tienes cuenta?"}
           textdirection={"Regístrate"}
         />
       </div>
-      <div className="flex flex-col gap-11 text-white">
-        <div className="relative">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="flex flex-col gap-4"
+      >
+        <div className="relative z-0 mb-6 w-full group">
           <input
-            type="text"
-            placeholder="Correo electronico"
+            type="email"
             name="email"
-            className={`w-full appearance-none border-b-2 ${
-              !email && state ? "border-Feedback_Warning" : "border-white"
-            } bg-transparent focus:outline-none`}
+            className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+              state.email ? "border-Feedback_Warning" : "border-gray-300"
+            }  appearance-none focus:outline-none focus:ring-0 peer`}
+            placeholder=" "
             value={email}
             onChange={handleInputChange}
           />
+          <label
+            htmlFor="email"
+            className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Correo electrónico
+          </label>
           <div className="absolute w-full">
-            <div className="relative flex gap-0 flex-col">
-              {state ? (
-                <InputError text={"Este correo no existe"} />
-              ) : (
-                !isEmail && (
-                  <InputError text={"No es un correo electronico valido"} />
-                )
-              )}
-            </div>
+            {state.email && (
+              <InputError text={"No es un correo electrónico válido."} />
+            )}
           </div>
         </div>
-        <div className="relative">
+        <div className="relative z-0 mb-6 w-full group">
           <input
             type={hasVisibilityPassword ? "password" : "text"}
-            placeholder="Contraseña"
             name="password"
-            className={`w-full appearance-none border-b-2 ${
-              !password && state ? "border-Feedback_Warning" : "border-white"
-            } bg-transparent focus:outline-none`}
+            className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+              state.password ? "border-Feedback_Warning" : "border-gray-300"
+            }  appearance-none focus:outline-none focus:ring-0 peer`}
+            placeholder=" "
             value={password}
             onChange={handleInputChange}
           />
+          <label
+            htmlFor="password"
+            className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Contraseña
+          </label>
           <span
             id="visiblity-toggle"
-            className="absolute right-0 h-5 w-5 cursor-pointer"
+            className="absolute top-5 right-0 h-5 w-5 cursor-pointer"
             onClick={showPassword}
           >
             <img
@@ -87,18 +97,16 @@ export const FormLogin = () => {
             />
           </span>
           <div className="absolute w-full">
-            <div className="relative flex gap-0 flex-col">
-              {!password && state && (
-                <InputError text={"Completa este campo"} />
-              )}
-            </div>
+            {state.password && (
+              <InputError text={"La contraseña no es correcta"} />
+            )}
           </div>
         </div>
-      </div>
+      </form>
       <FooterForm
         direction={`${Path.FORM}/${Path.RESTORE}`}
         text={"¿No pudes acceder?"}
-        textdirection={"Recupera tu contraseña"}
+        textdirection={"Restablecer tu contraseña"}
       />
       <div className="mt-12 flex justify-center items-center">
         <ButtonRedirect

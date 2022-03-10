@@ -44,93 +44,104 @@ export const FormRestore = () => {
         />
       </div>
       <div className="flex flex-col gap-11 text-white">
-        {/* email */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Correo electronico"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-            className={`w-full appearance-none border-b-2 ${
-              !email && state ? "border-Feedback_Warning" : "border-white"
-            } bg-transparent focus:outline-none`}
-          />
-          <div className="absolute w-full">
-            <div className="relative flex gap-0 flex-col">
-              {state ? (
-                <InputError text={"Este correo no existe"} />
-              ) : (
-                !isEmail && (
-                  <InputError text={"No es un correo electronico valido"} />
-                )
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          className="flex flex-col gap-4"
+        >
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type="email"
+              name="email"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                state ? "border-Feedback_Warning" : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
+              value={email}
+              onChange={handleInputChange}
+            />
+            <label
+              htmlFor="email"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Correo electrónico
+            </label>
+            <div className="absolute w-full">
+              {state && (
+                <InputError text={"No es un correo electrónico válido."} />
               )}
             </div>
           </div>
-        </div>
-        {/* password */}
-        <div className="relative">
-          <input
-            type={hasVisibilityPassword ? "password" : "text"}
-            placeholder="Contraseña"
-            value={password}
-            onChange={handleInputChange}
-            name="password"
-            className={`w-full appearance-none border-b-2 ${
-              !password && state ? "border-Feedback_Warning" : "border-white"
-            } bg-transparent focus:outline-none`}
-          />
-          <span
-            id="visiblity-toggle"
-            className="absolute right-0 h-5 w-5 cursor-pointer"
-            onClick={showPassword}
-          >
-            <img
-              src={hasVisibilityPassword ? ojoabierto : ojoscerrado}
-              alt="ojoabierto"
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type={hasVisibilityPassword ? "password" : "text"}
+              name="password"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !password && state
+                  ? "border-Feedback_Warning"
+                  : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
+              value={password}
+              onChange={handleInputChange}
             />
-          </span>
-          <div className="absolute w-full">
-            <div className="relative flex gap-0 flex-col">
+            <label
+              htmlFor="password"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Contraseña
+            </label>
+            <span
+              id="visiblity-toggle"
+              className="absolute top-5 right-0 h-5 w-5 cursor-pointer"
+              onClick={showPassword}
+            >
+              <img
+                src={hasVisibilityPassword ? ojoabierto : ojoscerrado}
+                alt="ojoabierto"
+              />
+            </span>
+            <div className="absolute w-full">
               {!password && state && (
                 <InputError text={"Completa este campo"} />
               )}
             </div>
           </div>
-        </div>
-        {/* password confirm*/}
-        <div className="relative">
-          <input
-            type={hasVisibilityConfirmPassword ? "password" : "text"}
-            placeholder="Confirmar contraseña"
-            value={secondPassword}
-            onChange={handleInputChange}
-            name="secondPassword"
-            className={`w-full appearance-none border-b-2 ${
-              !secondPassword && state ? "border-Feedback_Warning" : "border-white"
-            } bg-transparent focus:outline-none`}
-          />
-          <span
-            id="visiblity-toggle"
-            className="absolute right-0 h-5 w-5 cursor-pointer"
-            onClick={showConfirmPassword}
-          >
-            <img
-              src={hasVisibilityConfirmPassword ? ojoabierto : ojoscerrado}
-              alt="ojoabierto"
+          <div className="relative z-0 mb-6 w-full group">
+            <input
+              type={hasVisibilityConfirmPassword ? "password" : "text"}
+              name="secondPassword"
+              className={`block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 focus:border-b-3 ${
+                !equalPassword ? "border-Feedback_Warning" : "border-gray-300"
+              }  appearance-none focus:outline-none focus:ring-0 peer`}
+              placeholder=" "
+              value={secondPassword}
+              onChange={handleInputChange}
             />
-          </span>
-          <div className="absolute w-full">
-            <div className="relative flex gap-0 flex-col">
+            <label
+              htmlFor="secondPassword"
+              className="absolute text-sm text-neutral00 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Confirmar contraseña
+            </label>
+            <span
+              id="visiblity-toggle"
+              className="absolute top-5 right-0 h-5 w-5 cursor-pointer"
+              onClick={showConfirmPassword}
+            >
+              <img
+                src={hasVisibilityConfirmPassword ? ojoabierto : ojoscerrado}
+                alt="ojoabierto"
+              />
+            </span>
+            <div className="absolute w-full">
               {!equalPassword && (
-                <InputError text={"No es igual la contraseña"} />
-              )}
-              {!secondPassword && state && (
-                <InputError text={"Completa este campo"} />
+                <InputError text={"La contraseña no coincide"} />
               )}
             </div>
           </div>
-        </div>
+        </form>
         <div className="mt-12 flex justify-center items-center">
           <ButtonRedirect
             text={"Iniciar sesión"}

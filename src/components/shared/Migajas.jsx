@@ -37,7 +37,7 @@ export const Migajas = () => {
         state.migajas.map((paths, i) => (
           <span key={paths.name}>
             <span
-              className={`capitalize cursor-pointer text-12px ${i === state.migajas.length-1 ? 'font-bold' : 'text-neutral40'}`}
+              className={`capitalize cursor-pointer text-[15px] ${i === state.migajas.length-1 ? 'font-bold' : 'text-neutral40'}`}
               onClick={() => {
                 redirectPath(paths, i);
               }}
@@ -45,7 +45,7 @@ export const Migajas = () => {
               {paths.name}
             </span>
             {i !== state.migajas.length - 1 && (
-              <span>/</span>
+              <span className="text-black font-medium"> | </span>
             )}
           </span>
         ))}

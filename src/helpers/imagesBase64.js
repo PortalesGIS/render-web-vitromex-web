@@ -15,7 +15,7 @@ const convertBase64 = (images) => {
         try {
           // url = await imageToBase64(render.url);
           url = await imageToBase64(
-            "https://gisdecoradorvirtualstg.blob.core.windows.net:443/renders/d601379b-2045-4c7d-a8f8-6d3a9834f663oslo-blanco-36-x-50.png"
+            "https://storagedevelopvitromex.blob.core.windows.net:443/storage-render/af885e1b-93c3-452d-b5dc-b3c06d1538ceVITROMEX_PINAR_MOKA_36X50CM_BR_3.jpg"
           );
         } catch (error) {
           console.log(error);

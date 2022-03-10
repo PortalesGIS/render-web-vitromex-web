@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @font-face {
   font-family: "Montserrat-Bold";
   src: url("./assets/fonts/Montserrat-Bold.otf") format("opentype");
@@ -20,38 +22,36 @@
   height: 200px;
 }
 
-.menuCloseTransition{
+.menuCloseTransition {
   transition: height 1s;
   height: 0px;
 }
-
-.MontserratBold {
-  font-family: "Montserrat-Bold", Arial, sans-serif;
-}
-.MontserratRegular {
-  font-family: "Montserrat-Regular", Arial, sans-serif;
-}
-.MontserratSemiBold {
-  font-family: "Montserrat-SemiBold", Arial, sans-serif;
+.menuTransitionSlide {
+  transition: width 1s;
+  width: 100%;
 }
 
-h1{
-  font-family: "Montserrat-Bold", Arial, sans-serif;
+.menuCloseTransitionSlide {
+  transition: width 1s;
+  width: 0px;
 }
 
 span,
-p {
-  font-family: "Montserrat-Regular", Arial, sans-serif;
+p,
+button,
+a,
+h1,
+label,
+input {
+  font-family: "Montserrat", sans-serif;
 }
-
-
 
 .gridLayout {
   @apply grid-cols-xsmall small:grid-cols-small medium:grid-cols-medium grid;
 }
 
 .gridCards24 {
-  @apply grid medium:grid-cols-card_grid_medium small:grid-cols-card_grid_small xsmall:grid-cols-card_grid_xsmall;
+  @apply grid  small:grid-cols-4 xsmall:grid-cols-2;
 }
 
 .gridCardsColorName {
@@ -59,7 +59,7 @@ p {
 }
 
 .gridCardsNameSerie {
-  @apply grid medium:grid-cols-card_grid_medium_name small:grid-cols-card_grid_small_name;
+  @apply grid small:grid-cols-2  smallTwo:grid-cols-3 large:grid-cols-4;
 }
 
 .cardSerie {
@@ -75,7 +75,31 @@ p {
 }
 
 .buttonNameSerie {
-  @apply border-2 border-black flex gap-2 items-center medium:w-4/5 p-1 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
+  @apply cursor-pointer border-2 border-black flex gap-x-2 items-center  pl-2 hover:bg-neutral20 active:bg-black active:text-white active:font-bold;
+}
+
+.buttonNameSerie{
+  @apply  medium:w-[128px] small:w-[125px] xsmall:w-[140px] xsmall:h-8 small:h-6;
+}
+
+.buttonNameSerie img {
+  @apply h-4;
+}
+
+.buttonNameSerie :nth-child(2){
+  @apply large:text-[11px] medium:text-[10px] xsmall:text-[12px] small:text-[10px] smallTwo:text-[10px];
+}
+
+.formGrid {
+  @apply grid xsmall:grid-cols-xsmall small:grid-cols-small medium:grid-cols-form_medium pt-forms;
+}
+
+.formloging {
+  @apply bg-red-400;
+}
+
+.text-shadow {
+  text-shadow: 0px 3px 6px rgba(150, 150, 150, 1);
 }
 
 /* scroll */
