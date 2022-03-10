@@ -12,7 +12,7 @@ export const ButtonViewFronts = ({ product, number }) => {
   const viewColors = () => {
     let seriesId = location.pathname.split('/')
     seriesId = seriesId[seriesId.length -  1]
-    dispatch(viewRender(`${Path.PRODUCT}/${Path.SERIES}/${seriesId}/${number}`, number));
+    dispatch(viewRender(product.color,`${Path.PRODUCT}/${Path.SERIES}/${seriesId}/${number}`, number));
     navigate(`${Path.PRODUCT}/${Path.SERIES}/${seriesId}/${number}`);
   };
   return (

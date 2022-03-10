@@ -188,7 +188,7 @@ export const redirectCard = (name, path, id) => {
   };
 };
 
-export const viewRender = (path, numberRender) => {
+export const viewRender = (name, path, numberRender) => {
   return async (dispatch, getState) => {
     //* axios
     dispatch(loadingProduct(true));
@@ -196,11 +196,11 @@ export const viewRender = (path, numberRender) => {
       //* Info
       const state = getState();
       let dataMigajas = [];
+      let render = filterRender(state.product.products, numberRender);
       dataMigajas.push(...state.product.migajas, {
         path: path,
-        name: numberRender,
+        name: name,
       });
-      let render = filterRender(state.product.products, numberRender);
       dispatch(selectTypology(""));
       dispatch(numberSelectProduct(numberRender));
       dispatch(colorProductSelect(render));
@@ -225,6 +225,7 @@ export const realoadPage = (location) => {
       const state = getState();
       let serieSelect = [];
       let separatePath = location.split("/");
+      let nameColor = null;
       if (separatePath.length > 3) {
         serieSelect = state.product.productsGeneral.find(
           (serie) => serie.id === parseInt(separatePath[3])
@@ -239,6 +240,7 @@ export const realoadPage = (location) => {
         if (separatePath.length > 4) {
           dispatch(titlePages("variaciones"));
           let numberColor = parseInt(separatePath[separatePath.length - 1]);
+          nameColor = infoNew[numberColor].color
           let render = filterRender(infoNew, 0);
           dispatch(numberSelectProduct(parseInt(numberColor)));
           dispatch(colorProductSelect(render));
@@ -252,7 +254,8 @@ export const realoadPage = (location) => {
       }
       let dataMigajas = separateMigajasHelpers(
         separatePath,
-        typeof serieSelect.id === "number" ? serieSelect.name : null
+        typeof serieSelect.id === "number" ? serieSelect.name : null,
+        nameColor
       );
       dispatch(migajasUpdate(dataMigajas));
       dispatch(loadingProduct(false));
