@@ -3,12 +3,12 @@ import { ButtonDownloadZip } from "../Buttons/ButtonDownloadZip";
 import { ButtonViewFronts } from "../Buttons/ButtonViewFronts";
 
 export const CardProduct = ({ product, number }) => {
-  // console.log(product);
+  console.log(product.thumbnail[0].url);
   return (
     <div className="flex large:gap-x-4 medium:gap-x-6 xsmall:gap-x-4">
       <div className="overflow-hidden rounded-2xl w-1/2">
         <img
-          src="https://cloupyblob.blob.core.windows.net/cloupy/image-not-found.png"
+          src={product.thumbnail[0].url ? product.thumbnail[0].url : "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"}
           alt="imagen"
           className="w-full h-full object-cover"
         />
