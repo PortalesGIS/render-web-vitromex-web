@@ -43,8 +43,9 @@ export const CardSeries = ({ data }) => {
           <div className="medium:text-12px xsmall:text-10px text-primario/gris">
             {data.format.map((format, i) => (
               <span key={format}>
+                {i > 0 && i < 2 && ","}
                 {i < 2 && `${format}`}
-                {i !== format.length - 1 && i < 1 && ","}
+                {/* {i !== format.length - 1 && i < 1 && ","} */}
                 {i === 2 && "..."}
               </span>
             ))}

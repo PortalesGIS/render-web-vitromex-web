@@ -3,12 +3,16 @@ import { ButtonDownloadZip } from "../Buttons/ButtonDownloadZip";
 import { ButtonViewFronts } from "../Buttons/ButtonViewFronts";
 
 export const CardProduct = ({ product, number }) => {
-  console.log(product.thumbnail[0].url);
+  // console.log(product.thumbnail[0].url);
   return (
-    <div className="flex large:gap-x-4 medium:gap-x-6 xsmall:gap-x-4">
+    <div className="flex large:gap-x-4 medium:gap-x-6 xsmall:gap-x-4 large:h-[150px] small:h-[150px] smallTwo:h-[145px] smallTwo:w-[300px] medium::w-full large:w-[295px] medium:h-[140px]  xsmall:h-[200px]">
       <div className="overflow-hidden rounded-2xl w-1/2">
         <img
-          src={product.thumbnail[0].url ? product.thumbnail[0].url : "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"}
+          src={
+            product.thumbnail[0].url
+              ? product.thumbnail[0].url
+              : "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"
+          }
           alt="imagen"
           className="w-full h-full object-cover"
         />

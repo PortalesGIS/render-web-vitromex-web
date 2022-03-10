@@ -13,7 +13,7 @@ export const CardColor = ({ color, number, product }) => {
                   : "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"
               }
               alt="serie"
-              className="h-full w-full object-contain"
+              className="h-full w-full object-cover"
             />
           </div>
         </div>
@@ -21,7 +21,7 @@ export const CardColor = ({ color, number, product }) => {
           <div className="medium:text-12px xsmall:text-10px text-primario/gris">
             <span className="">
               {product.serie} / {product.color} / {product.sized} / Variación{" "}
-              {number}
+              {number + 1}
             </span>
           </div>
         </div>
