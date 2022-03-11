@@ -9,6 +9,7 @@ import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import { addDataJson } from "../../helpers/addDataJsonSerie";
 import { countFormats } from "../../helpers/formastHelpers";
+import { sortArrayJsonHelpers } from "../../helpers/sortArrayJson";
 
 export const productAxios = () => {
   return async (dispatch) => {
@@ -46,10 +47,14 @@ export const productAxios = () => {
         }
       }
 
+      //* Sort 
+      let data = sortArrayJsonHelpers(seriesAll)
+      console.log(data);
       //* Los podructos que se ven
       productsView = seriesAll.slice(0, 24);
       //* en cuantos dividir la pagina
       separatePage = separatePageHelper(totalProducts);
+
 
       dispatch(productsGeneralAll(seriesAll));
       dispatch(numberPagination(0));

@@ -62,7 +62,7 @@ export const CardSeries = ({ data }) => {
               <span key={finish}>{finish} </span>
             ))}
             <span> / </span>
-            <span>Hasta {data.renders} variaciones</span>
+            <span>Hasta {data.countSerie} variaciones</span>
           </div>
         </div>
       </div>

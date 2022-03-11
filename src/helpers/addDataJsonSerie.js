@@ -2,7 +2,6 @@ export const addDataJson = (products, series) => {
   let newSeries = [];
   let newProducts = [];
   products.map(({ serie, color, finish, sized, renders, rectified, ...data }) => {
-    // console.log(serie);
     if (newProducts[serie] === undefined) {
       newProducts[serie] = {
         format: [sized],
@@ -73,6 +72,6 @@ export const addDataJson = (products, series) => {
       return serie
     }
   })
-  // console.log(newProducts);
+  
   return newSeries;
 };

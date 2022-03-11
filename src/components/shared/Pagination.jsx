@@ -24,7 +24,22 @@ export const Pagination = () => {
       dispatch(updatePagination(num, numbersPages));
     }
   };
-  if(numbersPages.length >2 ){
+
+  let dataprueba = [
+    {
+      numberpage: 0,
+    },
+    {
+      numberpage: 1,
+    },
+    {
+      numberpage: 2,
+    },
+    {
+      numberpage: 3,
+    },
+  ];
+  if (numbersPages.length > 2) {
     return (
       <div className="bg-neutral10 flex justify-center gap-x-1 items-center py-1">
         <div
@@ -46,11 +61,11 @@ export const Pagination = () => {
         </div>
       </div>
     );
-  }else{
+  } else {
     return (
       <>
       </>
-    )
+    );
   }
 };
 
@@ -64,26 +79,29 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
       return (
         <>
           {separatePage.map((page, i) => (
-            <div
-              className={`h-5 w-5 medium:hover:bg-neutral80 medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
-                page.numberpage === numberPage &&
-                "bg-neutral80 font-bold text-white"
-              }`}
-              onClick={() => {
-                if(page.numberpage < 3){
-                  selectPage(page.numberpage);
-                }
-              }}
-              key={i}
-            >
+            <div key={i}>
               {page.numberpage < 3 ? (
-                <span
-                  className="block"
+                <div
+                  className={`h-5 w-5 medium:hover:bg-neutral80 medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
+                    page.numberpage === numberPage &&
+                    "bg-neutral80 font-bold text-white"
+                  }`}
+                  onClick={() => {
+                    if (page.numberpage < 3) {
+                      selectPage(page.numberpage);
+                    }
+                  }}
+                  key={i}
                 >
-                  {page.numberpage + 1}
-                </span>
+                  <span className="block">{page.numberpage + 1}</span>
+                </div>
               ) : (
-                <span>...</span>
+                <div
+                  className={`h-5 w-5 flex justify-center items-center`}
+                  key={i}
+                >
+                  <span>...</span>
+                </div>
               )}
             </div>
           ))}
@@ -100,36 +118,39 @@ const NumberPagination = ({ numbersPages, numberPage, selectPage }) => {
       return (
         <>
           {separatePage.map((page, i) => (
-            <div
-              className={`h-5 w-5 medium:hover:bg-neutral80 medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
-                page.numberpage === numberPage &&
-                "bg-neutral80 font-bold text-white"
-              }`}
-              key={i}
-              onClick={() => {
-                if(i < 3){
-                  selectPage(page.numberpage);
-                }
-              }}
-            >
+            <div key={i}>
               {i < 3 ? (
-                <span
-                  className="block"
+                <div
+                  className={`h-5 w-5 medium:hover:bg-neutral80 medium:hover:font-bold medium:hover:text-white flex justify-center items-center hover:cursor-pointer ${
+                    page.numberpage === numberPage &&
+                    "bg-neutral80 font-bold text-white"
+                  }`}
+                  onClick={() => {
+                    if (i < 3) {
+                      selectPage(page.numberpage);
+                    }
+                  }}
+                  key={i}
                 >
-                  {page.numberpage + 1}
-                </span>
+                  <span className="block">{page.numberpage + 1}</span>
+                </div>
               ) : (
-                <span>...</span>
+                <div
+                  className={`h-5 w-5 flex justify-center items-center`}
+                  key={i}
+                >
+                  <span>...</span>
+                </div>
               )}
             </div>
           ))}
         </>
       );
     } else if (numberPage === numbersPages.length - 1) {
-      if(numberPage > 2){
-        start = numberPage - 3
-      }else{
-        start = 0
+      if (numberPage > 2) {
+        start = numberPage - 3;
+      } else {
+        start = 0;
       }
       end = numberPage + 1;
       separatePage = numbersPages.slice(start, end);
