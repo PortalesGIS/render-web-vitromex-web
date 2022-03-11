@@ -105,7 +105,7 @@ export const FormLogin = () => {
       </form>
       <FooterForm
         direction={`${Path.FORM}/${Path.RESTORE}`}
-        text={"¿No pudes acceder?"}
+        text={"¿No puedes acceder?"}
         textdirection={"Restablecer tu contraseña"}
       />
       <div className="mt-12 flex justify-center items-center">

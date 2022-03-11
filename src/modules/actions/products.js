@@ -9,6 +9,7 @@ import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import { addDataJson } from "../../helpers/addDataJsonSerie";
 import { countFormats } from "../../helpers/formastHelpers";
+import { sortArrayJsonHelpers } from "../../helpers/sortArrayJson.js";
 
 export const productAxios = () => {
   return async (dispatch) => {
@@ -45,6 +46,8 @@ export const productAxios = () => {
           typologie.push(type);
         }
       }
+
+      sortArrayJsonHelpers(seriesAll)
 
       //* Los podructos que se ven
       productsView = seriesAll.slice(0, 24);
