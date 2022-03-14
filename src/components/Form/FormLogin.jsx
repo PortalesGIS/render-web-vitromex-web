@@ -10,7 +10,7 @@ import { InputError } from "./Errors/InputError";
 import { useForm } from "../../hooks/useForm";
 import { useShowPassword } from "../../hooks/useShowPassword";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
-import { errorLoginClean } from "../../modules/actions/auth";
+import { errorFormPersonalityState } from "../../modules/actions/auth";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 
 export const FormLogin = () => {
@@ -27,7 +27,12 @@ export const FormLogin = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(errorLoginClean());
+      dispatch(
+        errorFormPersonalityState({
+          email: false,
+          password: false,
+        })
+      );
     };
   }, []);
   return (
