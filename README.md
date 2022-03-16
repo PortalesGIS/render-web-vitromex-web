@@ -60,6 +60,35 @@ una vez que se importa, agregar a la lista el nuevo link con su imagen
 
 ![alt nueva](https://gitlab.com/inmersys/render-web-vitromex-web/-/raw/feature/test2/src/assets/readme/nuevered.png)
 
+## Recaptha
+En caso de fallas ir a `src/components/Form/FormRegister.jsx`
+
+una vez ahi ir a 
+
+```js
+<ButtonRedirect
+    text={"Registrarme"}
+    direction={`${Path.PRODUCT}/${Path.SERIES}`}
+    action={typesAuhtButton.register}
+    data={formValues}
+    validations={[equalPassword, validationsCompleteInput, repacthValidation]}
+    validation_extra={[check]}
+/>
+```
+
+y quitar `repacthValidation`, de validations, eso dejara que se registren sin pasar por el recapth
+
+```js
+// de esta manera
+<ButtonRedirect
+    text={"Registrarme"}
+    direction={`${Path.PRODUCT}/${Path.SERIES}`}
+    action={typesAuhtButton.register}
+    data={formValues}
+    validations={[equalPassword, validationsCompleteInput]}
+    validation_extra={[check]}
+/>
+```
 
 ## Links de apoyo
 
