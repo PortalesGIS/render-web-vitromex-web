@@ -18,7 +18,7 @@ import Reaptcha from "reaptcha";
 export const FormRegister = () => {
   const state = useSelector((state) => state.ui);
   const dispatch = useDispatch();
-  const [repacthValidation, setrepacthValidation] = useState(false);
+  const [repacthValidation, setrepacthValidation] = useState(true);
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
   const [hasVisibilitySelect, showVisibilitySelect] = useShowPassword(false);
   const [hasVisibilityConfirmPassword, showConfirmPassword] =
@@ -67,6 +67,10 @@ export const FormRegister = () => {
   };
   
   const recaptchaExpire = () => {
+    setrepacthValidation(false)
+  };
+
+  const recaptchaLoad = () => {
     setrepacthValidation(false)
   };
 
@@ -360,6 +364,7 @@ export const FormRegister = () => {
               sitekey={process.env.REACT_APP_RECAPTCH}
               onVerify={recaptchaResponse}
               onExpire={recaptchaExpire}
+              onRender={recaptchaLoad}
             />
           </div>
           {/* advertencia check */}
