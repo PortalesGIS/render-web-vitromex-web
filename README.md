@@ -91,9 +91,14 @@ y quitar `repacthValidation`, de validations, eso dejara que se registren sin pa
 ```
 
 ## Links de apoyo
-
+Documentación
 [Recaptch documentacioon](https://developers.google.com/recaptcha/intro)
+
+Npm recapcha
 [Recaptch npm](https://www.npmjs.com/package/reaptcha)
+
+Para ver informes del recapth
+[Recapch Informe](https://www.google.com/recaptcha/admin/site/516756845)
 
 
 ## Creado por
