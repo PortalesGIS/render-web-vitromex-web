@@ -33,6 +33,34 @@ Para el despligue
 
 
 ## Para agregar una nueva red social
+Primero dirigite a `src/asstes/redes`, en esta carpeta agregar la imagen que quieras.
+
+![alt Menu](https://gitlab.com/inmersys/render-web-vitromex-web/-/raw/feature/test2/src/assets/readme/redes.png)
+
+Ahora ve al archivo imagesLinsk.js `src/types/imagesLinks.js`
+
+![alt types](https://gitlab.com/inmersys/render-web-vitromex-web/-/raw/feature/test2/src/assets/readme/types.png)
+
+Una vez ya en el archivo, primero tienes que importar la nueva imagen
+
+```js
+// De esta manera
+import nueva_red from "../assets/redes/nueva_red.svg"; // importante poner la extension de la imagen [svg,png,jpg]
+```
+
+una vez que se importa, agregar a la lista el nuevo link con su imagen
+
+```js
+// De esta manera
+{
+    img: nueva_imagen,
+    url: 'http://link de red social'
+}
+```
+
+![alt nueva](https://gitlab.com/inmersys/render-web-vitromex-web/-/raw/feature/test2/src/assets/readme/nuevered.png)
+
+
 ## Links de apoyo
 
 [Recaptch documentacioon](https://developers.google.com/recaptcha/intro)
