@@ -31,6 +31,8 @@ npm run serve
 ## Deploy
 Para el despligue
 
+
+## Para agregar una nueva red social
 ## Links de apoyo
 
 [Recaptch documentacioon](https://developers.google.com/recaptcha/intro)
