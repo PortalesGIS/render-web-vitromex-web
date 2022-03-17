@@ -27,10 +27,10 @@ const TextInformation = () => {
   return (
     <div className="small:col-span-6 medium:col-span-6 col-span-4 text-white flex flex-col gap-y-14 pb-32">
       <div>
-        <h1 className="xsmall:text-[60px] font-bold">
+        <h1 className="xsmall:text-[45px] small:text-[60px] font-bold">
           VITRORENDER
         </h1>
-        <div className="xsmall:text-[20px] leading-6">
+        <div className="small:text-[20px] xsmall:text-[18px] leading-6">
           <p className="font-extralight">
             Descarga los productos y sus variaciones necesarias para tus
             proyectos. Recursos hechos por y para profesionales.

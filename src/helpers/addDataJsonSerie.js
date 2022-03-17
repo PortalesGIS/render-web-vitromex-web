@@ -59,7 +59,7 @@ export const addDataJson = (products, series) => {
       serie.finish = [] 
       serie.format = [] 
       serie.renders = 0  
-      serie.countSerie = 1  
+      serie.countSerie = 0 
       serie.rectified = []
       // console.log(serie.name);  
       return serie
@@ -73,6 +73,8 @@ export const addDataJson = (products, series) => {
       return serie
     }
   })
+
+  let dataSeries = newSeries.filter((serie) => serie.countSerie > 0)
   // console.log(newProducts);
-  return newSeries;
+  return dataSeries;
 };

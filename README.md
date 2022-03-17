@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Render Web 
+> Version web de render vitromex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Develop
+Para modo desarrollador primero necesitas instalar las dependecias
 
-## Available Scripts
+```bash
+npm i
+```
 
-In the project directory, you can run:
+Levantar servidor
+```bash
+npm run start
+```
 
-### `npm start`
+## Build
+Para generar el build con 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm run build
+```
 
-### `npm test`
+pudes probarlo con 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+```bash
+npm run serve
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deploy
+Para el despligue
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Para agregar una nueva red social
+Primero dirigite a `src/asstes/redes`, en esta carpeta agregar la imagen que quieras.
 
-### `npm run eject`
+![alt Menu](https://gitlab.com/inmersys/render-web-vitromex-web/-/raw/feature/test2/src/assets/readme/redes.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ahora ve al archivo imagesLinsk.js `src/types/imagesLinks.js`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![alt types](https://gitlab.com/inmersys/render-web-vitromex-web/-/raw/feature/test2/src/assets/readme/types.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Una vez ya en el archivo, primero tienes que importar la nueva imagen
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```js
+// De esta manera
+import nueva_red from "../assets/redes/nueva_red.svg"; // importante poner la extension de la imagen [svg,png,jpg]
+```
 
-## Learn More
+una vez que se importa, agregar a la lista el nuevo link con su imagen
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
+// De esta manera
+{
+    img: nueva_imagen,
+    url: 'http://link de red social'
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![alt nueva](https://gitlab.com/inmersys/render-web-vitromex-web/-/raw/feature/test2/src/assets/readme/nuevered.png)
 
-### Code Splitting
+## Recaptha
+En caso de fallas ir a `src/components/Form/FormRegister.jsx`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+una vez ahi ir a 
 
-### Analyzing the Bundle Size
+```js
+<ButtonRedirect
+    text={"Registrarme"}
+    direction={`${Path.PRODUCT}/${Path.SERIES}`}
+    action={typesAuhtButton.register}
+    data={formValues}
+    validations={[equalPassword, validationsCompleteInput, repacthValidation]}
+    validation_extra={[check]}
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+y quitar `repacthValidation`, de validations, eso dejara que se registren sin pasar por el recapth
 
-### Making a Progressive Web App
+```js
+// de esta manera
+<ButtonRedirect
+    text={"Registrarme"}
+    direction={`${Path.PRODUCT}/${Path.SERIES}`}
+    action={typesAuhtButton.register}
+    data={formValues}
+    validations={[equalPassword, validationsCompleteInput]}
+    validation_extra={[check]}
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Links de apoyo
+Documentación
+[Recaptch documentacioon](https://developers.google.com/recaptcha/intro)
 
-### Advanced Configuration
+Npm recapcha
+[Recaptch npm](https://www.npmjs.com/package/reaptcha)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Para ver informes del recapth
+[Recapch Informe](https://www.google.com/recaptcha/admin/site/516756845)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Creado por
 
-### `npm run build` fails to minify
+[Luis Ocampo](https://github.com/Luis-Blash)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
