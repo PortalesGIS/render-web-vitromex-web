@@ -50,10 +50,10 @@ export const CardSeries = ({ data }) => {
               </span>
             ))}
             <span> / </span>
-            {data.color.map((format, i) => (
-              <span key={format}>
+            {data.color.map((color, i) => (
+              <span key={color}>
                 {i > 0 && i < 2 && ","}
-                {i < 2 && `${format}`}
+                {i < 2 && `${color}`}
                 {i === 2 && "..."}
               </span>
             ))}
