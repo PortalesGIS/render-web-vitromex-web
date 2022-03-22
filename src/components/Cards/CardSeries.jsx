@@ -17,7 +17,7 @@ export const CardSeries = ({ data }) => {
     );
     navigate(`${Path.PRODUCT}/${Path.SERIES}/${data.id}`);
   };
-  // console.log(data.rectified);
+  // console.log(data);
   return (
     <div className={`cursor-pointer`} onClick={navigateParams}>
       <div className="h-full overflow-hidden">
@@ -50,11 +50,11 @@ export const CardSeries = ({ data }) => {
               </span>
             ))}
             <span> / </span>
-            {data.rectified.map((rectified, i) => (
-              <span key={rectified}>
-                {i > 0 && <span> y </span>}
-                {rectified === "0" && "Rectificado"}
-                {rectified === "1" && "No rectificado"}
+            {data.color.map((format, i) => (
+              <span key={format}>
+                {i > 0 && i < 2 && ","}
+                {i < 2 && `${format}`}
+                {i === 2 && "..."}
               </span>
             ))}
             <span> / </span>
