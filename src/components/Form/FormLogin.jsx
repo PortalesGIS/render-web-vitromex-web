@@ -10,7 +10,10 @@ import { InputError } from "./Errors/InputError";
 import { useForm } from "../../hooks/useForm";
 import { useShowPassword } from "../../hooks/useShowPassword";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
-import { errorFormPersonalityState } from "../../modules/actions/auth";
+import {
+  authAxios,
+  errorFormPersonalityState,
+} from "../../modules/actions/auth";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 
 export const FormLogin = () => {
@@ -35,6 +38,15 @@ export const FormLogin = () => {
       );
     };
   }, []);
+
+  const SendForm = (e) => {
+    e.preventDefault();
+    let validationsInputs = [validationsCompleteInput, isEmail]
+    const passAction = validationsInputs.every((validation) => validation);
+    if(passAction){
+      dispatch(authAxios(typesAuhtButton.login, formValues));
+    }
+  };
   return (
     <div className="large:w-96">
       <div className="mb-8">
@@ -47,7 +59,7 @@ export const FormLogin = () => {
       </div>
       <form
         onSubmit={(e) => {
-          e.preventDefault();
+          SendForm(e)
         }}
         className="flex flex-col gap-4"
       >
@@ -107,6 +119,7 @@ export const FormLogin = () => {
             )}
           </div>
         </div>
+        <input type="submit" value="Submit" className="hidden"/>
       </form>
       <FooterForm
         direction={`${Path.FORM}/${Path.RESTORE}`}

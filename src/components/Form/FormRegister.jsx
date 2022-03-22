@@ -12,8 +12,9 @@ import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 import { InputError } from "./Errors/InputError";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 import { useSelector, useDispatch } from "react-redux";
-import { errorLoginClean } from "../../modules/actions/auth";
+import { authAxios, errorLoginClean } from "../../modules/actions/auth";
 import Reaptcha from "reaptcha";
+import { validationExtraActive } from "../../modules/actions/ui";
 
 export const FormRegister = () => {
   const state = useSelector((state) => state.ui);
@@ -74,11 +75,26 @@ export const FormRegister = () => {
     setrepacthValidation(false)
   };
 
+  const SendForm = (e) => {
+    e.preventDefault();
+    let validationsInputs = [equalPassword, validationsCompleteInput, repacthValidation]
+    let validationsExtras = [check]
+    const passAction = validationsInputs.every((validation) => validation);
+    const passExtra = validationsExtras.every((validation) => validation);
+    if(passAction){
+      if(passExtra){
+        dispatch(authAxios(typesAuhtButton.register, formValues));
+      }else {
+        dispatch(validationExtraActive(true))
+      }
+    }
+  };
+
   return (
     <div className="">
       <form
         onSubmit={(e) => {
-          e.preventDefault();
+          SendForm(e)
         }}
         className="flex xsmall:flex-col medium:flex-row justify-between medium:gap-48 xsmall:gap-y-8 text-white"
       >
@@ -389,6 +405,7 @@ export const FormRegister = () => {
             />
           </div>
         </div>
+        <input type="submit" value="Submit" className="hidden"/>
       </form>
     </div>
   );

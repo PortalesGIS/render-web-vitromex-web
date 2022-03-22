@@ -10,7 +10,7 @@ import { InputError } from "./Errors/InputError";
 import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 import { useSelector, useDispatch } from "react-redux";
-import { errorLoginClean } from "../../modules/actions/auth";
+import { authAxios, errorLoginClean } from "../../modules/actions/auth";
 
 export const FormRestore = () => {
   const state = useSelector((state) => state.ui.errorInput);
@@ -33,6 +33,15 @@ export const FormRestore = () => {
     };
   }, []);
 
+  const SendForm = (e) => {
+    e.preventDefault();
+    let validationsInputs = [validationsCompleteInput, isEmail, equalPassword]
+    const passAction = validationsInputs.every((validation) => validation);
+    if(passAction){
+      dispatch(authAxios(typesAuhtButton.restore, formValues));
+    }
+  };
+
   return (
     <div className="large:w-96">
       <div className="mb-8">
@@ -46,7 +55,7 @@ export const FormRestore = () => {
       <div className="flex flex-col gap-11 text-white">
         <form
           onSubmit={(e) => {
-            e.preventDefault();
+            SendForm(e)
           }}
           className="flex flex-col gap-4"
         >
@@ -141,6 +150,7 @@ export const FormRestore = () => {
               )}
             </div>
           </div>
+          <input type="submit" value="Submit" className="hidden"/>
         </form>
         <div className="mt-12 flex justify-center items-center">
           <ButtonRedirect

@@ -323,7 +323,8 @@ export const downloadZip = (number) => {
     let imagesBase = await imagesBase64(renders);
     let isNotEmpty = imagesBase.every((img) => img !== "");
     // console.log(state.product.products[number]);
-    let {name, color, sized} = state.product.products[number]
+    let {name, color, sized, serie, ...dataExtra} = state.product.products[number]
+    console.log(dataExtra);
     //* Carpeta nombre
     let img = zip.folder(name);
     if (isNotEmpty) {
@@ -334,7 +335,7 @@ export const downloadZip = (number) => {
       });
       zip.generateAsync({ type: "blob" }).then(function (content) {
         // see FileSaver.js
-        saveAs(content, "vitromexRender.zip");
+        saveAs(content, `Vitromex ${serie} ${name} ${color} ${sized}`);
       });
     }
   };

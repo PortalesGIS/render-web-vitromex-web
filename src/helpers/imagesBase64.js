@@ -13,10 +13,11 @@ const convertBase64 = (images) => {
       images.map(async (render, i) => {
         let url = "";
         try {
-          // url = await imageToBase64(render.url);
-          url = await imageToBase64(
-            "https://storagedevelopvitromex.blob.core.windows.net:443/storage-render/af885e1b-93c3-452d-b5dc-b3c06d1538ceVITROMEX_PINAR_MOKA_36X50CM_BR_3.jpg"
-          );
+          url = await imageToBase64(render.url);
+          // console.log(render.url);
+          // url = await imageToBase64(
+          //   "https://storagedevelopvitromex.blob.core.windows.net:443/storage-render/af885e1b-93c3-452d-b5dc-b3c06d1538ceVITROMEX_PINAR_MOKA_36X50CM_BR_3.jpg"
+          // );
         } catch (error) {
           console.log(error);
         }
