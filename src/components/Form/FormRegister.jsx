@@ -12,12 +12,13 @@ import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 import { InputError } from "./Errors/InputError";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 import { useSelector, useDispatch } from "react-redux";
-import { authAxios, errorLoginClean } from "../../modules/actions/auth";
+import { authAxios, errorLoginClean, professionsAxios } from "../../modules/actions/auth";
 import Reaptcha from "reaptcha";
 import { validationExtraActive } from "../../modules/actions/ui";
 
 export const FormRegister = () => {
   const state = useSelector((state) => state.ui);
+  const stateauth = useSelector((state) => state.auth.professions);
   const dispatch = useDispatch();
   const [repacthValidation, setrepacthValidation] = useState(true);
   const [hasVisibilityPassword, showPassword] = useShowPassword(true);
@@ -49,6 +50,7 @@ export const FormRegister = () => {
   const [validationsCompleteInput] = useCompleteInput(formValues);
 
   useEffect(() => {
+    dispatch(professionsAxios());
     return () => {
       dispatch(errorLoginClean());
     };
@@ -75,26 +77,12 @@ export const FormRegister = () => {
     setrepacthValidation(false)
   };
 
-  const SendForm = (e) => {
-    e.preventDefault();
-    let validationsInputs = [equalPassword, validationsCompleteInput, repacthValidation]
-    let validationsExtras = [check]
-    const passAction = validationsInputs.every((validation) => validation);
-    const passExtra = validationsExtras.every((validation) => validation);
-    if(passAction){
-      if(passExtra){
-        dispatch(authAxios(typesAuhtButton.register, formValues));
-      }else {
-        dispatch(validationExtraActive(true))
-      }
-    }
-  };
-
   return (
     <div className="">
       <form
         onSubmit={(e) => {
-          SendForm(e)
+          e.preventDefault();
+          console.log('emial');
         }}
         className="flex xsmall:flex-col medium:flex-row justify-between medium:gap-48 xsmall:gap-y-8 text-white"
       >
@@ -198,24 +186,15 @@ export const FormRegister = () => {
                 hasVisibilitySelect ? "hidden" : "none"
               }`}
             >
-              <div
+              {stateauth.map((profession, index)=> (
+                <div
                 className="pl-2 h-8 flex items-center hover:bg-neutral40 text-black hover:text-white cursor-pointer"
-                onClick={() => addProfesion("Arquitecto")}
+                onClick={() => addProfesion(profession.profession)}
+                key={index}
               >
-                <span>Arquitecto</span>
+                <span>{profession.profession}</span>
               </div>
-              <div
-                className="pl-2 h-8 flex items-center hover:bg-neutral40 text-black hover:text-white cursor-pointer"
-                onClick={() => addProfesion("Diseñador")}
-              >
-                <span>Diseñador</span>
-              </div>
-              <div
-                className="pl-2 h-8 flex items-center hover:bg-neutral40 text-black hover:text-white cursor-pointer"
-                onClick={() => addProfesion("Otro")}
-              >
-                <span>Otro</span>
-              </div>
+              ))}
             </div>
             <span
               id="visiblity-toggle"
@@ -405,7 +384,7 @@ export const FormRegister = () => {
             />
           </div>
         </div>
-        <input type="submit" value="Submit" className="hidden"/>
+        {/* <input type="submit" value="Submit" className="hidden"/> */}
       </form>
     </div>
   );

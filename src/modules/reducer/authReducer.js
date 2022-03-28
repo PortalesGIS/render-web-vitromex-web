@@ -5,12 +5,18 @@ import { types } from "../types/types";
 const initialState = {
     authentication: false,
     email: '',
-    user: ''
+    user: '',
+    professions: []
 }
 
 
 export const authReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.profession:
+            return {
+                ...state,
+                professions: action.payload.professions
+            }
         case types.login:
             return {
                 ...state,

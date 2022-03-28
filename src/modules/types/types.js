@@ -3,6 +3,7 @@ export const types = {
   logout: "[auth] logout",
   restore: "[auth] restore",
   register: "[auth] register",
+  profession: "[auth] profession",
   uiErrorInput: "[ui] errorinput",
   modalStatus: "[ui] modalStatus",
   filterActive: "[ui] filterActive",
