@@ -66,6 +66,28 @@ export const authAxios = (type, dataform) => {
   };
 };
 
+
+export const professionsAxios = () => {
+  return async (dispatch, getState) => {
+    try {
+      const response = await clientAxios.get("profession");
+      const {profession} = response.data
+      dispatch(setProfessions(profession));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+//* Mutations
+export const setProfessions = (professions) => {
+  return {
+    type: types.profession,
+    payload: {
+      professions: professions,
+    },
+  };
+}
 export const errorFormPersonalityState = (errorFormPersonality) => {
   return {
     type: types.errorFormPersonality,
