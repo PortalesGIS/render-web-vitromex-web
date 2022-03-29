@@ -183,7 +183,7 @@ export const FormRegister = () => {
             </div>
             <div
               className={`absolute w-full bg-white top-12 ${
-                hasVisibilitySelect ? "hidden" : "none"
+                hasVisibilitySelect ? "hidden" : "none max-h-48 overflow-auto"
               }`}
             >
               {stateauth.map((profession, index)=> (
@@ -349,7 +349,7 @@ export const FormRegister = () => {
                     aviso de privacidad{" "}
                   </span>{" "}
                 </a>
-                de Vitrorender
+                de Vitrolab
               </p>
             </div>
           </div>

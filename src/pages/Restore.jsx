@@ -16,7 +16,7 @@ const RestoreMedium = () => {
     <div className="medium:col-span-7 xsmall:col-span-full flex justify-center pt-20 bg-neutral80 ">
       <div className="flex flex-col gap-y-14">
         <div className="uppercase text-center font-bold text-white text-[35px]">
-          <h1>Vitrorender</h1>
+          <h1>Vitrolab</h1>
         </div>
         <FormRestore />
       </div>

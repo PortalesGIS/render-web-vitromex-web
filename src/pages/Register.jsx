@@ -18,7 +18,7 @@ const RegistroMedium = () => {
       <div className="flex flex-col gap-y-14 xsmall:pt-20 medium:pt-10 mb-28">
         <div>
           <div className="uppercase text-left font-bold text-Text-4xl text-white">
-            <h1>Vitrorender</h1>
+            <h1>Vitrolab</h1>
           </div>
           <TitleForm
             direction={`${Path.FORM}/${Path.LOGIN}`}
