@@ -28,6 +28,14 @@ export const showFilterActive = (filterMenu) => {
 }
 
 
+export const isPassRecover = (value) => {
+  return {
+    type: types.isFadeRegister,
+    payload: {
+      isFadeRegister: value,
+    },
+  };
+};
 export const filterActiveMenu = (value) => {
   return {
     type: types.whatFilterActive,

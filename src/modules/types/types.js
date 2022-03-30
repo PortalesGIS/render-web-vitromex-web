@@ -10,6 +10,7 @@ export const types = {
   whatFilterActive: "[ui] whatFilterActive",
   validationExtra: "[ui] validationExtra",
   errorFormPersonality: "[ui] errorFormPersonality",
+  isFadeRegister: "[ui] isFadeRegister",
   products: "[product] getproducts",
   productsError: "[product] errorproducts",
   loading: "[product] loading",
