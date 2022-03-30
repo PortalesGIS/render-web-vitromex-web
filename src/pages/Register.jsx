@@ -18,7 +18,7 @@ const RegistroMedium = () => {
     <div className="medium:col-span-9 xsmall:col-span-full flex justify-center items-center bg-neutral80">
       <div className="flex flex-col gap-y-14 xsmall:pt-20 medium:pt-10 mb-28">
         <div>
-        <div className="flex">
+        <div className="flex animate__animated animate__fadeIn mb-5">
           <img src={logovitrolab} alt="vitrolab" className=" medium:w-[40%]"/>
         </div>
           <TitleForm

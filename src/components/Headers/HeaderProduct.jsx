@@ -50,7 +50,7 @@ const MedimProduct = ({ moveSeries }) => {
         </a>
       </div>
       <div className=" col-span-10 flex justify-between items-center pr-14">
-        <div className="flex">
+        <div className="flex animate__animated animate__fadeIn">
           <img src={logovitrolab} alt="vitrolab" className="w-[60%]" />
         </div>
         <div className="text-white flex justify-between items-center text-12px gap-x-10">
@@ -98,7 +98,7 @@ const ResponsiveHeader = ({ menuValue, actionmenu, moveSeries }) => {
             />
           </a>
         </div>
-        <div className=" flex justify-center items-center w-[25%] smallTwo:w-[15%]">
+        <div className=" flex justify-center items-center w-[25%] smallTwo:w-[15%] animate__animated animate__fadeIn">
           <img
             src={logovitrolab}
             alt="logo vitrolab"

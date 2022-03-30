@@ -16,7 +16,7 @@ const RestoreMedium = () => {
   return (
     <div className="medium:col-span-7 xsmall:col-span-full flex justify-center pt-20 bg-neutral80 ">
       <div className="flex flex-col gap-y-14">
-      <div className="flex">
+      <div className="flex animate__animated animate__fadeIn">
           <img src={logovitrolab} alt="vitrolab" className=""/>
         </div>
         <FormRestore />

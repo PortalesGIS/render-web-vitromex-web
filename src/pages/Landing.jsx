@@ -11,7 +11,7 @@ export const Landing = () => {
       <HeaderSub />
       <HeadersLading />
       <div className="col-span-full">
-        <div className="bg-landing bg-no-repeat bg-center bg-cover h-full relative">
+        <div className="bg-landing bg-no-repeat bg-center bg-cover h-full relative animate__animated animate__fadeIn">
           <div className="bg-black opacity-50 absolute h-full w-full z-1" />
           <div className="absolute z-10 h-full w-full">
             <div className="grid gridLayout h-full items-end text-white px-4">
@@ -28,7 +28,7 @@ const TextInformation = () => {
   return (
     <div className="small:col-span-6 medium:col-span-6 col-span-4 text-white flex flex-col gap-y-14 pb-32">
       <div>
-        <div className="w-[78%] mb-6 flex">
+        <div className="w-[78%] mb-6 flex animate__animated animate__fadeIn">
           <img src={logovitrolab} alt="vitrolab"/>
         </div>
         <div className="small:text-[20px] xsmall:text-[18px] leading-6">
