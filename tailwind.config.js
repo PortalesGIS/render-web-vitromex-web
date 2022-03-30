@@ -73,9 +73,9 @@ module.exports = {
       },
       backgroundImage: {
         landing: "url('./assets/background/landing.webp')",
-        register: "url('./assets/background/registro.webp')",
+        register: "url('./assets/background/vitromexRegistro.jpg')",
         login: "url('./assets/background/form.webp')",
-        restore: "url('./assets/background/restablecer.webp')",
+        restore: "url('./assets/background/vitromexRestablecer.jpg')",
         usuario: "url('./assets/Usuario.svg')",
         exit: "url('./assets/Exit.svg')",
         exit_hover: "url('./assets/exitnegro.svg')",
