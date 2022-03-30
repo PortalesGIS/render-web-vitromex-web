@@ -353,7 +353,7 @@ export const FormRegister = () => {
               </p>
             </div>
           </div>
-          <div className="">
+          <div className="h-20">
             <Reaptcha
               size="normal"
               sitekey={process.env.REACT_APP_RECAPTCH}

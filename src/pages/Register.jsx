@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormRegister } from "../components/Form/FormRegister";
 import { TitleForm } from "../components/Form/TextForm/TitleForm";
 import { Path } from "../utils/route";
 import logovitrolab from "../assets/VitroLab.svg";
+import { useDispatch } from "react-redux";
+import { isPassRecover } from "../modules/actions/ui";
 
 export const Register = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(isPassRecover(false))
+  }, [])
   return (
     <div className="min-h-full gridLayout">
       <div className="bg-register bg-cover bg-no-repeat bg-center hidden medium:block medium:col-span-3 animate__animated animate__fadeIn" />

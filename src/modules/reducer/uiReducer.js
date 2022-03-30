@@ -12,11 +12,17 @@ const initialState = {
     tipology: false,
     format: false
   },
-  validationExtra: false
+  validationExtra: false,
+  isFadeRegister: false
 };
 
 export const uiReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.isFadeRegister:
+      return {
+        ...state,
+        isFadeRegister: action.payload.isFadeRegister,
+      };
     case types.errorFormPersonality:
       return {
         ...state,
