@@ -3,6 +3,7 @@ import { ButtonRedirect } from "../components/Buttons/ButtonRedirect";
 import { Path } from "../utils/route";
 import { HeadersLading } from "../components/Headers/HeadersLading";
 import { HeaderSub } from "../components/Headers/HeaderSub";
+import logovitrolab from "../assets/VitroLab.svg";
 
 export const Landing = () => {
   return (
@@ -27,9 +28,9 @@ const TextInformation = () => {
   return (
     <div className="small:col-span-6 medium:col-span-6 col-span-4 text-white flex flex-col gap-y-14 pb-32">
       <div>
-        <h1 className="xsmall:text-[45px] small:text-[60px] font-bold uppercase">
-        Vitrolab
-        </h1>
+        <div className="w-[78%] mb-6 flex">
+          <img src={logovitrolab} alt="vitrolab"/>
+        </div>
         <div className="small:text-[20px] xsmall:text-[18px] leading-6">
           <p className="font-extralight">
             Descarga los productos y sus variaciones necesarias para tus
