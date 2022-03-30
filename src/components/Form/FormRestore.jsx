@@ -152,7 +152,7 @@ export const FormRestore = () => {
           </div>
           <input type="submit" value="Submit" className="hidden"/>
         </form>
-        <div className="mt-12 flex justify-center items-center">
+        <div className="flex justify-center items-center">
           <ButtonRedirect
             text={"Iniciar sesión"}
             direction={`${Path.PRODUCT}/${Path.SERIES}`}

@@ -335,7 +335,7 @@ export const downloadZip = (number) => {
       });
       zip.generateAsync({ type: "blob" }).then(function (content) {
         // see FileSaver.js
-        saveAs(content, `Vitromex ${serie} ${name} ${color} ${sized}`);
+        saveAs(content, `Vitromex_${serie}_${name}_${color}_${sized}`);
       });
     }
   };
