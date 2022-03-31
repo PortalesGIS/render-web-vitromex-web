@@ -8,9 +8,9 @@ function App() {
   console.log(process.env.REACT_APP_VERSION);
   return (
     <>
-      <div className="fixed z-50 bg-blue-100 top-0 left-0">
+      {/* <div className="fixed z-50 bg-blue-100 top-0 left-0">
         {process.env.REACT_APP_VERSION}
-      </div>
+      </div> */}
       <Provider store={store}>
         <AppRouter />
       </Provider>
