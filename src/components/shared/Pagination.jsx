@@ -39,7 +39,7 @@ export const Pagination = () => {
       numberpage: 3,
     },
   ];
-  if (numbersPages.length > 2) {
+  if (numbersPages.length > 1) {
     return (
       <div className="bg-neutral10 flex justify-center gap-x-1 items-center py-1">
         <div
