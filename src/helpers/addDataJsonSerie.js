@@ -1,6 +1,7 @@
 export const addDataJson = (products, series) => {
   let newSeries = [];
   let newProducts = [];
+  // eslint-disable-next-line
   products.map(({ serie, color, finish, sized, renders, rectified, ...data }) => {
     // console.log(serie);
     if (newProducts[serie] === undefined) {

@@ -24,7 +24,7 @@ export const Pagination = () => {
       dispatch(updatePagination(num, numbersPages));
     }
   };
-
+// eslint-disable-next-line
   let dataprueba = [
     {
       numberpage: 0,

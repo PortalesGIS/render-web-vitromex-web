@@ -18,6 +18,7 @@ export const ProductLayout = () => {
 
   useEffect(() => {
     dispatch(productAxios());
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -11,6 +11,7 @@ export const ColorSerie = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(titlePages("Variaciones"));
+    // eslint-disable-next-line
   }, []);
   let product = state.products[state.numberProduct];
   // console.log(product);
