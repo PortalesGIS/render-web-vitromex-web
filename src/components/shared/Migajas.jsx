@@ -15,6 +15,7 @@ export const Migajas = () => {
         dispatch(realoadPage(location.pathname));
       }
     }
+    // eslint-disable-next-line
   }, [state.productsGeneral]);
   const redirectPath = (data, i) => {
     if (i === 0) {

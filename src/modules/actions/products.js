@@ -1,4 +1,5 @@
 import clientAxios from "../../config/axios";
+import ReactGA from 'react-ga4';
 import { types } from "../types/types";
 import { separatePageHelper } from "../../helpers/separetePage";
 import { separateMigajasHelpers } from "../../helpers/separateMigajas";
@@ -10,6 +11,7 @@ import { saveAs } from "file-saver";
 import { addDataJson } from "../../helpers/addDataJsonSerie";
 import { countFormats } from "../../helpers/formastHelpers";
 import { sortArrayJsonHelpers } from "../../helpers/sortArrayJson.js";
+
 
 export const productAxios = () => {
   return async (dispatch) => {
@@ -319,15 +321,22 @@ export const downloadZip = (number) => {
   return async (dispatch, getState) => {
     const state = getState();
     let zip = new JSZip();
+    // eslint-disable-next-line
+    let {name, color, sized, serie, ...dataExtra} = state.product.products[number]
+    // console.log("analitycs");
+    console.log(name)
+    ReactGA.event({
+      category:"Descarga",
+      action:name
+    })
     let renders = state.product.products[number].renders;
     let imagesBase = await imagesBase64(renders);
     let isNotEmpty = imagesBase.every((img) => img !== "");
     // console.log(state.product.products[number]);
-    let {name, color, sized, serie, ...dataExtra} = state.product.products[number]
-    console.log(dataExtra);
     //* Carpeta nombre
     let img = zip.folder(name);
     if (isNotEmpty) {
+      // eslint-disable-next-line
       imagesBase.map((images, i) => {
         //* Nombre de cada imagen
         let nameFile = `${name} ${color} ${sized} - ${i+1}.jpg`

@@ -12,8 +12,10 @@ import { typesAuhtButton } from "../../modules/types/typesAuthButton";
 import { InputError } from "./Errors/InputError";
 import { useCompleteInput } from "../../hooks/useCompleteInput";
 import { useSelector, useDispatch } from "react-redux";
+// eslint-disable-next-line
 import { authAxios, errorLoginClean, professionsAxios } from "../../modules/actions/auth";
 import Reaptcha from "reaptcha";
+// eslint-disable-next-line
 import { validationExtraActive } from "../../modules/actions/ui";
 
 export const FormRegister = () => {
@@ -54,6 +56,7 @@ export const FormRegister = () => {
     return () => {
       dispatch(errorLoginClean());
     };
+    // eslint-disable-next-line
   }, []);
 
   const handleInputChangeCheck = ({ target }) => {

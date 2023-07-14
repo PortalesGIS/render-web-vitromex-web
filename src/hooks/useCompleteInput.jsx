@@ -12,6 +12,7 @@ export const useCompleteInput = (formValues) => {
     }
     const isComplete = valuesInput.every((value) => value !== "");
     setInputComplete(isComplete);
+    // eslint-disable-next-line
   }, [formValues]);
 
   return [inputComplete];

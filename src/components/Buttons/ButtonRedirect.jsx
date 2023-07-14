@@ -38,6 +38,7 @@ export const ButtonRedirect = ({
       dispatch(validationExtraActive(false))
       navigate(direction);
     }
+    // eslint-disable-next-line
   }, [state]);
 
   return (

@@ -31,6 +31,7 @@ export const FindProduct = () => {
         product: "",
       });
     }
+    // eslint-disable-next-line
   }, [state.migajas]);
 
   useEffect(() => {

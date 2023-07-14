@@ -8,6 +8,7 @@ export const Restore = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(isPassRecover(true))
+    // eslint-disable-next-line
   }, [])
   
   return (

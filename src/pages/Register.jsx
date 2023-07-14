@@ -10,6 +10,7 @@ export const Register = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(isPassRecover(false))
+    // eslint-disable-next-line
   }, [])
   return (
     <div className="min-h-full gridLayout">
